@@ -10,9 +10,7 @@
 :root{
   --gold:#B8922A;--gold-l:#D4AA44;--gold-d:#8A6E20;
   --bg:#FAFAF8;--sb:#FFFFFF;--card:#FFFFFF;--card2:#F5F3EF;
-  --border:#E8E0D0;--border-h:#C9A43A;
-  --text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;
-  --accent:#2C2420;
+  --border:#E8E0D0;--text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;--accent:#2C2420;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
@@ -38,13 +36,42 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .tb-date{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
 
 /* Hero */
-.hero{text-align:center;padding:72px 80px 56px;border-bottom:1px solid var(--border);background:#FFFFFF}
-.hero-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:24px}
-.hero-verse{font-size:clamp(24px,3vw,36px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.7;max-width:680px;margin:0 auto 20px}
-.hero-ref{font-family:'Cormorant',serif;font-size:13px;letter-spacing:3px;color:var(--gold);margin-bottom:28px;font-weight:600}
-.hero-theme{font-family:'Cormorant',serif;font-size:clamp(15px,1.8vw,18px);font-weight:600;color:var(--text);margin-bottom:40px;letter-spacing:1px}
+.hero{text-align:center;padding:72px 80px 60px;border-bottom:1px solid var(--border);background:#FFFFFF}
+
+/* "Daily Devotional" heading */
+.hero-heading{
+  font-family:'Cormorant',serif;
+  font-size:clamp(32px,4vw,48px);
+  font-weight:600;
+  color:var(--text-b);
+  letter-spacing:2px;
+  margin-bottom:10px;
+  line-height:1.2;
+}
+.hero-heading-sub{
+  font-family:'Cormorant',serif;
+  font-size:13px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--text-d);
+  margin-bottom:48px;
+  font-weight:400;
+}
+
+/* Opening quote in hero */
+.hero-quote{
+  max-width:660px;margin:0 auto 24px;
+  border-left:2px solid var(--gold);
+  padding:20px 32px;
+  text-align:left;
+  background:rgba(184,146,42,0.03);
+}
+.hero-quote-text{font-size:clamp(19px,2.5vw,24px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.7}
+.hero-quote-by{font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:12px;font-weight:500}
+
+.hero-theme{font-family:'Cormorant',serif;font-size:clamp(13px,1.5vw,16px);font-weight:500;color:var(--text-d);margin:24px auto 36px;letter-spacing:1px;max-width:660px;text-align:center}
 .hero-cta{display:inline-block;background:var(--accent);color:#FFFFFF;font-family:'Cormorant',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;padding:14px 44px;text-decoration:none;transition:all 0.3s;font-weight:500}
-.hero-cta:hover{background:var(--gold);box-shadow:0 4px 16px rgba(184,146,42,0.25);transform:translateY(-1px)}
+.hero-cta:hover{background:var(--gold);box-shadow:0 4px 16px rgba(184,146,42,0.2);transform:translateY(-1px)}
 
 /* Body */
 .body{padding:40px 48px 80px;background:var(--bg)}
@@ -65,14 +92,25 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .med-body p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
 .med-body p:last-child{margin-bottom:0}
 
-.qbar{border-left:2px solid var(--gold);padding:20px 28px;background:rgba(184,146,42,0.03);margin:28px 0}
-.qbar-t{font-size:18px;font-style:italic;color:var(--text-b);line-height:1.7}
-.qbar-by{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px;font-weight:500}
+/* Opening quote in reader (repeated for emphasis) */
+.qbar-open{border-left:2px solid var(--gold);padding:20px 28px;background:rgba(184,146,42,0.03);margin-bottom:28px}
+.qbar-open-t{font-size:19px;font-style:italic;color:var(--text-b);line-height:1.7}
+.qbar-open-by{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px;font-weight:500}
+
+/* Closing scripture */
+.scripture-close{
+  background:var(--card2);border:1px solid var(--border);
+  border-top:2px solid var(--gold);
+  padding:32px 36px;margin-top:28px;text-align:center;
+}
+.sc-close-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
+.sc-close-verse{font-size:clamp(20px,2.5vw,26px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.7;margin-bottom:14px}
+.sc-close-ref{font-family:'Cormorant',serif;font-size:12px;letter-spacing:3px;color:var(--gold);font-weight:600}
 
 .src-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .src{font-family:'Cormorant',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
 
-.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.3}
+.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.25}
 .orn-l{flex:1;height:1px;background:var(--gold)}
 .orn-s{color:var(--gold);font-size:10px;letter-spacing:4px}
 
@@ -96,7 +134,6 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .sp-link:last-child{border-bottom:none}
 .sp-link:hover{color:var(--accent)}
 
-/* Loading */
 #loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .load-t{font-family:'Cormorant',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
 
@@ -159,36 +196,71 @@ async function init(){
   const paras=d.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
   const srcs=(d.sources||[]).map(s=>`<span class="src">${s}</span>`).join('');
   const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
+
   document.getElementById('loading').style.display='none';
   const c=document.getElementById('content');
   c.style.display='flex';
   c.innerHTML=`
+    <!-- Hero: heading + opening quote -->
     <div class="hero">
-      <div class="hero-lbl">Today's Scripture · ${DAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}</div>
-      <div class="hero-verse">"${d.scripture_text}"</div>
-      <div class="hero-ref">${d.scripture_reference}</div>
+      <div class="hero-heading">Daily Devotional</div>
+      <div class="hero-heading-sub">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}</div>
+
+      <div class="hero-quote">
+        <div class="hero-quote-text">"${d.quote_text}"</div>
+        <div class="hero-quote-by">— ${d.quote_author}</div>
+      </div>
+
       <div class="hero-theme">${d.theme}</div>
       <a href="#body" class="hero-cta">Begin Reading</a>
     </div>
+
+    <!-- Body -->
     <div class="body" id="body">
       <div class="info-row">
         <div class="icard"><div class="icard-lbl">Scripture</div><div class="icard-val">${d.scripture_reference}</div></div>
         <div class="icard"><div class="icard-lbl">Theme</div><div class="icard-val">${d.theme}</div></div>
         <div class="icard"><div class="icard-lbl">Sources</div><div class="icard-val">${(d.sources||[]).join(' · ')}</div></div>
       </div>
+
       <div class="cols">
         <div>
           <div class="med-card">
             <div class="med-lbl">Meditation</div>
             <div class="med-theme">${d.theme}</div>
+
+            <!-- Quote first -->
+            <div class="qbar-open">
+              <div class="qbar-open-t">"${d.quote_text}"</div>
+              <div class="qbar-open-by">— ${d.quote_author}</div>
+            </div>
+
+            <!-- Meditation text -->
             <div class="med-body">${paras}</div>
-            <div class="qbar"><div class="qbar-t">"${d.quote_text}"</div><div class="qbar-by">— ${d.quote_author}</div></div>
+
             <div class="src-row">${srcs}</div>
           </div>
+
           <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
-          <div class="call-card"><div class="call-lbl">Today's Call</div><div class="call-t">${d.call_to_action}</div></div>
-          <div class="pray-card"><div class="pray-lbl">Closing Prayer</div><div class="pray-t">${d.prayer}</div></div>
+
+          <div class="call-card">
+            <div class="call-lbl">Today's Call</div>
+            <div class="call-t">${d.call_to_action}</div>
+          </div>
+
+          <div class="pray-card">
+            <div class="pray-lbl">Closing Prayer</div>
+            <div class="pray-t">${d.prayer}</div>
+          </div>
+
+          <!-- Scripture at the end -->
+          <div class="scripture-close">
+            <div class="sc-close-lbl">Today's Scripture</div>
+            <div class="sc-close-verse">"${d.scripture_text}"</div>
+            <div class="sc-close-ref">${d.scripture_reference}</div>
+          </div>
         </div>
+
         <div>
           <div class="sp"><div class="sp-lbl">Reflection</div>${qs}</div>
           <div class="sp">
