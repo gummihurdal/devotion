@@ -5,185 +5,166 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--bg:#141414;--sb:#1A1A1A;--sb2:#161616;--card:#1E1E1E;--card2:#242424;--border:rgba(201,164,58,0.14);--border-h:rgba(201,164,58,0.35);--text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0}
+:root{--gold:#B8922A;--gold-l:#D4AA44;--gold-d:#8A6E20;--bg:#FAFAF8;--sb:#FFFFFF;--sb2:#F8F6F2;--card:#FFFFFF;--card2:#F5F3EF;--border:#E8E0D0;--text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;--accent:#2C2420}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
-/* App sidebar - nav */
-.nav-sb{width:220px;min-width:220px;background:var(--sb);border-right:1px solid rgba(255,255,255,0.05);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
-.nsb-top{padding:28px 20px 20px;border-bottom:1px solid rgba(255,255,255,0.05)}
-.nsb-cross{font-size:18px;color:var(--gold);margin-bottom:8px;display:block}
-.nsb-name{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold);letter-spacing:1px;line-height:1.5}
-.nsb-sub{font-family:'Cinzel',serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:3px}
-.nsb-nav{flex:1;padding:16px 0;overflow-y:auto}
-.nsb-grp{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:14px 20px 6px;opacity:0.5}
-.nsb-a{display:flex;align-items:center;gap:10px;padding:10px 20px;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s}
-.nsb-a:hover{background:rgba(201,164,58,0.05);color:var(--text);border-left-color:var(--gold-d)}
-.nsb-a.on{background:rgba(201,164,58,0.08);color:var(--gold);border-left-color:var(--gold)}
-.nsb-ico{font-size:13px;width:16px;text-align:center}
+.nav-sb{width:210px;min-width:210px;background:var(--sb);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
+.nsb-top{padding:32px 24px 24px;border-bottom:1px solid var(--border)}
+.nsb-name{font-family:'Cormorant',serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);line-height:1.4}
+.nsb-sub{font-size:12px;letter-spacing:1px;color:var(--text-d);margin-top:4px;font-style:italic}
+.nsb-nav{flex:1;padding:20px 0;overflow-y:auto}
+.nsb-grp{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:16px 24px 6px;opacity:0.6}
+.nsb-a{display:block;padding:9px 24px;text-decoration:none;font-family:'Cormorant',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s;font-weight:500}
+.nsb-a:hover{color:var(--accent);border-left-color:var(--gold-d);background:rgba(184,146,42,0.04)}
+.nsb-a.on{color:var(--accent);border-left-color:var(--gold);background:rgba(184,146,42,0.06);font-weight:600}
 
-/* Shell - everything right of nav */
-.shell{margin-left:220px;flex:1;display:flex}
+.shell{margin-left:210px;flex:1;display:flex}
 
 /* Topic sidebar */
-.topic-sb{width:260px;min-width:260px;background:var(--sb2);border-right:1px solid rgba(255,255,255,0.05);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
-.tsb-head{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.05)}
-.tsb-back{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);text-decoration:none;display:flex;align-items:center;gap:6px;margin-bottom:16px;transition:color 0.2s}
-.tsb-back:hover{color:var(--gold)}
-.tsb-icon{font-size:20px;margin-bottom:8px;display:block;opacity:0.6}
-.tsb-title{font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--gold-l);line-height:1.3}
-.tsb-sub{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:4px}
-
+.topic-sb{width:240px;min-width:240px;background:var(--sb2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.tsb-head{padding:28px 20px 20px;border-bottom:1px solid var(--border)}
+.tsb-back{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);text-decoration:none;display:block;margin-bottom:18px;transition:color 0.2s;font-weight:500}
+.tsb-back:hover{color:var(--accent)}
+.tsb-title{font-family:'Cormorant',serif;font-size:16px;font-weight:600;color:var(--text-b);line-height:1.3}
+.tsb-sub{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:5px;font-weight:500}
 .tsb-list{flex:1;padding:8px 0}
-.tsb-ov{display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.2s;text-decoration:none}
-.tsb-ov:hover{background:rgba(201,164,58,0.04);border-left-color:var(--gold-d)}
-.tsb-ov.on{background:rgba(201,164,58,0.07);border-left-color:var(--gold)}
-.tsb-ov-ico{font-size:11px;color:var(--gold-d);min-width:16px}
-.tsb-ov.on .tsb-ov-ico{color:var(--gold)}
-.tsb-ov-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}
-.tsb-ov:hover .tsb-ov-t,.tsb-ov.on .tsb-ov-t{color:var(--text-b)}
-
-.tsb-lesson{display:flex;align-items:flex-start;gap:12px;padding:12px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.2s;text-decoration:none}
-.tsb-lesson:hover{background:rgba(201,164,58,0.04);border-left-color:var(--gold-d)}
-.tsb-lesson.on{background:rgba(201,164,58,0.07);border-left-color:var(--gold)}
-.tsb-n{font-family:'Cinzel',serif;font-size:9px;color:var(--text-d);min-width:18px;margin-top:2px}
-.tsb-lesson.on .tsb-n{color:var(--gold)}
-.tsb-lt{font-size:13px;line-height:1.5;color:var(--text-d);transition:color 0.2s}
+.tsb-ov{display:block;padding:11px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.2s;text-decoration:none;font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);font-weight:500}
+.tsb-ov:hover{background:rgba(184,146,42,0.04);color:var(--accent);border-left-color:var(--gold-d)}
+.tsb-ov.on{background:rgba(184,146,42,0.07);color:var(--accent);border-left-color:var(--gold)}
+.tsb-lesson{display:flex;align-items:flex-start;gap:12px;padding:11px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.2s;text-decoration:none}
+.tsb-lesson:hover{background:rgba(184,146,42,0.04);border-left-color:var(--gold-d)}
+.tsb-lesson.on{background:rgba(184,146,42,0.07);border-left-color:var(--gold)}
+.tsb-n{font-family:'Cormorant',serif;font-size:10px;color:var(--text-d);min-width:18px;margin-top:2px;font-weight:500}
+.tsb-lesson.on .tsb-n{color:var(--gold-d)}
+.tsb-lt{font-size:14px;line-height:1.5;color:var(--text-d);transition:color 0.2s}
 .tsb-lesson:hover .tsb-lt,.tsb-lesson.on .tsb-lt{color:var(--text-b)}
 
-/* Main content */
+/* Content */
 .content{flex:1;min-height:100vh;display:flex;flex-direction:column}
-
-/* Topbar */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(20,20,20,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
-.tb-title{font-family:'Cinzel',serif;font-size:12px;color:var(--text-b);letter-spacing:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
-.tb-prog{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);background:rgba(250,250,248,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tb-title{font-family:'Cormorant',serif;font-size:13px;color:var(--accent);letter-spacing:1px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:400px}
+.tb-prog{font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
 
 /* Overview */
 #overview{padding:48px 40px 80px;display:none}
-.ov-hero{padding:0 0 36px;border-bottom:1px solid rgba(255,255,255,0.04);margin-bottom:32px}
-.ov-icon{font-size:32px;display:block;margin-bottom:16px;opacity:0.6}
-.ov-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,3vw,26px);color:var(--gold);line-height:1.3;margin-bottom:8px}
-.ov-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
+.ov-hero{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.ov-title{font-family:'Cormorant',serif;font-size:clamp(22px,3vw,28px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:8px}
+.ov-sub{font-family:'Cormorant',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
 .ov-desc{font-size:17px;line-height:1.85;color:var(--text-d);font-style:italic}
-.ov-list{display:flex;flex-direction:column;gap:2px}
-.ov-item{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);padding:20px 24px;cursor:pointer;border-left:2px solid transparent;transition:all 0.3s}
+.ov-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.ov-item{display:flex;align-items:center;gap:16px;background:var(--card);padding:20px 24px;cursor:pointer;border-left:2px solid transparent;transition:all 0.25s}
 .ov-item:hover{background:var(--card2);border-left-color:var(--gold)}
-.ov-num{font-family:'Cinzel',serif;font-size:10px;color:var(--gold-d);min-width:20px}
-.ov-title-s{font-family:'Cinzel',serif;font-size:13px;color:var(--gold-l)}
-.ov-arr{margin-left:auto;color:var(--text-d);font-size:16px;transition:all 0.3s}
+.ov-num{font-family:'Cormorant',serif;font-size:10px;color:var(--text-d);min-width:20px;font-weight:500}
+.ov-ts{font-family:'Cormorant',serif;font-size:15px;font-weight:600;color:var(--text-b)}
+.ov-arr{margin-left:auto;color:var(--text-d);font-size:14px;transition:all 0.25s}
 .ov-item:hover .ov-arr{color:var(--gold);transform:translateX(4px)}
 
-/* Lesson view */
+/* Lesson */
 #lesson-view{display:none;padding:40px 40px 80px;flex:1;flex-direction:column}
-.lv-head{padding:0 0 32px;border-bottom:1px solid rgba(255,255,255,0.04);margin-bottom:32px}
-.lv-num{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
-.lv-title{font-family:'Cinzel',serif;font-size:clamp(17px,2.5vw,22px);font-weight:600;color:var(--gold-l);line-height:1.35}
+.lv-head{padding-bottom:32px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.lv-num{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:12px;font-weight:500}
+.lv-title{font-family:'Cormorant',serif;font-size:clamp(18px,2.5vw,24px);font-weight:600;color:var(--text-b);line-height:1.35}
 
-.two-col{display:grid;grid-template-columns:1fr 280px;gap:20px}
+.two-col{display:grid;grid-template-columns:1fr 280px;gap:24px}
 
-.key-idea{background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:20px 24px;margin-bottom:20px}
-.ki-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
-.ki-t{font-family:'Cinzel',serif;font-size:clamp(13px,1.6vw,15px);color:var(--text-b);line-height:1.6}
+.key-idea{background:var(--card2);border:1px solid var(--border);border-left:2px solid var(--gold);padding:20px 24px;margin-bottom:22px}
+.ki-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px;font-weight:500}
+.ki-t{font-family:'Cormorant',serif;font-size:15px;font-weight:500;color:var(--text-b);line-height:1.65}
 
-.sc-block{margin-bottom:24px}
-.sc-ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--gold);margin-bottom:12px}
-.sc-t{font-size:clamp(20px,2.5vw,24px);font-weight:300;font-style:italic;line-height:1.7;color:var(--text-b)}
+.sc-block{margin-bottom:28px}
+.sc-ref{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;color:var(--gold-d);margin-bottom:12px;font-weight:500;text-transform:uppercase}
+.sc-t{font-size:clamp(20px,2.5vw,25px);font-weight:300;font-style:italic;line-height:1.7;color:var(--text-b)}
 
-.orn{display:flex;align-items:center;gap:10px;margin:20px 0;opacity:0.2}
+.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.25}
 .orn-l{flex:1;height:1px;background:var(--gold)}
-.orn-s{color:var(--gold);font-size:11px}
+.orn-s{color:var(--gold);font-size:10px;letter-spacing:4px}
 
-.med-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
-.med-body p{font-size:clamp(16px,1.8vw,18px);line-height:1.95;color:var(--text);margin-bottom:16px}
+.med-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
+.med-body p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
 .med-body p:last-child{margin-bottom:0}
 
-.qbar{border-left:3px solid var(--gold-d);padding:18px 24px;background:rgba(201,164,58,0.04);margin:22px 0}
+.qbar{border-left:2px solid var(--gold);padding:18px 24px;background:rgba(184,146,42,0.03);margin:24px 0}
 .qbar-t{font-size:17px;font-style:italic;color:var(--text-b);line-height:1.7}
-.qbar-by{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:8px}
+.qbar-by{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px;font-weight:500}
 
-.src-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
-.src{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(201,164,58,0.18);color:var(--gold-d)}
+.src-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.src{font-family:'Cormorant',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
 
-.call-card{background:linear-gradient(135deg,rgba(120,25,25,0.14),var(--card));border:1px solid rgba(120,25,25,0.25);border-left:3px solid #7A1A1A;padding:22px 26px;margin-bottom:16px;text-align:center}
-.call-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(180,80,80,0.55);margin-bottom:10px}
-.call-t{font-family:'Cinzel',serif;font-size:clamp(12px,1.5vw,14px);color:var(--text-b);line-height:1.8}
+.call-card{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--accent);padding:24px 28px;margin-bottom:18px;text-align:center}
+.call-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:12px;font-weight:500}
+.call-t{font-family:'Cormorant',serif;font-size:clamp(13px,1.5vw,15px);color:var(--text-b);line-height:1.85;font-weight:500}
 
-.pray-card{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px;text-align:center}
-.pray-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
-.pray-t{font-size:clamp(15px,1.6vw,17px);font-style:italic;font-weight:300;line-height:1.9;color:var(--text)}
+.pray-card{background:var(--card2);border:1px solid var(--border);padding:28px;margin-bottom:18px;text-align:center}
+.pray-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
+.pray-t{font-size:clamp(16px,1.7vw,18px);font-style:italic;font-weight:300;line-height:1.95;color:var(--text)}
 
-.sp{background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:12px}
-.sp-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
-.sp-q{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.sp{background:var(--card);border:1px solid var(--border);padding:22px;margin-bottom:14px}
+.sp-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px;font-weight:500}
+.sp-q{padding:14px 0;border-bottom:1px solid var(--border)}
 .sp-q:last-child{border-bottom:none;padding-bottom:0}
 .sp-q:first-child{padding-top:0}
-.sp-qt{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;opacity:0.8}
-.sp-qtxt{font-size:clamp(14px,1.4vw,15px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.6}
+.sp-qt{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px;font-weight:500}
+.sp-qtxt{font-size:clamp(14px,1.4vw,16px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65}
+.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;font-family:'Cormorant',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s;font-weight:500}
+.sp-link:last-child{border-bottom:none}
+.sp-link:hover{color:var(--accent)}
 
-.lv-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--border);margin-top:16px}
-.lv-btn{background:none;border:1px solid var(--border);color:var(--gold-d);font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all 0.3s}
-.lv-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,164,58,0.04)}
-.lv-btn:disabled{opacity:0.2;cursor:default}
+.lv-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--border);margin-top:8px}
+.lv-btn{background:none;border:1px solid var(--border);color:var(--text-d);font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:10px 24px;cursor:pointer;transition:all 0.25s;font-weight:500}
+.lv-btn:hover{border-color:var(--accent);color:var(--accent)}
+.lv-btn:disabled{opacity:0.25;cursor:default}
 
-#loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:80px}
-.spin{font-size:36px;color:var(--gold);animation:breathe 2s ease-in-out infinite}
-.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
-
-.fade-in{animation:rise 0.4s ease both}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes breathe{0%,100%{opacity:0.3;transform:scale(0.95)}50%{opacity:0.8;transform:scale(1.05)}}
-
+#loading{flex:1;display:flex;align-items:center;justify-content:center;padding:80px}
+.load-t{font-family:'Cormorant',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+.fade-in{animation:rise 0.35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:1100px){.nav-sb{display:none}.shell{margin-left:0}.two-col{grid-template-columns:1fr}}
 @media(max-width:860px){.topic-sb{display:none}#lesson-view,#overview{padding:24px 24px 60px}.topbar{padding:16px 24px}}
 </style>
 </head>
 <body>
 
-<!-- App nav -->
 <aside class="nav-sb">
-  <div class="nsb-top"><span class="nsb-cross">✝</span><div class="nsb-name">The Eternal Word</div><div class="nsb-sub">Daily Devotional</div></div>
+  <div class="nsb-top"><div class="nsb-name">The Eternal Word</div><div class="nsb-sub">Daily Devotional</div></div>
   <nav class="nsb-nav">
     <div class="nsb-grp">Main</div>
-    <a class="nsb-a" href="index.html"><span class="nsb-ico">☀</span>Daily</a>
-    <a class="nsb-a" href="topics.html"><span class="nsb-ico">✦</span>Topics</a>
+    <a class="nsb-a" href="index.html">Daily</a>
+    <a class="nsb-a" href="topics.html">Topics</a>
     <div class="nsb-grp">Study</div>
-    <a class="nsb-a" href="learn.html?topic=christian-identity"><span class="nsb-ico">✝</span>Identity</a>
-    <a class="nsb-a" href="learn.html?topic=the-cross"><span class="nsb-ico">☩</span>The Cross</a>
-    <a class="nsb-a" href="learn.html?topic=discipleship"><span class="nsb-ico">⚔</span>Discipleship</a>
-    <a class="nsb-a" href="learn.html?topic=apologetics"><span class="nsb-ico">🗡</span>Apologetics</a>
-    <a class="nsb-a" href="learn.html?topic=prayer"><span class="nsb-ico">🕊</span>Prayer</a>
-    <a class="nsb-a" href="learn.html?topic=suffering"><span class="nsb-ico">🔥</span>Suffering</a>
-    <a class="nsb-a" href="learn.html?topic=holy-spirit"><span class="nsb-ico">🕊</span>Holy Spirit</a>
-    <a class="nsb-a" href="learn.html?topic=sin-and-grace"><span class="nsb-ico">⚖</span>Sin & Grace</a>
-    <a class="nsb-a" href="learn.html?topic=the-church"><span class="nsb-ico">🏛</span>The Church</a>
-    <a class="nsb-a" href="learn.html?topic=eternity"><span class="nsb-ico">✨</span>Eternity</a>
-    <a class="nsb-a" href="learn.html?topic=the-sabbath"><span class="nsb-ico">🕯</span>The Sabbath</a>
-    <a class="nsb-a" href="learn.html?topic=holiness-of-god"><span class="nsb-ico">🔥</span>Holiness</a>
+    <a class="nsb-a" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="nsb-a" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="nsb-a" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="nsb-a" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="nsb-a" href="learn.html?topic=prayer">Prayer</a>
+    <a class="nsb-a" href="learn.html?topic=suffering">Suffering</a>
+    <a class="nsb-a" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="nsb-a" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="nsb-a" href="learn.html?topic=the-church">The Church</a>
+    <a class="nsb-a" href="learn.html?topic=eternity">Eternity</a>
+    <a class="nsb-a" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="nsb-a" href="learn.html?topic=holiness-of-god">Holiness of God</a>
   </nav>
 </aside>
 
 <div class="shell">
-  <!-- Topic sidebar -->
   <aside class="topic-sb" id="topicSb">
     <div class="tsb-head">
       <a class="tsb-back" href="topics.html">← All Topics</a>
-      <span class="tsb-icon" id="tsb-icon"></span>
       <div class="tsb-title" id="tsb-title">Loading…</div>
       <div class="tsb-sub" id="tsb-sub"></div>
     </div>
     <div class="tsb-list" id="tsb-list"></div>
   </aside>
 
-  <!-- Content -->
   <main class="content">
     <div class="topbar">
       <div class="tb-title" id="tb-title">Loading…</div>
       <div class="tb-prog" id="tb-prog"></div>
     </div>
-    <div id="loading"><div class="spin">✝</div><div class="load-t">Preparing your study</div></div>
+    <div id="loading"><div class="load-t">Preparing your study</div></div>
     <div id="overview"></div>
     <div id="lesson-view"></div>
   </main>
@@ -195,7 +176,6 @@ const params=new URLSearchParams(location.search);
 const slug=params.get('topic');
 const initLesson=parseInt(params.get('lesson')||'0');
 let topic=null,lessons=[],cur=0;
-
 if(!slug)location.href='topics.html';
 
 async function init(){
@@ -205,26 +185,20 @@ async function init(){
   ]);
   if(!tr?.length){location.href='topics.html';return}
   topic=tr[0];lessons=lr;
-
   document.title=`${topic.title} — The Eternal Word`;
-  document.getElementById('tsb-icon').textContent=topic.icon;
   document.getElementById('tsb-title').textContent=topic.title;
   document.getElementById('tsb-sub').textContent=topic.subtitle;
   document.getElementById('tb-title').textContent=topic.title;
-
-  // Mark active nav
   document.querySelectorAll('.nsb-a').forEach(a=>{if(a.href.includes(slug))a.classList.add('on')});
-
   buildSidebar();
   document.getElementById('loading').style.display='none';
-
   if(initLesson&&lessons.find(l=>l.lesson_number===initLesson))showLesson(initLesson);
   else showOverview();
 }
 
 function buildSidebar(){
   document.getElementById('tsb-list').innerHTML=
-    `<div class="tsb-ov on" id="sb-ov" onclick="showOverview()"><span class="tsb-ov-ico">✦</span><span class="tsb-ov-t">Overview</span></div>`+
+    `<div class="tsb-ov on" id="sb-ov" onclick="showOverview()">Overview</div>`+
     lessons.map(l=>`<div class="tsb-lesson" id="sb-${l.lesson_number}" onclick="showLesson(${l.lesson_number})"><span class="tsb-n">${l.lesson_number}</span><span class="tsb-lt">${l.title}</span></div>`).join('');
 }
 
@@ -242,7 +216,6 @@ function showOverview(){
   ov.style.display='block';
   ov.innerHTML=`
     <div class="ov-hero">
-      <span class="ov-icon">${topic.icon}</span>
       <div class="ov-title">${topic.title}</div>
       <div class="ov-sub">${topic.subtitle}</div>
       <div class="ov-desc">${topic.description}</div>
@@ -250,10 +223,9 @@ function showOverview(){
     <div class="ov-list">${lessons.map(l=>`
       <div class="ov-item" onclick="showLesson(${l.lesson_number})">
         <span class="ov-num">${l.lesson_number}</span>
-        <span class="ov-title-s">${l.title}</span>
+        <span class="ov-ts">${l.title}</span>
         <span class="ov-arr">→</span>
-      </div>`).join('')}
-    </div>`;
+      </div>`).join('')}</div>`;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -266,16 +238,13 @@ function showLesson(num){
   setActive(`sb-${num}`);
   document.getElementById('tb-title').textContent=l.title;
   document.getElementById('tb-prog').textContent=`Lesson ${num} of ${lessons.length}`;
-
   const paras=l.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
   const srcs=(l.sources||[]).map(s=>`<span class="src">${s}</span>`).join('');
   const qs=(l.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
-
   const lv=document.getElementById('lesson-view');
   lv.style.display='flex';
   lv.classList.add('fade-in');
-  setTimeout(()=>lv.classList.remove('fade-in'),400);
-
+  setTimeout(()=>lv.classList.remove('fade-in'),350);
   lv.innerHTML=`
     <div class="lv-head">
       <div class="lv-num">Lesson ${num} of ${lessons.length}</div>
@@ -288,13 +257,13 @@ function showLesson(num){
           <div class="sc-ref">${l.scripture_reference}</div>
           <div class="sc-t">"${l.scripture_text}"</div>
         </div>
-        <div class="orn"><div class="orn-l"></div><span class="orn-s">✦</span><div class="orn-l"></div></div>
+        <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
         <div class="med-lbl">Meditation</div>
         <div class="med-body">${paras}</div>
         <div class="qbar"><div class="qbar-t">"${l.quote_text}"</div><div class="qbar-by">— ${l.quote_author}</div></div>
         <div class="src-row">${srcs}</div>
-        <div class="orn"><div class="orn-l"></div><span class="orn-s">✦</span><div class="orn-l"></div></div>
-        ${l.call_to_action?`<div class="call-card"><div class="call-lbl">Today's Cost</div><div class="call-t">${l.call_to_action}</div></div>`:''}
+        <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
+        ${l.call_to_action?`<div class="call-card"><div class="call-lbl">Today's Call</div><div class="call-t">${l.call_to_action}</div></div>`:''}
         ${l.prayer?`<div class="pray-card"><div class="pray-lbl">Closing Prayer</div><div class="pray-t">${l.prayer}</div></div>`:''}
         <div class="lv-nav">
           <button class="lv-btn" onclick="navigate(-1)" ${num<=1?'disabled':''}>← Previous</button>
@@ -302,17 +271,16 @@ function showLesson(num){
         </div>
       </div>
       <div>
-        <div class="sp"><div class="sp-lbl">Sit With These</div>${qs}</div>
+        <div class="sp"><div class="sp-lbl">Reflection</div>${qs}</div>
         <div class="sp">
           <div class="sp-lbl">Other Topics</div>
-          <a class="sp-link" href="topics.html" style="display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-d)'">✦ All 12 Topics</a>
-          <a href="index.html" style="display:flex;align-items:center;gap:8px;padding:10px 0;text-decoration:none;font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-d)'">☀ Today's Daily</a>
+          <a class="sp-link" href="topics.html">All Twelve Topics</a>
+          <a class="sp-link" href="index.html">Today's Daily</a>
         </div>
       </div>
     </div>`;
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function navigate(dir){showLesson(cur+dir)}
 init().catch(console.error);
 </script>
