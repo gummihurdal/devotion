@@ -5,141 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Daily Devotional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold:   #9A7828;
-  --gold-l: #B8922A;
-  --gold-d: #6A5020;
-  --bg:     #FAFAF8;
-  --panel:  #FFFFFF;
-  --panel2: #F5F3EF;
-  --border: #E2D8C8;
-  --text:   #3A3530;
-  --text-d: #7A6A55;
-  --text-b: #1A1510;
+  --navy:   #0E1628;
+  --navy2:  #131D35;
+  --navy3:  #1A2540;
+  --navy4:  #0A1020;
+  --gold:   #C9A43A;
+  --gold-l: #E0BC5A;
+  --gold-d: #8A6E20;
+  --amber:  #D4862A;
+  --border: rgba(201,164,58,0.15);
+  --border2:rgba(201,164,58,0.08);
+  --text:   #C8B898;
+  --text-d: #6A6050;
+  --text-b: #EDE0C0;
+  --sb-w:   220px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;min-height:100vh;overflow-x:hidden}
+body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh;overflow-x:hidden}
 
-.page{max-width:1100px;margin:0 auto;padding:0 32px 100px}
+/* ── SIDEBAR ─────────────────────────── */
+.sb{
+  width:var(--sb-w);min-width:var(--sb-w);
+  background:var(--navy);border-right:1px solid var(--border2);
+  position:fixed;top:0;left:0;height:100vh;
+  display:flex;flex-direction:column;z-index:200;
+  transition:transform 0.3s ease;
+}
+.sb-logo{padding:28px 24px 22px;border-bottom:1px solid var(--border2)}
+.sb-logo a{text-decoration:none;display:block}
+.sb-logo-text{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--gold);line-height:1.3}
+.sb-logo-sub{font-size:11px;color:var(--text-d);margin-top:3px;letter-spacing:1px;font-style:italic}
 
-/* Nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:32px 0 0;border-bottom:1px solid var(--border);padding-bottom:20px;animation:rise 0.6s ease both}
-.nav-logo{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--text-b);letter-spacing:2px;text-decoration:none}
-.nav-links{display:flex;gap:32px}
-.nav-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.sb-nav{flex:1;overflow-y:auto;padding:16px 0}
+.sb-section{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);padding:18px 24px 8px;opacity:0.5}
+.sb-link{
+  display:block;padding:9px 24px;text-decoration:none;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-d);border-left:2px solid transparent;
+  transition:all 0.2s;position:relative;
+}
+.sb-link:hover{color:var(--text-b);border-left-color:var(--gold-d);background:rgba(201,164,58,0.04)}
+.sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
 
-/* Header */
-header{text-align:center;padding:56px 0 48px;animation:rise 0.8s ease both}
-.hd-line{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;opacity:0.35}
-.hd-rule{height:1px;width:60px;background:var(--gold)}
-.hd-sym{color:var(--gold);font-size:12px;letter-spacing:4px}
-.h-greeting{font-family:'Cinzel',serif;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
-header h1{font-family:'Cinzel',serif;font-size:clamp(22px,3.5vw,34px);font-weight:600;color:var(--text-b);letter-spacing:2px;margin-bottom:6px}
-.h-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:40px}
+.sb-foot{padding:20px 24px;border-top:1px solid var(--border2)}
+.sb-foot-date{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);line-height:1.9;opacity:0.6}
 
-/* Opening quote in hero */
-.hero-quote{max-width:680px;margin:0 auto 32px;border-left:2px solid var(--gold);padding:22px 32px;text-align:left;background:rgba(154,120,40,0.04)}
-.hq-text{font-size:clamp(19px,2.5vw,24px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.75}
-.hq-by{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-top:12px;font-weight:500}
+/* ── MAIN ─────────────────────────────── */
+.main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column;min-height:100vh}
 
-.h-theme{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text-d);margin-bottom:36px;letter-spacing:1px}
-.h-cta{display:inline-block;background:var(--text-b);color:#FFFFFF;font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;padding:14px 48px;text-decoration:none;transition:all 0.3s}
-.h-cta:hover{background:var(--gold);transform:translateY(-1px);box-shadow:0 4px 20px rgba(154,120,40,0.2)}
+/* Topbar */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;border-bottom:1px solid var(--border2);
+  background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(12px);
+}
+.tb-greeting{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text-b);letter-spacing:1px}
+.tb-date{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
 
-/* Content area */
-.content{padding:48px 0}
+/* ── HERO ─────────────────────────────── */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--navy2) 0%,var(--navy) 50%,#0A1525 100%);
+  border-bottom:1px solid var(--border2);
+  padding:72px 80px 64px;text-align:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% -10%,rgba(201,164,58,0.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:28px;opacity:0.8}
 
-/* Info strip */
-.info-strip{display:none}
+/* Candle flame icon */
+.flame{
+  width:48px;height:64px;margin:0 auto 24px;position:relative;
+}
+.flame-body{
+  width:16px;height:36px;background:linear-gradient(to top,var(--gold),var(--gold-l));
+  margin:28px auto 0;border-radius:2px;position:relative;
+}
+.flame-flame{
+  width:22px;height:28px;background:linear-gradient(to top,var(--amber),var(--gold-l),#fff8e0);
+  border-radius:50% 50% 30% 30% / 60% 60% 40% 40%;
+  position:absolute;top:-26px;left:-3px;
+  animation:flicker 2.5s ease-in-out infinite;
+  box-shadow:0 0 16px rgba(212,134,42,0.6),0 0 32px rgba(201,164,58,0.3);
+}
+.flame-glow{
+  position:absolute;top:-30px;left:-16px;width:54px;height:54px;
+  background:radial-gradient(circle,rgba(212,134,42,0.25) 0%,transparent 70%);
+  animation:flicker 2.5s ease-in-out infinite reverse;
+}
+@keyframes flicker{
+  0%,100%{transform:scaleX(1) rotate(-1deg);opacity:1}
+  33%{transform:scaleX(1.08) rotate(1.5deg);opacity:0.9}
+  66%{transform:scaleX(0.95) rotate(-0.5deg);opacity:0.95}
+}
 
+.hero-quote{max-width:700px;margin:0 auto 28px;animation:fadeUp 0.8s ease both}
+.hero-quote-text{font-size:clamp(22px,3vw,30px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.7}
+.hero-quote-by{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-top:14px}
 
+.hero-theme{font-family:'Cinzel',serif;font-size:clamp(13px,1.5vw,16px);font-weight:500;color:var(--text-d);margin:24px 0 36px;letter-spacing:1px}
+.hero-cta{
+  display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;
+  padding:14px 52px;text-decoration:none;transition:all 0.3s;
+  background:rgba(201,164,58,0.06);
+}
+.hero-cta:hover{background:var(--gold);color:var(--navy4);box-shadow:0 0 24px rgba(201,164,58,0.25)}
 
+/* ── CARDS ROW ─────────────────────────── */
+.cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);margin:0}
+.card{background:var(--navy);padding:28px 32px;border-top:1px solid var(--border2)}
+.card-icon{font-size:18px;margin-bottom:14px;color:var(--gold);opacity:0.7}
+.card-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px}
+.card-body{font-size:clamp(14px,1.5vw,16px);line-height:1.75;color:var(--text-d)}
+.card-body strong{color:var(--text-b);font-weight:500;display:block;margin-bottom:6px;font-style:italic}
 
-/* Two columns */
+/* ── BODY ─────────────────────────────── */
+.body{padding:48px 80px 80px;background:var(--navy4)}
+
 .two-col{display:grid;grid-template-columns:1fr 300px;gap:28px}
 
-/* Meditation block */
-.med-block{background:var(--panel);border:1px solid var(--border);padding:40px;margin-bottom:20px}
-.block-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
-.med-title{font-family:'Cinzel',serif;font-size:clamp(17px,2vw,21px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:22px}
-.med-para p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
-.med-para p:last-child{margin-bottom:0}
+/* Meditation */
+.med-block{background:var(--navy);border:1px solid var(--border2);padding:40px;margin-bottom:22px}
+.block-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
+.med-title{font-family:'Cinzel',serif;font-size:clamp(17px,2vw,22px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:24px}
+.med-body p{font-size:clamp(17px,1.8vw,19px);line-height:2.05;color:var(--text);margin-bottom:18px}
+.med-body p:last-child{margin-bottom:0}
 
-.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.2}
-.orn-line{flex:1;height:1px;background:var(--gold)}
-.orn-dot{color:var(--gold);font-size:10px;letter-spacing:6px}
+.qbar{border-left:2px solid var(--gold-d);padding:20px 28px;background:rgba(201,164,58,0.04);margin:28px 0}
+.qbar-t{font-size:18px;font-style:italic;color:var(--text-b);line-height:1.7}
+.qbar-by{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px}
 
-/* Call to action */
-.call-block{background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--text-b);padding:28px 32px;margin-bottom:20px;text-align:center}
+.src-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.src-tag{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
+
+.orn{display:flex;align-items:center;gap:14px;margin:24px 0;opacity:0.2}
+.orn-l{flex:1;height:1px;background:var(--gold)}
+.orn-s{color:var(--gold);font-size:8px;letter-spacing:6px}
+
+.call-block{background:var(--navy2);border:1px solid var(--border2);border-top:1px solid var(--gold-d);padding:28px 32px;margin-bottom:20px;text-align:center}
 .call-text{font-family:'Cinzel',serif;font-size:clamp(13px,1.5vw,15px);font-weight:500;color:var(--text-b);line-height:1.9}
 
-/* Prayer */
-.pray-block{background:var(--panel2);border:1px solid var(--border);padding:32px;margin-bottom:20px;text-align:center}
+.pray-block{background:var(--navy);border:1px solid var(--border2);padding:32px;margin-bottom:20px;text-align:center}
 .pray-text{font-size:clamp(17px,1.8vw,20px);font-style:italic;font-weight:300;color:var(--text);line-height:2}
 
-/* Closing scripture */
-.scripture-close{background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--gold);padding:40px 36px;text-align:center}
+.scripture-close{
+  background:var(--navy2);border:1px solid var(--border2);
+  border-top:1px solid var(--gold);padding:40px 36px;text-align:center;
+  box-shadow:0 0 40px rgba(201,164,58,0.06) inset;
+}
 .sc-verse{font-size:clamp(20px,2.5vw,27px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.75;margin-bottom:16px}
-.sc-ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:500;text-transform:uppercase}
+.sc-ref{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--gold);font-weight:500;text-transform:uppercase}
 
-/* Source tags */
-.src-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.src-tag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
-
-/* Sidebar panels */
-.sp{background:var(--panel);border:1px solid var(--border);padding:24px;margin-bottom:16px}
-.sp-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
-.sp-q{padding:16px 0;border-bottom:1px solid var(--border)}
+/* Side panels */
+.sp{background:var(--navy);border:1px solid var(--border2);padding:24px;margin-bottom:16px}
+.sp-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
+.sp-q{padding:16px 0;border-bottom:1px solid var(--border2)}
 .sp-q:first-child{padding-top:0}
 .sp-q:last-child{border-bottom:none;padding-bottom:0}
-.sp-qt{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
-.sp-qtxt{font-size:clamp(15px,1.5vw,17px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65}
-.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
+.sp-qt{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
+.sp-qtxt{font-size:clamp(14px,1.5vw,16px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65}
+.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border2);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
 .sp-link:last-child{border-bottom:none}
-.sp-link:hover{color:var(--text-b)}
+.sp-link:hover{color:var(--gold)}
 
-footer{text-align:center;padding:60px 0 20px;opacity:0.3}
-footer p{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
+#loading{flex:1;display:flex;align-items:center;justify-content:center;padding:100px}
+.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--text-d)}
 
-#loading{text-align:center;padding:100px 0}
-.load-t{font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:860px){.two-col{grid-template-columns:1fr}.info-strip{flex-direction:column}}
+@media(max-width:1024px){.body{padding:32px 32px 80px}.hero{padding:48px 32px}}
+@media(max-width:860px){.sb{transform:translateX(-100%)}.main{margin-left:0}.two-col{grid-template-columns:1fr}.cards-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <nav>
-    <a class="nav-logo" href="index.html">The Eternal Word</a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Daily</a>
-      <a href="topics.html">Topics</a>
-      <a href="learn.html?topic=christian-identity">Identity</a>
-      <a href="learn.html?topic=the-cross">The Cross</a>
-      <a href="learn.html?topic=discipleship">Discipleship</a>
-      <a href="learn.html?topic=apologetics">Apologetics</a>
-      <a href="learn.html?topic=prayer">Prayer</a>
-      <a href="learn.html?topic=suffering">Suffering</a>
-      <a href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a href="learn.html?topic=sin-and-grace">Sin & Grace</a>
-      <a href="learn.html?topic=the-church">The Church</a>
-      <a href="learn.html?topic=eternity">Eternity</a>
-      <a href="learn.html?topic=the-sabbath">The Sabbath</a>
-      <a href="learn.html?topic=holiness-of-god">Holiness</a>
-    </div>
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="sb-logo">
+    <a href="index.html">
+      <div class="sb-logo-text">The Eternal Word</div>
+      <div class="sb-logo-sub">Daily Devotional</div>
+    </a>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-section">Main</div>
+    <a class="sb-link on" href="index.html">Daily</a>
+    <a class="sb-link" href="topics.html">Topics</a>
+    <div class="sb-section">Study</div>
+    <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
   </nav>
+  <div class="sb-foot">
+    <div class="sb-foot-date" id="sb-date"></div>
+  </div>
+</aside>
 
-  <div id="loading"><p class="load-t">Preparing today's word</p></div>
-  <div id="content" style="display:none"></div>
-
-  <footer><p>The fear of the LORD is the beginning of wisdom — Proverbs 9:10</p></footer>
-</div>
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="tb-greeting" id="greeting"></div>
+    <div class="tb-date" id="topdate"></div>
+  </div>
+  <div id="loading"><span class="load-t">Preparing today's word</span></div>
+  <div id="app" style="display:none;flex:1;flex-direction:column"></div>
+</main>
 
 <script>
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
@@ -148,6 +237,9 @@ const MONTHS=['January','February','March','April','May','June','July','August',
 const GREET=['Midnight','Early Morning','Early Morning','Dawn','Dawn','Morning','Morning','Morning','Morning','Morning','Morning','Morning','Midday','Afternoon','Afternoon','Afternoon','Afternoon','Afternoon','Evening','Evening','Evening','Evening','Night','Night'];
 const now=new Date();
 const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
+document.getElementById('greeting').textContent=`Good ${GREET[now.getHours()]}`;
+document.getElementById('topdate').textContent=`${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 
 async function init(){
   const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=*&limit=1`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
@@ -157,38 +249,58 @@ async function init(){
   const paras=d.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
   const srcs=(d.sources||[]).map(s=>`<span class="src-tag">${s}</span>`).join('');
   const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
-  document.getElementById('loading').style.display='none';
-  const c=document.getElementById('content');
-  c.style.display='block';
-  c.innerHTML=`
-    <header>
-      <div class="hd-line"><div class="hd-rule"></div><span class="hd-sym">· · ·</span><div class="hd-rule"></div></div>
-      <div class="h-greeting">Good ${GREET[now.getHours()]}</div>
-      <h1>Daily Devotional</h1>
-      <div class="h-date">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}</div>
-      <div class="hero-quote">
-        <div class="hq-text">"${d.quote_text}"</div>
-        <div class="hq-by">— ${d.quote_author}</div>
-      </div>
-      <div class="h-theme">${d.theme}</div>
-      <a href="#content-body" class="h-cta">Begin Reading</a>
-    </header>
 
-    <div class="content" id="content-body">
-      <div class="info-strip">
-        <div class="info-cell"><div class="ic-lbl">Scripture</div><div class="ic-val">${d.scripture_reference}</div></div>
-        <div class="info-cell"><div class="ic-lbl">Theme</div><div class="ic-val">${d.theme}</div></div>
-        <div class="info-cell"><div class="ic-lbl">Sources</div><div class="ic-val">${(d.sources||[]).join(' · ')}</div></div>
+  document.getElementById('loading').style.display='none';
+  const app=document.getElementById('app');
+  app.style.display='flex';
+  app.innerHTML=`
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}</div>
+      <div class="flame">
+        <div class="flame-glow"></div>
+        <div class="flame-flame"></div>
+        <div class="flame-body"></div>
       </div>
+      <div class="hero-quote">
+        <div class="hero-quote-text">"${d.quote_text}"</div>
+        <div class="hero-quote-by">— ${d.quote_author}</div>
+      </div>
+      <div class="hero-theme">${d.theme}</div>
+      <a href="#reading" class="hero-cta">Begin Reading</a>
+    </div>
+
+    <!-- 3 Cards -->
+    <div class="cards-row">
+      <div class="card">
+        <div class="card-lbl">Today's Scripture</div>
+        <div class="card-body"><strong>${d.scripture_reference}</strong>${d.scripture_text.substring(0,90)}…</div>
+      </div>
+      <div class="card">
+        <div class="card-lbl">Theme</div>
+        <div class="card-body"><strong>${d.theme}</strong>A meditation for today's journey.</div>
+      </div>
+      <div class="card">
+        <div class="card-lbl">Sources</div>
+        <div class="card-body">${(d.sources||[]).join(' · ')}</div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="body" id="reading">
       <div class="two-col">
         <div>
           <div class="med-block">
             <div class="block-lbl">Meditation</div>
             <div class="med-title">${d.theme}</div>
-            <div class="med-para">${paras}</div>
+            <div class="qbar">
+              <div class="qbar-t">"${d.quote_text}"</div>
+              <div class="qbar-by">— ${d.quote_author}</div>
+            </div>
+            <div class="med-body">${paras}</div>
             <div class="src-row">${srcs}</div>
           </div>
-          <div class="orn"><div class="orn-line"></div><span class="orn-dot">· · ·</span><div class="orn-line"></div></div>
+          <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
           <div class="call-block">
             <div class="block-lbl">Today's Call</div>
             <div class="call-text">${d.call_to_action}</div>
@@ -212,13 +324,14 @@ async function init(){
             <a class="sp-link" href="learn.html?topic=discipleship">Discipleship</a>
             <a class="sp-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
             <a class="sp-link" href="learn.html?topic=prayer">Prayer</a>
-            <a class="sp-link" href="learn.html?topic=suffering">Suffering</a>
           </div>
         </div>
       </div>
     </div>`;
 }
-init().catch(()=>{document.getElementById('loading').innerHTML='<p class="load-t">Devotional coming soon</p>'});
+init().catch(()=>{
+  document.getElementById('loading').innerHTML='<span class="load-t">Rest in His presence today</span>';
+});
 </script>
 </body>
 </html>
