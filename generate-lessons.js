@@ -150,6 +150,32 @@ const TOPICS = [
       'Living Backwards — How Eternity Changes Today',
     ]
   },
+  {
+    slug: 'the-sabbath',
+    title: 'The Sabbath',
+    lessons: [
+      'In the Beginning God Rested — The Sabbath Before Sinai',
+      'The Sabbath as Sign — What God Wrote in Time',
+      'The SDA Conviction — Why the Seventh Day Still Matters',
+      'Sabbath as Liberation — Rest for the Slave and the Driven',
+      'Jesus and the Sabbath — Lord, Not Abolisher',
+      'The Sabbath as Protest Against a Restless World',
+      'Entering His Rest — The Eternal Sabbath of Hebrews 4',
+    ]
+  },
+  {
+    slug: 'holiness-of-god',
+    title: 'The Holiness of God',
+    lessons: [
+      'The Burning Bush — Fire That Does Not Consume',
+      'Holy, Holy, Holy — Isaiah in the Throne Room',
+      'The Fear of the Lord — The Beginning of Wisdom',
+      'Holiness as Otherness — God Is Not Like Us',
+      'The Holiness of God and the Problem of Sin',
+      'The Cross as the Meeting of Holiness and Love',
+      'Be Holy, For I Am Holy — The Call to Reflect What We Behold',
+    ]
+  },
 ];
 
 const SOURCE_MAP = {
@@ -163,6 +189,8 @@ const SOURCE_MAP = {
   'sin-and-grace':      ['The Cost of Discipleship — Dietrich Bonhoeffer', 'Mere Christianity — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
   'the-church':         ['Life Together — Dietrich Bonhoeffer', 'The Normal Christian Life — Watchman Nee', 'Systematic Theology — Wayne Grudem'],
   'eternity':           ["Pilgrim's Progress — John Bunyan", 'The Weight of Glory — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
+  'the-sabbath':        ['The Desire of Ages — Ellen G. White', 'Systematic Theology — Wayne Grudem', 'The Cost of Discipleship — Dietrich Bonhoeffer'],
+  'holiness-of-god':    ['The Holiness of God — R.C. Sproul', 'Mere Christianity — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
 };
 
 async function generateLesson(topic, lessonTitle, lessonNumber) {
