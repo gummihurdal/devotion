@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eternal Word — Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E1628;--navy2:#131D35;--navy4:#0A1020;--gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--border:rgba(201,164,58,0.15);--border2:rgba(201,164,58,0.08);--text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0;--sb-w:220px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
+.sb{width:var(--sb-w);min-width:var(--sb-w);background:var(--navy);border-right:1px solid var(--border2);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:200}
+.sb-logo{padding:28px 24px 22px;border-bottom:1px solid var(--border2)}
+.sb-logo a{text-decoration:none}
+.sb-logo-text{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--gold)}
+.sb-logo-sub{font-size:11px;color:var(--text-d);margin-top:3px;font-style:italic}
+.sb-nav{flex:1;overflow-y:auto;padding:16px 0}
+.sb-section{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);padding:18px 24px 8px;opacity:0.5}
+.sb-link{display:block;padding:9px 24px;text-decoration:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s}
+.sb-link:hover{color:var(--text-b);border-left-color:var(--gold-d);background:rgba(201,164,58,0.04)}
+.sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
+.sb-foot{padding:20px 24px;border-top:1px solid var(--border2)}
+.main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border2);background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.tb-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-b);letter-spacing:1px}
+.tb-right{display:flex;gap:12px;align-items:center}
+.tb-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
+
+/* Filters */
+.filter-bar{padding:18px 40px;border-bottom:1px solid var(--border2);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.filter-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-right:6px}
+.fb{background:none;border:1px solid var(--border2);color:var(--text-d);font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;cursor:pointer;transition:all 0.2s}
+.fb:hover{border-color:var(--gold-d);color:var(--text-b)}
+.fb.on{border-color:var(--gold);color:var(--gold);background:rgba(201,164,58,0.08)}
+.search-wrap{margin-left:auto}
+.search-inp{background:var(--navy);border:1px solid var(--border2);color:var(--text-b);font-family:'Cormorant Garamond',serif;font-size:15px;padding:7px 14px;outline:none;width:220px;transition:border 0.2s}
+.search-inp::placeholder{color:var(--text-d)}
+.search-inp:focus{border-color:var(--gold-d)}
+
+/* Grid */
+.body{padding:28px 40px 80px;flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--navy);border:1px solid var(--border2);overflow:hidden;cursor:pointer;transition:all 0.3s;text-decoration:none;display:block;animation:rise 0.4s ease both}
+.card:hover{border-color:var(--gold-d);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.card-img{height:140px;background:var(--navy2);position:relative;overflow:hidden}
+.card-img-fill{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.card-img-grad{position:absolute;inset:0;background:linear-gradient(135deg,var(--navy2),#1a1530,var(--navy));opacity:0.9}
+.card-img-verse{position:absolute;font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);text-align:center;padding:12px;line-height:1.6}
+.card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,var(--navy),transparent)}
+.card-body{padding:18px 18px 14px}
+.card-date{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
+.card-theme{font-family:'Cinzel',serif;font-size:clamp(13px,1.5vw,15px);font-weight:600;color:var(--text-b);line-height:1.35;margin-bottom:7px}
+.card-quote{font-size:13px;font-style:italic;color:var(--text-d);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.card-foot{padding:10px 18px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
+.card-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d)}
+.card-arr{color:var(--text-d);transition:all 0.2s;font-size:14px}
+.card:hover .card-arr{color:var(--gold);transform:translateX(3px)}
+
+/* Pagination */
+.pag{display:flex;justify-content:center;gap:8px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border2)}
+.pag-btn{background:none;border:1px solid var(--border2);color:var(--text-d);font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;cursor:pointer;transition:all 0.2s}
+.pag-btn:hover{border-color:var(--gold-d);color:var(--gold-d)}
+.pag-btn.on{border-color:var(--gold);color:var(--gold);background:rgba(201,164,58,0.08)}
+.pag-btn:disabled{opacity:0.25;cursor:default}
+
+#loading{flex:1;display:flex;align-items:center;justify-content:center}
+.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--text-d)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:860px){.sb{display:none}.main{margin-left:0}}
+@media(max-width:600px){.topbar,.filter-bar{padding:14px 20px}.body{padding:20px 20px 60px}}
+</style>
+</head>
+<body>
+<aside class="sb">
+  <div class="sb-logo"><a href="index.html"><div class="sb-logo-text">The Eternal Word</div><div class="sb-logo-sub">Daily Devotional</div></a></div>
+  <nav class="sb-nav">
+    <div class="sb-section">Main</div>
+    <a class="sb-link" href="index.html">Daily</a>
+    <a class="sb-link" href="topics.html">Topics</a>
+    <a class="sb-link" href="calendar.html">Calendar</a>
+    <a class="sb-link on" href="archive.html">Archive</a>
+    <div class="sb-section">Study</div>
+    <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+  </nav>
+  <div class="sb-foot"><div id="sb-date" class="sb-foot-date" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);line-height:1.9;opacity:0.6"></div></div>
+</aside>
+<main class="main">
+  <div class="topbar">
+    <div class="tb-title">Archive</div>
+    <div class="tb-right"><span class="tb-sub" id="tb-count"></span></div>
+  </div>
+  <div class="filter-bar">
+    <span class="filter-lbl">Filter</span>
+    <button class="fb on" onclick="setMonth('all',this)">All</button>
+    <button class="fb" onclick="setMonth('01',this)">Jan</button>
+    <button class="fb" onclick="setMonth('02',this)">Feb</button>
+    <button class="fb" onclick="setMonth('03',this)">Mar</button>
+    <button class="fb" onclick="setMonth('04',this)">Apr</button>
+    <button class="fb" onclick="setMonth('05',this)">May</button>
+    <button class="fb" onclick="setMonth('06',this)">Jun</button>
+    <button class="fb" onclick="setMonth('07',this)">Jul</button>
+    <button class="fb" onclick="setMonth('08',this)">Aug</button>
+    <button class="fb" onclick="setMonth('09',this)">Sep</button>
+    <button class="fb" onclick="setMonth('10',this)">Oct</button>
+    <button class="fb" onclick="setMonth('11',this)">Nov</button>
+    <button class="fb" onclick="setMonth('12',this)">Dec</button>
+    <div class="search-wrap"><input class="search-inp" placeholder="Search theme or scripture…" id="search" oninput="doSearch()"></div>
+  </div>
+  <div id="loading"><span class="load-t">Loading devotionals…</span></div>
+  <div class="body" id="body" style="display:none">
+    <div class="grid" id="grid"></div>
+    <div class="pag" id="pag"></div>
+  </div>
+</main>
+<script>
+const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const now=new Date();
+document.getElementById('sb-date').innerHTML=`${MONTHS[now.getMonth()]}<br>${now.getDate()}<br>${now.getFullYear()}`;
+const PAGE=18;
+let all=[],filtered=[],page=0,monthFilter='all',searchQ='';
+
+async function load(){
+  const r=await fetch(`${SB}/rest/v1/devotionals?select=month_day,theme,scripture_reference,quote_text,quote_author&order=month_day.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
+  all=await r.json();
+  document.getElementById('loading').style.display='none';
+  document.getElementById('body').style.display='block';
+  applyFilters();
+}
+
+function applyFilters(){
+  filtered=all.filter(d=>{
+    const mok=monthFilter==='all'||d.month_day?.startsWith(monthFilter);
+    const sq=searchQ.toLowerCase();
+    const sok=!sq||(d.theme||'').toLowerCase().includes(sq)||(d.scripture_reference||'').toLowerCase().includes(sq)||(d.quote_author||'').toLowerCase().includes(sq);
+    return mok&&sok;
+  });
+  page=0;renderPage();
+}
+
+function renderPage(){
+  const start=page*PAGE,end=start+PAGE,slice=filtered.slice(start,end);
+  document.getElementById('tb-count').textContent=`${filtered.length} Devotionals`;
+  document.getElementById('grid').innerHTML=slice.map((d,i)=>{
+    const[mm,dd]=d.month_day.split('-');
+    const mName=MONTHS[parseInt(mm)-1];
+    const delay=(i%PAGE*0.03).toFixed(2);
+    return `<a class="card" href="index.html?date=${d.month_day}" style="animation-delay:${delay}s">
+      <div class="card-img">
+        <div class="card-img-placeholder">
+          <div class="card-img-grad"></div>
+          <div class="card-img-verse">${d.scripture_reference||''}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-date">${mName} ${parseInt(dd)}</div>
+        <div class="card-theme">${d.theme||''}</div>
+        <div class="card-quote">"${d.quote_text||''}"</div>
+      </div>
+      <div class="card-foot">
+        <span class="card-ref">${d.scripture_reference?.split(' ').slice(0,3).join(' ')||''}</span>
+        <span class="card-arr">→</span>
+      </div>
+    </a>`;
+  }).join('');
+
+  // Pagination
+  const pages=Math.ceil(filtered.length/PAGE);
+  let ph='';
+  if(pages>1){
+    ph+=`<button class="pag-btn" onclick="gp(page-1)" ${page===0?'disabled':''}>← Prev</button>`;
+    for(let p=Math.max(0,page-2);p<=Math.min(pages-1,page+2);p++)
+      ph+=`<button class="pag-btn ${p===page?'on':''}" onclick="gp(${p})">${p+1}</button>`;
+    ph+=`<button class="pag-btn" onclick="gp(page+1)" ${page>=pages-1?'disabled':''}>Next →</button>`;
+  }
+  document.getElementById('pag').innerHTML=ph;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function gp(p){if(p>=0&&p<Math.ceil(filtered.length/PAGE)){page=p;renderPage()}}
+function setMonth(m,btn){monthFilter=m;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');applyFilters()}
+function doSearch(){searchQ=document.getElementById('search').value;applyFilters()}
+load();
+</script>
+</body>
+</html>
