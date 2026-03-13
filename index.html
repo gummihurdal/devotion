@@ -193,39 +193,47 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <body>
 
 <!-- SIDEBAR -->
-<aside class="sb">
+<div class="mob-bar">
+  <a class="mob-logo" href="index.html">The Eternal Word</a>
+  <button class="mob-ham" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+<aside class="sb" id="sidebar" data-open="0">
   <div class="sb-logo">
-    <a href="index.html"><div class="sb-logo-text">The Eternal Word</div>
+    <a href="index.html">
+      <div class="sb-logo-text">The Eternal Word</div>
       <div class="sb-logo-sub">Daily Devotional</div>
     </a>
   </div>
   <nav class="sb-nav">
-    <a class="sb-link on-{ACTIVE}" href="index.html" class-active>Daily Devotion</a>
-    <a class="sb-link" href="topics.html" onclick="toggleStudy();return false;" id="study-header"><span id="study-arrow" style="transition:transform 0.3s;display:inline-block;margin-right:8px;font-size:9px;color:var(--gold-d)">▶</span>Study Topics</a>
-    <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.4s ease">
-      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
-      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
-      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
-      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
-      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
-      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
-      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
-      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
-      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    <a class="sb-link on" href="index.html">Daily Devotion</a>
+    <div class="sb-study-row">
+      <button class="sb-chevron" onclick="toggleStudy(event)" aria-label="Expand study topics"><span id="study-arrow" style="display:inline-block;transition:transform 0.3s;font-size:9px;color:var(--gold-d)">▶</span></button>
+      <a class="sb-link sb-study-link " href="topics.html">Study Topics</a>
     </div>
-    <a class="sb-link on-{ACTIVE}" href="calendar.html">Calendar</a>
-    <a class="sb-link on-{ACTIVE}" href="archive.html">Archive</a>
-    <a class="sb-link on-{ACTIVE}" href="blog.html">Blog</a>
-    <a class="sb-link on-{ACTIVE}" href="settings.html">Settings</a>
+    <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.4s ease" data-open="0">
+      <a class="sb-link " href="learn.html?topic=christian-identity">Identity</a>
+      <a class="sb-link " href="learn.html?topic=the-cross">The Cross</a>
+      <a class="sb-link " href="learn.html?topic=discipleship">Discipleship</a>
+      <a class="sb-link " href="learn.html?topic=apologetics">Apologetics</a>
+      <a class="sb-link " href="learn.html?topic=prayer">Prayer</a>
+      <a class="sb-link " href="learn.html?topic=suffering">Suffering</a>
+      <a class="sb-link " href="learn.html?topic=holy-spirit">Holy Spirit</a>
+      <a class="sb-link " href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
+      <a class="sb-link " href="learn.html?topic=the-church">The Church</a>
+      <a class="sb-link " href="learn.html?topic=eternity">Eternity</a>
+      <a class="sb-link " href="learn.html?topic=the-sabbath">The Sabbath</a>
+      <a class="sb-link " href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    </div>
+    <a class="sb-link " href="calendar.html">Calendar</a>
+    <a class="sb-link " href="archive.html">Archive</a>
+    <a class="sb-link " href="blog.html">Blog</a>
+    <a class="sb-link " href="settings.html">Settings</a>
   </nav>
   <div class="sb-foot">
     <div class="sb-foot-date" id="sb-date"></div>
   </div>
 </aside>
-
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMobileNav()" style="opacity:0;pointer-events:none;transition:opacity 0.3s"></div>
 <!-- MAIN -->
 <main class="main">
   <div class="topbar">
@@ -339,6 +347,37 @@ async function init(){
 init().catch(()=>{
   document.getElementById('loading').innerHTML='<span class="load-t">Rest in His presence today</span>';
 });
+
+// Study Topics collapse/expand
+function toggleStudy(e){
+  if(e) e.stopPropagation();
+  var links=document.getElementById('study-links');
+  var arrow=document.getElementById('study-arrow');
+  if(!links) return;
+  var open=links.getAttribute('data-open')==='1';
+  links.style.maxHeight=open?'0':'480px';
+  links.setAttribute('data-open',open?'0':'1');
+  if(arrow) arrow.style.transform=open?'rotate(0deg)':'rotate(90deg)';
+}
+// Auto-expand if on a learn page
+(function(){
+  if(window.location.pathname.indexOf('learn.html')!==-1){
+    var links=document.getElementById('study-links');
+    var arrow=document.getElementById('study-arrow');
+    if(links){links.style.maxHeight='480px';links.setAttribute('data-open','1');}
+    if(arrow) arrow.style.transform='rotate(90deg)';
+  }
+})();
+// Mobile hamburger
+function toggleMobileNav(){
+  var sb=document.getElementById('sidebar');
+  var overlay=document.getElementById('mob-overlay');
+  var open=sb.getAttribute('data-open')==='1';
+  sb.style.transform=open?'translateX(-100%)':'translateX(0)';
+  sb.setAttribute('data-open',open?'0':'1');
+  if(overlay){overlay.style.opacity=open?'0':'1';overlay.style.pointerEvents=open?'none':'all';}
+}
+
 </script>
 </body>
 </html>
