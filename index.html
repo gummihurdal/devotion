@@ -5,262 +5,204 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Daily Devotional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --gold:#B8922A;--gold-l:#D4AA44;--gold-d:#8A6E20;
-  --bg:#FAFAF8;--sb:#FFFFFF;--card:#FFFFFF;--card2:#F5F3EF;
-  --border:#E8E0D0;--text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;--accent:#2C2420;
+:root {
+  --gold:   #9A7828;
+  --gold-l: #B8922A;
+  --gold-d: #6A5020;
+  --bg:     #FAFAF8;
+  --panel:  #FFFFFF;
+  --panel2: #F5F3EF;
+  --border: #E2D8C8;
+  --text:   #3A3530;
+  --text-d: #7A6A55;
+  --text-b: #1A1510;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;min-height:100vh;overflow-x:hidden}
 
-/* Sidebar */
-.sb{width:210px;min-width:210px;background:var(--sb);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
-.sb-top{padding:32px 24px 24px;border-bottom:1px solid var(--border)}
-.sb-name{font-family:'Cormorant',serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);line-height:1.4}
-.sb-sub{font-size:12px;letter-spacing:1px;color:var(--text-d);margin-top:4px;font-style:italic}
-.sb-nav{flex:1;padding:20px 0;overflow-y:auto}
-.sb-grp{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:16px 24px 6px;opacity:0.6}
-.sb-a{display:block;padding:9px 24px;text-decoration:none;font-family:'Cormorant',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s;font-weight:500}
-.sb-a:hover{color:var(--accent);border-left-color:var(--gold-d);background:rgba(184,146,42,0.04)}
-.sb-a.on{color:var(--accent);border-left-color:var(--gold);background:rgba(184,146,42,0.06);font-weight:600}
-.sb-foot{padding:20px 24px;border-top:1px solid var(--border);font-family:'Cormorant',serif;font-size:11px;color:var(--text-d);line-height:1.8;font-style:italic}
+.page{max-width:1100px;margin:0 auto;padding:0 32px 100px}
 
-/* Main */
-.main{margin-left:210px;flex:1;display:flex;flex-direction:column}
+/* Nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:32px 0 0;border-bottom:1px solid var(--border);padding-bottom:20px;animation:rise 0.6s ease both}
+.nav-logo{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--text-b);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
 
-/* Topbar */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(250,250,248,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
-.tb-greet{font-family:'Cormorant',serif;font-size:14px;color:var(--accent);letter-spacing:1px;font-weight:500}
-.tb-date{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-
-/* Hero */
-.hero{text-align:center;padding:72px 80px 60px;border-bottom:1px solid var(--border);background:#FFFFFF}
-
-/* "Daily Devotional" heading */
-.hero-heading{
-  font-family:'Cormorant',serif;
-  font-size:clamp(32px,4vw,48px);
-  font-weight:600;
-  color:var(--text-b);
-  letter-spacing:2px;
-  margin-bottom:10px;
-  line-height:1.2;
-}
-.hero-heading-sub{
-  font-family:'Cormorant',serif;
-  font-size:13px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  color:var(--text-d);
-  margin-bottom:48px;
-  font-weight:400;
-}
+/* Header */
+header{text-align:center;padding:56px 0 48px;animation:rise 0.8s ease both}
+.hd-line{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;opacity:0.35}
+.hd-rule{height:1px;width:60px;background:var(--gold)}
+.hd-sym{color:var(--gold);font-size:12px;letter-spacing:4px}
+.h-greeting{font-family:'Cinzel',serif;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
+header h1{font-family:'Cinzel',serif;font-size:clamp(22px,3.5vw,34px);font-weight:600;color:var(--text-b);letter-spacing:2px;margin-bottom:6px}
+.h-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:40px}
 
 /* Opening quote in hero */
-.hero-quote{
-  max-width:660px;margin:0 auto 24px;
-  border-left:2px solid var(--gold);
-  padding:20px 32px;
-  text-align:left;
-  background:rgba(184,146,42,0.03);
-}
-.hero-quote-text{font-size:clamp(19px,2.5vw,24px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.7}
-.hero-quote-by{font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:12px;font-weight:500}
+.hero-quote{max-width:680px;margin:0 auto 32px;border-left:2px solid var(--gold);padding:22px 32px;text-align:left;background:rgba(154,120,40,0.04)}
+.hq-text{font-size:clamp(19px,2.5vw,24px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.75}
+.hq-by{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-top:12px;font-weight:500}
 
-.hero-theme{font-family:'Cormorant',serif;font-size:clamp(13px,1.5vw,16px);font-weight:500;color:var(--text-d);margin:24px auto 36px;letter-spacing:1px;max-width:660px;text-align:center}
-.hero-cta{display:inline-block;background:var(--accent);color:#FFFFFF;font-family:'Cormorant',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;padding:14px 44px;text-decoration:none;transition:all 0.3s;font-weight:500}
-.hero-cta:hover{background:var(--gold);box-shadow:0 4px 16px rgba(184,146,42,0.2);transform:translateY(-1px)}
+.h-theme{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text-d);margin-bottom:36px;letter-spacing:1px}
+.h-cta{display:inline-block;background:var(--text-b);color:#FFFFFF;font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;padding:14px 48px;text-decoration:none;transition:all 0.3s}
+.h-cta:hover{background:var(--gold);transform:translateY(-1px);box-shadow:0 4px 20px rgba(154,120,40,0.2)}
 
-/* Body */
-.body{padding:40px 48px 80px;background:var(--bg)}
+/* Content area */
+.content{padding:48px 0}
 
-/* Info cards */
-.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-bottom:40px;background:var(--border)}
-.icard{background:var(--card);padding:24px 28px}
-.icard-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px;font-weight:500}
-.icard-val{font-size:15px;line-height:1.6;color:var(--text-d)}
+/* Info strip */
+.info-strip{display:flex;gap:1px;margin-bottom:40px;background:var(--border)}
+.info-cell{flex:1;background:var(--panel);padding:20px 24px}
+.ic-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:7px}
+.ic-val{font-size:15px;color:var(--text-d);line-height:1.5}
 
-/* Two col */
-.cols{display:grid;grid-template-columns:1fr 300px;gap:24px}
+/* Two columns */
+.two-col{display:grid;grid-template-columns:1fr 300px;gap:28px}
 
-/* Meditation */
-.med-card{background:var(--card);border:1px solid var(--border);padding:40px;margin-bottom:20px}
-.med-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px;font-weight:500}
-.med-theme{font-family:'Cormorant',serif;font-size:clamp(18px,2vw,22px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:24px}
-.med-body p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
-.med-body p:last-child{margin-bottom:0}
+/* Meditation block */
+.med-block{background:var(--panel);border:1px solid var(--border);padding:40px;margin-bottom:20px}
+.block-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
+.med-title{font-family:'Cinzel',serif;font-size:clamp(17px,2vw,21px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:22px}
+.med-para p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
+.med-para p:last-child{margin-bottom:0}
 
-/* Opening quote in reader (repeated for emphasis) */
-.qbar-open{border-left:2px solid var(--gold);padding:20px 28px;background:rgba(184,146,42,0.03);margin-bottom:28px}
-.qbar-open-t{font-size:19px;font-style:italic;color:var(--text-b);line-height:1.7}
-.qbar-open-by{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px;font-weight:500}
+.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.2}
+.orn-line{flex:1;height:1px;background:var(--gold)}
+.orn-dot{color:var(--gold);font-size:10px;letter-spacing:6px}
+
+/* Call to action */
+.call-block{background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--text-b);padding:28px 32px;margin-bottom:20px;text-align:center}
+.call-text{font-family:'Cinzel',serif;font-size:clamp(13px,1.5vw,15px);font-weight:500;color:var(--text-b);line-height:1.9}
+
+/* Prayer */
+.pray-block{background:var(--panel2);border:1px solid var(--border);padding:32px;margin-bottom:20px;text-align:center}
+.pray-text{font-size:clamp(17px,1.8vw,20px);font-style:italic;font-weight:300;color:var(--text);line-height:2}
 
 /* Closing scripture */
-.scripture-close{
-  background:var(--card2);border:1px solid var(--border);
-  border-top:2px solid var(--gold);
-  padding:32px 36px;margin-top:28px;text-align:center;
-}
-.sc-close-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
-.sc-close-verse{font-size:clamp(20px,2.5vw,26px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.7;margin-bottom:14px}
-.sc-close-ref{font-family:'Cormorant',serif;font-size:12px;letter-spacing:3px;color:var(--gold);font-weight:600}
+.scripture-close{background:var(--panel);border:1px solid var(--border);border-top:2px solid var(--gold);padding:40px 36px;text-align:center}
+.sc-verse{font-size:clamp(20px,2.5vw,27px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.75;margin-bottom:16px}
+.sc-ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:500;text-transform:uppercase}
 
+/* Source tags */
 .src-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.src{font-family:'Cormorant',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
+.src-tag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
 
-.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.25}
-.orn-l{flex:1;height:1px;background:var(--gold)}
-.orn-s{color:var(--gold);font-size:10px;letter-spacing:4px}
-
-.call-card{background:#FFFFFF;border:1px solid var(--border);border-top:2px solid var(--accent);padding:28px 32px;margin-bottom:20px;text-align:center}
-.call-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:14px;font-weight:500}
-.call-t{font-family:'Cormorant',serif;font-size:clamp(13px,1.6vw,15px);color:var(--text-b);line-height:1.85;font-weight:500}
-
-.pray-card{background:var(--card2);border:1px solid var(--border);padding:32px;margin-bottom:20px;text-align:center}
-.pray-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px;font-weight:500}
-.pray-t{font-size:clamp(17px,1.8vw,20px);font-style:italic;font-weight:300;line-height:1.95;color:var(--text)}
-
-/* Side panels */
-.sp{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px}
-.sp-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
+/* Sidebar panels */
+.sp{background:var(--panel);border:1px solid var(--border);padding:24px;margin-bottom:16px}
+.sp-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
 .sp-q{padding:16px 0;border-bottom:1px solid var(--border)}
-.sp-q:last-child{border-bottom:none;padding-bottom:0}
 .sp-q:first-child{padding-top:0}
-.sp-qt{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px;font-weight:500}
+.sp-q:last-child{border-bottom:none;padding-bottom:0}
+.sp-qt{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px}
 .sp-qtxt{font-size:clamp(15px,1.5vw,17px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65}
-.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;font-family:'Cormorant',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s;font-weight:500}
+.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
 .sp-link:last-child{border-bottom:none}
-.sp-link:hover{color:var(--accent)}
+.sp-link:hover{color:var(--text-b)}
 
-#loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
-.load-t{font-family:'Cormorant',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+footer{text-align:center;padding:60px 0 20px;opacity:0.3}
+footer p{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
 
-@media(max-width:860px){.sb{display:none}.main{margin-left:0}.hero{padding:40px 24px}.body,.topbar{padding-left:24px;padding-right:24px}.info-row{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
+#loading{text-align:center;padding:100px 0}
+.load-t{font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.info-strip{flex-direction:column}}
 </style>
 </head>
 <body>
+<div class="page">
 
-<aside class="sb">
-  <div class="sb-top">
-    <div class="sb-name">The Eternal Word</div>
-    <div class="sb-sub">Daily Devotional</div>
-  </div>
-  <nav class="sb-nav">
-    <div class="sb-grp">Main</div>
-    <a class="sb-a on" href="index.html">Daily</a>
-    <a class="sb-a" href="topics.html">Topics</a>
-    <div class="sb-grp">Study</div>
-    <a class="sb-a" href="learn.html?topic=christian-identity">Identity</a>
-    <a class="sb-a" href="learn.html?topic=the-cross">The Cross</a>
-    <a class="sb-a" href="learn.html?topic=discipleship">Discipleship</a>
-    <a class="sb-a" href="learn.html?topic=apologetics">Apologetics</a>
-    <a class="sb-a" href="learn.html?topic=prayer">Prayer</a>
-    <a class="sb-a" href="learn.html?topic=suffering">Suffering</a>
-    <a class="sb-a" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-    <a class="sb-a" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
-    <a class="sb-a" href="learn.html?topic=the-church">The Church</a>
-    <a class="sb-a" href="learn.html?topic=eternity">Eternity</a>
-    <a class="sb-a" href="learn.html?topic=the-sabbath">The Sabbath</a>
-    <a class="sb-a" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+  <nav>
+    <a class="nav-logo" href="index.html">The Eternal Word</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Daily</a>
+      <a href="topics.html">Topics</a>
+      <a href="learn.html?topic=christian-identity">Identity</a>
+      <a href="learn.html?topic=the-cross">The Cross</a>
+      <a href="learn.html?topic=discipleship">Discipleship</a>
+      <a href="learn.html?topic=apologetics">Apologetics</a>
+      <a href="learn.html?topic=prayer">Prayer</a>
+      <a href="learn.html?topic=suffering">Suffering</a>
+      <a href="learn.html?topic=holy-spirit">Holy Spirit</a>
+      <a href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+      <a href="learn.html?topic=the-church">The Church</a>
+      <a href="learn.html?topic=eternity">Eternity</a>
+      <a href="learn.html?topic=the-sabbath">The Sabbath</a>
+      <a href="learn.html?topic=holiness-of-god">Holiness</a>
+    </div>
   </nav>
-  <div class="sb-foot" id="sbDate"></div>
-</aside>
 
-<main class="main">
-  <div class="topbar">
-    <div class="tb-greet" id="greeting"></div>
-    <div class="tb-date" id="topDate"></div>
-  </div>
-  <div id="loading"><div class="load-t">Preparing today's word</div></div>
-  <div id="content" style="display:none;flex:1;flex-direction:column"></div>
-</main>
+  <div id="loading"><p class="load-t">Preparing today's word</p></div>
+  <div id="content" style="display:none"></div>
+
+  <footer><p>The fear of the LORD is the beginning of wisdom — Proverbs 9:10</p></footer>
+</div>
 
 <script>
-const SB_URL='https://mjphpctvuxmbjhmcscoj.supabase.co',SB_KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
+const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
 const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const GREET=['Midnight','Early Morning','Early Morning','Dawn','Dawn','Morning','Morning','Morning','Morning','Morning','Morning','Morning','Midday','Afternoon','Afternoon','Afternoon','Afternoon','Afternoon','Evening','Evening','Evening','Evening','Night','Night'];
 const now=new Date();
 const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
-document.getElementById('greeting').textContent=`Good ${GREET[now.getHours()]}`;
-document.getElementById('topDate').textContent=`${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
-document.getElementById('sbDate').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 
 async function init(){
-  const r=await fetch(`${SB_URL}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=*&limit=1`,{headers:{'apikey':SB_KEY,'Authorization':`Bearer ${SB_KEY}`}});
+  const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=*&limit=1`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
   const rows=await r.json();
-  if(!rows?.length)throw new Error('not found');
+  if(!rows?.length) throw new Error();
   const d=rows[0];
   const paras=d.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
-  const srcs=(d.sources||[]).map(s=>`<span class="src">${s}</span>`).join('');
+  const srcs=(d.sources||[]).map(s=>`<span class="src-tag">${s}</span>`).join('');
   const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
-
   document.getElementById('loading').style.display='none';
   const c=document.getElementById('content');
-  c.style.display='flex';
+  c.style.display='block';
   c.innerHTML=`
-    <!-- Hero: heading + opening quote -->
-    <div class="hero">
-      <div class="hero-heading">Daily Devotional</div>
-      <div class="hero-heading-sub">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}</div>
-
+    <header>
+      <div class="hd-line"><div class="hd-rule"></div><span class="hd-sym">· · ·</span><div class="hd-rule"></div></div>
+      <div class="h-greeting">Good ${GREET[now.getHours()]}</div>
+      <h1>Daily Devotional</h1>
+      <div class="h-date">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}</div>
       <div class="hero-quote">
-        <div class="hero-quote-text">"${d.quote_text}"</div>
-        <div class="hero-quote-by">— ${d.quote_author}</div>
+        <div class="hq-text">"${d.quote_text}"</div>
+        <div class="hq-by">— ${d.quote_author}</div>
       </div>
+      <div class="h-theme">${d.theme}</div>
+      <a href="#content-body" class="h-cta">Begin Reading</a>
+    </header>
 
-      <div class="hero-theme">${d.theme}</div>
-      <a href="#body" class="hero-cta">Begin Reading</a>
-    </div>
-
-    <!-- Body -->
-    <div class="body" id="body">
-      <div class="info-row">
-        <div class="icard"><div class="icard-lbl">Scripture</div><div class="icard-val">${d.scripture_reference}</div></div>
-        <div class="icard"><div class="icard-lbl">Theme</div><div class="icard-val">${d.theme}</div></div>
-        <div class="icard"><div class="icard-lbl">Sources</div><div class="icard-val">${(d.sources||[]).join(' · ')}</div></div>
+    <div class="content" id="content-body">
+      <div class="info-strip">
+        <div class="info-cell"><div class="ic-lbl">Scripture</div><div class="ic-val">${d.scripture_reference}</div></div>
+        <div class="info-cell"><div class="ic-lbl">Theme</div><div class="ic-val">${d.theme}</div></div>
+        <div class="info-cell"><div class="ic-lbl">Sources</div><div class="ic-val">${(d.sources||[]).join(' · ')}</div></div>
       </div>
-
-      <div class="cols">
+      <div class="two-col">
         <div>
-          <div class="med-card">
-            <div class="med-lbl">Meditation</div>
-            <div class="med-theme">${d.theme}</div>
-
-            <!-- Quote first -->
-            <div class="qbar-open">
-              <div class="qbar-open-t">"${d.quote_text}"</div>
-              <div class="qbar-open-by">— ${d.quote_author}</div>
-            </div>
-
-            <!-- Meditation text -->
-            <div class="med-body">${paras}</div>
-
+          <div class="med-block">
+            <div class="block-lbl">Meditation</div>
+            <div class="med-title">${d.theme}</div>
+            <div class="med-para">${paras}</div>
             <div class="src-row">${srcs}</div>
           </div>
-
-          <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
-
-          <div class="call-card">
-            <div class="call-lbl">Today's Call</div>
-            <div class="call-t">${d.call_to_action}</div>
+          <div class="orn"><div class="orn-line"></div><span class="orn-dot">· · ·</span><div class="orn-line"></div></div>
+          <div class="call-block">
+            <div class="block-lbl">Today's Call</div>
+            <div class="call-text">${d.call_to_action}</div>
           </div>
-
-          <div class="pray-card">
-            <div class="pray-lbl">Closing Prayer</div>
-            <div class="pray-t">${d.prayer}</div>
+          <div class="pray-block">
+            <div class="block-lbl">Closing Prayer</div>
+            <div class="pray-text">${d.prayer}</div>
           </div>
-
-          <!-- Scripture at the end -->
           <div class="scripture-close">
-            <div class="sc-close-lbl">Today's Scripture</div>
-            <div class="sc-close-verse">"${d.scripture_text}"</div>
-            <div class="sc-close-ref">${d.scripture_reference}</div>
+            <div class="block-lbl">Today's Scripture</div>
+            <div class="sc-verse">"${d.scripture_text}"</div>
+            <div class="sc-ref">${d.scripture_reference}</div>
           </div>
         </div>
-
         <div>
           <div class="sp"><div class="sp-lbl">Reflection</div>${qs}</div>
           <div class="sp">
@@ -269,14 +211,14 @@ async function init(){
             <a class="sp-link" href="learn.html?topic=the-cross">The Cross</a>
             <a class="sp-link" href="learn.html?topic=discipleship">Discipleship</a>
             <a class="sp-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+            <a class="sp-link" href="learn.html?topic=prayer">Prayer</a>
+            <a class="sp-link" href="learn.html?topic=suffering">Suffering</a>
           </div>
         </div>
       </div>
     </div>`;
 }
-init().catch(()=>{
-  document.getElementById('loading').innerHTML=`<div class="load-t">Devotional coming soon</div>`;
-});
+init().catch(()=>{document.getElementById('loading').innerHTML='<p class="load-t">Devotional coming soon</p>'});
 </script>
 </body>
 </html>
