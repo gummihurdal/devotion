@@ -5,145 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Daily Devotional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;
-  --bg:#141414;--sb:#1A1A1A;--card:#1E1E1E;--card2:#242424;
-  --border:rgba(201,164,58,0.14);--border-h:rgba(201,164,58,0.35);
-  --text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0;
+  --gold:#B8922A;--gold-l:#D4AA44;--gold-d:#8A6E20;
+  --bg:#FAFAF8;--sb:#FFFFFF;--card:#FFFFFF;--card2:#F5F3EF;
+  --border:#E8E0D0;--border-h:#C9A43A;
+  --text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;
+  --accent:#2C2420;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
 /* Sidebar */
-.sb{width:220px;min-width:220px;background:var(--sb);border-right:1px solid rgba(255,255,255,0.05);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
-.sb-top{padding:28px 20px 20px;border-bottom:1px solid rgba(255,255,255,0.05)}
-.sb-cross{font-size:18px;color:var(--gold);margin-bottom:8px;display:block}
-.sb-name{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold);letter-spacing:1px;line-height:1.5}
-.sb-sub{font-family:'Cinzel',serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:3px}
-.sb-nav{flex:1;padding:16px 0;overflow-y:auto}
-.sb-grp{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:14px 20px 6px;opacity:0.5}
-.sb-a{display:flex;align-items:center;gap:10px;padding:10px 20px;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s}
-.sb-a:hover{background:rgba(201,164,58,0.05);color:var(--text);border-left-color:var(--gold-d)}
-.sb-a.on{background:rgba(201,164,58,0.08);color:var(--gold);border-left-color:var(--gold)}
-.sb-ico{font-size:13px;width:16px;text-align:center}
-.sb-foot{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.05);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:var(--text-d);line-height:1.8}
+.sb{width:210px;min-width:210px;background:var(--sb);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
+.sb-top{padding:32px 24px 24px;border-bottom:1px solid var(--border)}
+.sb-name{font-family:'Cormorant',serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);line-height:1.4}
+.sb-sub{font-size:12px;letter-spacing:1px;color:var(--text-d);margin-top:4px;font-style:italic}
+.sb-nav{flex:1;padding:20px 0;overflow-y:auto}
+.sb-grp{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:16px 24px 6px;opacity:0.6}
+.sb-a{display:block;padding:9px 24px;text-decoration:none;font-family:'Cormorant',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s;font-weight:500}
+.sb-a:hover{color:var(--accent);border-left-color:var(--gold-d);background:rgba(184,146,42,0.04)}
+.sb-a.on{color:var(--accent);border-left-color:var(--gold);background:rgba(184,146,42,0.06);font-weight:600}
+.sb-foot{padding:20px 24px;border-top:1px solid var(--border);font-family:'Cormorant',serif;font-size:11px;color:var(--text-d);line-height:1.8;font-style:italic}
 
 /* Main */
-.main{margin-left:220px;flex:1;display:flex;flex-direction:column}
+.main{margin-left:210px;flex:1;display:flex;flex-direction:column}
 
 /* Topbar */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(20,20,20,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
-.tb-greet{font-family:'Cinzel',serif;font-size:13px;color:var(--text-b);letter-spacing:1px}
-.tb-date{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(250,250,248,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tb-greet{font-family:'Cormorant',serif;font-size:14px;color:var(--accent);letter-spacing:1px;font-weight:500}
+.tb-date{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
 
 /* Hero */
-.hero{text-align:center;padding:72px 80px 56px;border-bottom:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(201,164,58,0.04) 0%,transparent 100%)}
-.hero-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px}
-.hero-sym{font-size:28px;color:var(--gold);display:block;margin-bottom:20px;opacity:0.55}
-.hero-verse{font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.65;max-width:680px;margin:0 auto 18px}
-.hero-ref{font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:28px}
-.hero-theme{font-family:'Cinzel',serif;font-size:clamp(15px,1.8vw,18px);font-weight:600;color:var(--text-b);margin-bottom:36px}
-.hero-cta{display:inline-block;background:var(--gold);color:#0A0A0A;font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:13px 40px;text-decoration:none;transition:all 0.3s}
-.hero-cta:hover{background:var(--gold-l);box-shadow:0 6px 20px rgba(201,164,58,0.3);transform:translateY(-1px)}
+.hero{text-align:center;padding:72px 80px 56px;border-bottom:1px solid var(--border);background:#FFFFFF}
+.hero-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:24px}
+.hero-verse{font-size:clamp(24px,3vw,36px);font-weight:300;font-style:italic;color:var(--text-b);line-height:1.7;max-width:680px;margin:0 auto 20px}
+.hero-ref{font-family:'Cormorant',serif;font-size:13px;letter-spacing:3px;color:var(--gold);margin-bottom:28px;font-weight:600}
+.hero-theme{font-family:'Cormorant',serif;font-size:clamp(15px,1.8vw,18px);font-weight:600;color:var(--text);margin-bottom:40px;letter-spacing:1px}
+.hero-cta{display:inline-block;background:var(--accent);color:#FFFFFF;font-family:'Cormorant',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;padding:14px 44px;text-decoration:none;transition:all 0.3s;font-weight:500}
+.hero-cta:hover{background:var(--gold);box-shadow:0 4px 16px rgba(184,146,42,0.25);transform:translateY(-1px)}
 
 /* Body */
-.body{padding:40px 48px 80px}
+.body{padding:40px 48px 80px;background:var(--bg)}
 
 /* Info cards */
-.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}
-.icard{background:var(--card);border:1px solid var(--border);padding:24px;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s}
-.icard:hover{border-color:var(--border-h);transform:translateY(-2px)}
-.icard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);opacity:0.5}
-.icard-ico{font-size:20px;margin-bottom:12px;display:block;opacity:0.65}
-.icard-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
-.icard-val{font-size:14px;line-height:1.6;color:var(--text-d)}
+.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-bottom:40px;background:var(--border)}
+.icard{background:var(--card);padding:24px 28px}
+.icard-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px;font-weight:500}
+.icard-val{font-size:15px;line-height:1.6;color:var(--text-d)}
 
 /* Two col */
-.cols{display:grid;grid-template-columns:1fr 300px;gap:20px}
+.cols{display:grid;grid-template-columns:1fr 300px;gap:24px}
 
-/* Meditation card */
-.med-card{background:var(--card);border:1px solid var(--border);padding:36px;margin-bottom:18px}
-.med-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
-.med-theme{font-family:'Cinzel',serif;font-size:clamp(16px,2vw,20px);font-weight:600;color:var(--gold-l);line-height:1.4;margin-bottom:22px}
-.med-body p{font-size:clamp(16px,1.8vw,18px);line-height:1.95;color:var(--text);margin-bottom:16px}
+/* Meditation */
+.med-card{background:var(--card);border:1px solid var(--border);padding:40px;margin-bottom:20px}
+.med-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px;font-weight:500}
+.med-theme{font-family:'Cormorant',serif;font-size:clamp(18px,2vw,22px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:24px}
+.med-body p{font-size:clamp(17px,1.8vw,19px);line-height:2;color:var(--text);margin-bottom:18px}
 .med-body p:last-child{margin-bottom:0}
 
-.qbar{border-left:3px solid var(--gold-d);padding:18px 24px;background:rgba(201,164,58,0.04);margin:24px 0}
-.qbar-t{font-size:17px;font-style:italic;color:var(--text-b);line-height:1.7}
-.qbar-by{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:8px}
+.qbar{border-left:2px solid var(--gold);padding:20px 28px;background:rgba(184,146,42,0.03);margin:28px 0}
+.qbar-t{font-size:18px;font-style:italic;color:var(--text-b);line-height:1.7}
+.qbar-by{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:10px;font-weight:500}
 
-.src-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
-.src{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(201,164,58,0.18);color:var(--gold-d)}
+.src-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.src{font-family:'Cormorant',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--text-d)}
 
-.orn{display:flex;align-items:center;gap:10px;margin:20px 0;opacity:0.2}
+.orn{display:flex;align-items:center;gap:12px;margin:24px 0;opacity:0.3}
 .orn-l{flex:1;height:1px;background:var(--gold)}
-.orn-s{color:var(--gold);font-size:11px}
+.orn-s{color:var(--gold);font-size:10px;letter-spacing:4px}
 
-.call-card{background:linear-gradient(135deg,rgba(120,25,25,0.14),var(--card));border:1px solid rgba(120,25,25,0.25);border-left:3px solid #7A1A1A;padding:24px 28px;margin-bottom:18px;text-align:center}
-.call-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(180,80,80,0.55);margin-bottom:12px}
-.call-t{font-family:'Cinzel',serif;font-size:clamp(12px,1.5vw,15px);color:var(--text-b);line-height:1.8}
+.call-card{background:#FFFFFF;border:1px solid var(--border);border-top:2px solid var(--accent);padding:28px 32px;margin-bottom:20px;text-align:center}
+.call-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:14px;font-weight:500}
+.call-t{font-family:'Cormorant',serif;font-size:clamp(13px,1.6vw,15px);color:var(--text-b);line-height:1.85;font-weight:500}
 
-.pray-card{background:var(--card);border:1px solid var(--border);padding:28px;margin-bottom:18px;text-align:center}
-.pray-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px}
-.pray-t{font-size:clamp(16px,1.8vw,19px);font-style:italic;font-weight:300;line-height:1.9;color:var(--text)}
+.pray-card{background:var(--card2);border:1px solid var(--border);padding:32px;margin-bottom:20px;text-align:center}
+.pray-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px;font-weight:500}
+.pray-t{font-size:clamp(17px,1.8vw,20px);font-style:italic;font-weight:300;line-height:1.95;color:var(--text)}
 
-/* Sidebar panels */
-.sp{background:var(--card);border:1px solid var(--border);padding:22px;margin-bottom:14px}
-.sp-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
-.sp-q{padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+/* Side panels */
+.sp{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px}
+.sp-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:18px;font-weight:500}
+.sp-q{padding:16px 0;border-bottom:1px solid var(--border)}
 .sp-q:last-child{border-bottom:none;padding-bottom:0}
 .sp-q:first-child{padding-top:0}
-.sp-q-t{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;opacity:0.8}
-.sp-q-txt{font-size:clamp(14px,1.5vw,16px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.6}
-.sp-link{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s}
+.sp-qt{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:8px;font-weight:500}
+.sp-qtxt{font-size:clamp(15px,1.5vw,17px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65}
+.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none;font-family:'Cormorant',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);transition:color 0.2s;font-weight:500}
 .sp-link:last-child{border-bottom:none}
-.sp-link:hover{color:var(--gold)}
+.sp-link:hover{color:var(--accent)}
 
 /* Loading */
 #loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
-.spin{font-size:36px;color:var(--gold);animation:breathe 2s ease-in-out infinite}
-.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+.load-t{font-family:'Cormorant',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
 
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes breathe{0%,100%{opacity:0.3;transform:scale(0.95)}50%{opacity:0.8;transform:scale(1.05)}}
-
-@media(max-width:860px){
-  .sb{display:none}.main{margin-left:0}
-  .hero{padding:40px 24px}
-  .body{padding:24px}
-  .info-row{grid-template-columns:1fr}
-  .cols{grid-template-columns:1fr}
-  .topbar{padding:16px 24px}
-}
+@media(max-width:860px){.sb{display:none}.main{margin-left:0}.hero{padding:40px 24px}.body,.topbar{padding-left:24px;padding-right:24px}.info-row{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <aside class="sb">
   <div class="sb-top">
-    <span class="sb-cross">✝</span>
     <div class="sb-name">The Eternal Word</div>
     <div class="sb-sub">Daily Devotional</div>
   </div>
   <nav class="sb-nav">
     <div class="sb-grp">Main</div>
-    <a class="sb-a on" href="index.html"><span class="sb-ico">☀</span>Daily</a>
-    <a class="sb-a" href="topics.html"><span class="sb-ico">✦</span>Topics</a>
+    <a class="sb-a on" href="index.html">Daily</a>
+    <a class="sb-a" href="topics.html">Topics</a>
     <div class="sb-grp">Study</div>
-    <a class="sb-a" href="learn.html?topic=christian-identity"><span class="sb-ico">✝</span>Identity</a>
-    <a class="sb-a" href="learn.html?topic=the-cross"><span class="sb-ico">☩</span>The Cross</a>
-    <a class="sb-a" href="learn.html?topic=discipleship"><span class="sb-ico">⚔</span>Discipleship</a>
-    <a class="sb-a" href="learn.html?topic=apologetics"><span class="sb-ico">🗡</span>Apologetics</a>
-    <a class="sb-a" href="learn.html?topic=prayer"><span class="sb-ico">🕊</span>Prayer</a>
-    <a class="sb-a" href="learn.html?topic=suffering"><span class="sb-ico">🔥</span>Suffering</a>
-    <a class="sb-a" href="learn.html?topic=holy-spirit"><span class="sb-ico">🕊</span>Holy Spirit</a>
-    <a class="sb-a" href="learn.html?topic=sin-and-grace"><span class="sb-ico">⚖</span>Sin & Grace</a>
-    <a class="sb-a" href="learn.html?topic=the-church"><span class="sb-ico">🏛</span>The Church</a>
-    <a class="sb-a" href="learn.html?topic=eternity"><span class="sb-ico">✨</span>Eternity</a>
-    <a class="sb-a" href="learn.html?topic=the-sabbath"><span class="sb-ico">🕯</span>The Sabbath</a>
-    <a class="sb-a" href="learn.html?topic=holiness-of-god"><span class="sb-ico">🔥</span>Holiness of God</a>
+    <a class="sb-a" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-a" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-a" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-a" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-a" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-a" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-a" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-a" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="sb-a" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-a" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-a" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-a" href="learn.html?topic=holiness-of-god">Holiness of God</a>
   </nav>
   <div class="sb-foot" id="sbDate"></div>
 </aside>
@@ -153,7 +136,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="tb-greet" id="greeting"></div>
     <div class="tb-date" id="topDate"></div>
   </div>
-  <div id="loading"><div class="spin">✝</div><div class="load-t">Preparing today's word</div></div>
+  <div id="loading"><div class="load-t">Preparing today's word</div></div>
   <div id="content" style="display:none;flex:1;flex-direction:column"></div>
 </main>
 
@@ -175,15 +158,13 @@ async function init(){
   const d=rows[0];
   const paras=d.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
   const srcs=(d.sources||[]).map(s=>`<span class="src">${s}</span>`).join('');
-  const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-q-t">${q.topic}</div><div class="sp-q-txt">${q.question}</div></div>`).join('');
-
+  const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
   document.getElementById('loading').style.display='none';
   const c=document.getElementById('content');
   c.style.display='flex';
   c.innerHTML=`
     <div class="hero">
       <div class="hero-lbl">Today's Scripture · ${DAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}</div>
-      <span class="hero-sym">✝</span>
       <div class="hero-verse">"${d.scripture_text}"</div>
       <div class="hero-ref">${d.scripture_reference}</div>
       <div class="hero-theme">${d.theme}</div>
@@ -191,39 +172,38 @@ async function init(){
     </div>
     <div class="body" id="body">
       <div class="info-row">
-        <div class="icard"><span class="icard-ico">📖</span><div class="icard-lbl">Scripture</div><div class="icard-val">${d.scripture_reference}</div></div>
-        <div class="icard"><span class="icard-ico">✦</span><div class="icard-lbl">Theme</div><div class="icard-val">${d.theme}</div></div>
-        <div class="icard"><span class="icard-ico">📚</span><div class="icard-lbl">Sources</div><div class="icard-val">${(d.sources||[]).join(' · ')}</div></div>
+        <div class="icard"><div class="icard-lbl">Scripture</div><div class="icard-val">${d.scripture_reference}</div></div>
+        <div class="icard"><div class="icard-lbl">Theme</div><div class="icard-val">${d.theme}</div></div>
+        <div class="icard"><div class="icard-lbl">Sources</div><div class="icard-val">${(d.sources||[]).join(' · ')}</div></div>
       </div>
       <div class="cols">
         <div>
           <div class="med-card">
-            <div class="med-lbl">Meditation · Deep Reflection</div>
+            <div class="med-lbl">Meditation</div>
             <div class="med-theme">${d.theme}</div>
             <div class="med-body">${paras}</div>
             <div class="qbar"><div class="qbar-t">"${d.quote_text}"</div><div class="qbar-by">— ${d.quote_author}</div></div>
             <div class="src-row">${srcs}</div>
           </div>
-          <div class="orn"><div class="orn-l"></div><span class="orn-s">✦</span><div class="orn-l"></div></div>
-          <div class="call-card"><div class="call-lbl">Today's Cost · Costly Discipleship</div><div class="call-t">${d.call_to_action}</div></div>
+          <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
+          <div class="call-card"><div class="call-lbl">Today's Call</div><div class="call-t">${d.call_to_action}</div></div>
           <div class="pray-card"><div class="pray-lbl">Closing Prayer</div><div class="pray-t">${d.prayer}</div></div>
         </div>
         <div>
-          <div class="sp"><div class="sp-lbl">Sit With These</div>${qs}</div>
+          <div class="sp"><div class="sp-lbl">Reflection</div>${qs}</div>
           <div class="sp">
             <div class="sp-lbl">Study Deeper</div>
-            <a class="sp-link" href="topics.html">✦ All 12 Topics</a>
-            <a class="sp-link" href="learn.html?topic=the-cross">☩ The Cross</a>
-            <a class="sp-link" href="learn.html?topic=discipleship">⚔ Discipleship</a>
-            <a class="sp-link" href="learn.html?topic=holiness-of-god">🔥 Holiness of God</a>
-            <a class="sp-link" href="learn.html?topic=the-sabbath">🕯 The Sabbath</a>
+            <a class="sp-link" href="topics.html">All Twelve Topics</a>
+            <a class="sp-link" href="learn.html?topic=the-cross">The Cross</a>
+            <a class="sp-link" href="learn.html?topic=discipleship">Discipleship</a>
+            <a class="sp-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
           </div>
         </div>
       </div>
     </div>`;
 }
 init().catch(()=>{
-  document.getElementById('loading').innerHTML=`<div class="spin" style="animation:none;opacity:0.3">✝</div><div class="load-t">Devotional coming soon</div><br><a href="topics.html" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:10px 24px;margin-top:16px">Browse Topics →</a>`;
+  document.getElementById('loading').innerHTML=`<div class="load-t">Devotional coming soon</div>`;
 });
 </script>
 </body>
