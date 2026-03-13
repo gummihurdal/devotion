@@ -122,7 +122,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:1100px){.nav-sb{display:none}.shell{margin-left:0}.two-col{grid-template-columns:1fr}}
 @media(max-width:860px){.topic-sb{display:none}#lesson-view,#overview{padding:24px 24px 60px}.topbar{padding:16px 24px}}
-.sb-collapsible{cursor:pointer;user-select:none;opacity:0.6;transition:opacity 0.2s}.sb-collapsible:hover{opacity:0.9}
+
 </style>
 </head>
 <body>
@@ -134,7 +134,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <a class="nsb-link" href="archive.html">Archive</a>
     <a class="nsb-link" href="blog.html">Blog</a>
     <a class="nsb-link" href="topics.html">Study Topics</a>
-    <div class="nsb-section sb-collapsible" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="float:right;margin-right:8px;transition:transform 0.3s;display:inline-block;font-size:9px;color:var(--gold-d)">▶</span></div>
+    <div class="sb-study-toggle" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="transition:transform 0.3s;display:inline-block;font-size:8px">▶</span></div>
     <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.35s ease">
     <a class="nsb-link" href="learn.html?topic=christian-identity">Identity</a>
     <a class="nsb-link" href="learn.html?topic=the-cross">The Cross</a>
