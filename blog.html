@@ -132,6 +132,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .si:focus{border-color:var(--gold-d)}
 textarea.si{display:block}
 
+.sb-collapsible{cursor:pointer;user-select:none;opacity:0.6;transition:opacity 0.2s}.sb-collapsible:hover{opacity:0.9}
 </style>
 </head>
 <body>
@@ -144,7 +145,8 @@ textarea.si{display:block}
     <a class="sb-link" href="archive.html">Archive</a>
     <a class="sb-link on" href="blog.html">Blog</a>
     <a class="sb-link" href="topics.html">Topics</a>
-    <div class="sb-section">Study</div>
+    <div class="sb-section sb-collapsible" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="float:right;margin-right:4px;transition:transform 0.25s;display:inline-block">+</span></div>
+    <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.35s ease">
     <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
     <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
     <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
@@ -157,10 +159,11 @@ textarea.si{display:block}
     <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
     <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
     <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    </div>
     <div class="sb-section">Account</div>
     <a class="sb-link" href="settings.html">Settings</a>
   </nav>
-  <div class="sb-foot"><div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);line-height:1.9;opacity:0.6" id="sb-date"></div></div>
+  <div class="sb-foot"><div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;color:var(--text-b);line-height:2.0;opacity:0.85" id="sb-date"></div></div>
 </aside>
 <main class="main">
   <div class="topbar">
