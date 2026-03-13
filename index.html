@@ -52,7 +52,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
 
 .sb-foot{padding:20px 24px;border-top:1px solid var(--border2)}
-.sb-foot-date{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);line-height:1.9;opacity:0.6}
+.sb-foot-date{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;color:var(--text-b);line-height:2.0;opacity:0.85}
 
 /* ── MAIN ─────────────────────────────── */
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column;min-height:100vh}
@@ -185,6 +185,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
 @media(max-width:1024px){.body{padding:32px 32px 80px}.hero{padding:48px 32px}}
 @media(max-width:860px){.sb{transform:translateX(-100%)}.main{margin-left:0}.two-col{grid-template-columns:1fr}.cards-row{grid-template-columns:1fr}}
+.sb-collapsible{cursor:pointer;user-select:none;opacity:0.6;transition:opacity 0.2s}.sb-collapsible:hover{opacity:0.9}
 </style>
 </head>
 <body>
@@ -192,8 +193,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <!-- SIDEBAR -->
 <aside class="sb">
   <div class="sb-logo">
-    <a href="index.html">
-      <div class="sb-logo-text">The Eternal Word</div>
+    <a href="index.html"><div class="sb-logo-text">The Eternal Word</div>
       <div class="sb-logo-sub">Daily Devotional</div>
     </a>
   </div>
@@ -204,7 +204,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <a class="sb-link" href="archive.html">Archive</a>
     <a class="sb-link" href="blog.html">Blog</a>
     <a class="sb-link" href="topics.html">Topics</a>
-    <div class="sb-section">Study</div>
+    <div class="sb-section sb-collapsible" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="float:right;margin-right:4px;transition:transform 0.25s;display:inline-block">+</span></div>
+    <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.35s ease">
     <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
     <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
     <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
@@ -217,6 +218,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
     <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
     <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    </div>
     <div class="sb-section">Account</div>
     <a class="sb-link" href="settings.html">Settings</a>
   </nav>
