@@ -50,8 +50,6 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 }
 .sb-link:hover{color:var(--gold);border-left-color:var(--gold-d);background:rgba(201,164,58,0.04)}
 .sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
-.sb-sub{padding-left:36px;font-size:11px;letter-spacing:1.5px;color:var(--text-d)}
-.sb-sub:hover{color:var(--gold);border-left-color:var(--gold-d)}
 
 .sb-study-toggle:hover{color:var(--gold)}
 
@@ -203,20 +201,20 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   </div>
   <nav class="sb-nav">
     <a class="sb-link on-{ACTIVE}" href="index.html" class-active>Daily Devotion</a>
-    <div class="sb-link sb-study-toggle" onclick="toggleStudy()" id="study-header"><span id="study-arrow" style="transition:transform 0.3s;display:inline-block;margin-right:7px;font-size:9px;color:var(--gold-d)">▶</span>Study Topics</div>
+    <a class="sb-link" href="topics.html" onclick="toggleStudy();return false;" id="study-header"><span id="study-arrow" style="transition:transform 0.3s;display:inline-block;margin-right:8px;font-size:9px;color:var(--gold-d)">▶</span>Study Topics</a>
     <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.4s ease">
-      <a class="sb-link sb-sub" href="learn.html?topic=christian-identity">Identity</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=the-cross">The Cross</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=discipleship">Discipleship</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=apologetics">Apologetics</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=prayer">Prayer</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=suffering">Suffering</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=the-church">The Church</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=the-sabbath">The Sabbath</a>
-      <a class="sb-link sb-sub" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
+      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
+      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
+      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
+      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
+      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
+      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
+      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
+      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
+      <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
     </div>
     <a class="sb-link on-{ACTIVE}" href="calendar.html">Calendar</a>
     <a class="sb-link on-{ACTIVE}" href="archive.html">Archive</a>
