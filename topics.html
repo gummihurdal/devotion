@@ -5,106 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Topics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#9A7828;--gold-l:#B8922A;--gold-d:#6A5020;--bg:#FAFAF8;--panel:#FFFFFF;--panel2:#F5F3EF;--border:#E2D8C8;--text:#3A3530;--text-d:#7A6A55;--text-b:#1A1510}
+:root{--navy:#0E1628;--navy2:#131D35;--navy3:#1A2540;--navy4:#0A1020;--gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--border:rgba(201,164,58,0.15);--border2:rgba(201,164,58,0.08);--text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0;--sb-w:220px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;min-height:100vh}
-.page{max-width:1100px;margin:0 auto;padding:0 32px 100px}
+body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
-nav{display:flex;align-items:center;justify-content:space-between;padding:32px 0 20px;border-bottom:1px solid var(--border);animation:rise 0.6s ease both}
-.nav-logo{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--text-b);letter-spacing:2px;text-decoration:none}
-.nav-links{display:flex;gap:32px}
-.nav-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.sb{width:var(--sb-w);min-width:var(--sb-w);background:var(--navy);border-right:1px solid var(--border2);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:200}
+.sb-logo{padding:28px 24px 22px;border-bottom:1px solid var(--border2)}
+.sb-logo a{text-decoration:none}
+.sb-logo-text{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--gold);line-height:1.3}
+.sb-logo-sub{font-size:11px;color:var(--text-d);margin-top:3px;letter-spacing:1px;font-style:italic}
+.sb-nav{flex:1;overflow-y:auto;padding:16px 0}
+.sb-section{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);padding:18px 24px 8px;opacity:0.5}
+.sb-link{display:block;padding:9px 24px;text-decoration:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s}
+.sb-link:hover{color:var(--text-b);border-left-color:var(--gold-d);background:rgba(201,164,58,0.04)}
+.sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
+.sb-foot{padding:20px 24px;border-top:1px solid var(--border2)}
+.sb-foot-date{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);line-height:1.9;opacity:0.6}
 
-header{text-align:center;padding:56px 0 48px;animation:rise 0.8s ease both}
-.hd-line{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;opacity:0.3}
-.hd-rule{height:1px;width:60px;background:var(--gold)}
-.hd-sym{color:var(--gold);font-size:10px;letter-spacing:6px}
-header h1{font-family:'Cinzel',serif;font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--text-b);letter-spacing:2px}
-.h-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-top:10px}
-.h-desc{font-size:18px;line-height:1.85;color:var(--text-d);margin-top:18px;max-width:560px;margin-left:auto;margin-right:auto;font-style:italic}
+.main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border2);background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.tb-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-b);letter-spacing:1px}
+.tb-count{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--border)}
+.page-hero{padding:52px 48px 44px;border-bottom:1px solid var(--border2);background:var(--navy);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 100% at 50% 100%,rgba(201,164,58,0.04),transparent)}
+.ph-eyebrow{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
+.ph-title{font-family:'Cinzel',serif;font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--text-b);letter-spacing:2px;margin-bottom:14px}
+.ph-desc{font-size:17px;font-style:italic;color:var(--text-d);max-width:560px;line-height:1.8}
 
-.topic-card{position:relative;background:var(--panel);padding:40px 36px;cursor:pointer;text-decoration:none;display:block;transition:background 0.3s;opacity:0;animation:rise 0.6s ease both;overflow:hidden}
-.topic-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.4s}
-.topic-card:hover{background:var(--panel2)}
-.topic-card:hover::before{width:100%}
+.body{padding:40px 48px 80px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border2)}
 
-.card-num{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:18px;opacity:0.7}
-.card-title{font-family:'Cinzel',serif;font-size:clamp(15px,2vw,18px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:8px}
-.card-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
-.card-desc{font-size:15px;line-height:1.7;color:var(--text-d)}
-.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
-.card-lessons{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-.card-arrow{color:var(--text-d);font-size:18px;transition:all 0.25s}
-.topic-card:hover .card-arrow{transform:translateX(5px);color:var(--gold)}
+.tcard{
+  background:var(--navy);padding:36px 32px;text-decoration:none;display:block;
+  position:relative;overflow:hidden;transition:background 0.3s;
+  opacity:0;animation:rise 0.5s ease both;
+}
+.tcard::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s}
+.tcard:hover{background:var(--navy2)}
+.tcard:hover::after{width:100%}
+.tc-num{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:20px;opacity:0.5}
+.tc-title{font-family:'Cinzel',serif;font-size:clamp(15px,2vw,18px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:8px}
+.tc-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
+.tc-desc{font-size:14px;line-height:1.7;color:var(--text-d)}
+.tc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:16px;border-top:1px solid var(--border2)}
+.tc-lessons{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.tc-arr{color:var(--text-d);transition:all 0.25s;font-size:18px}
+.tcard:hover .tc-arr{color:var(--gold);transform:translateX(4px)}
 
-.topic-card:nth-child(1){animation-delay:.05s}.topic-card:nth-child(2){animation-delay:.1s}.topic-card:nth-child(3){animation-delay:.15s}
-.topic-card:nth-child(4){animation-delay:.2s}.topic-card:nth-child(5){animation-delay:.25s}.topic-card:nth-child(6){animation-delay:.3s}
-.topic-card:nth-child(7){animation-delay:.35s}.topic-card:nth-child(8){animation-delay:.4s}.topic-card:nth-child(9){animation-delay:.45s}
-.topic-card:nth-child(10){animation-delay:.5s}.topic-card:nth-child(11){animation-delay:.55s}.topic-card:nth-child(12){animation-delay:.6s}
+.tcard:nth-child(1){animation-delay:.04s}.tcard:nth-child(2){animation-delay:.08s}.tcard:nth-child(3){animation-delay:.12s}
+.tcard:nth-child(4){animation-delay:.16s}.tcard:nth-child(5){animation-delay:.20s}.tcard:nth-child(6){animation-delay:.24s}
+.tcard:nth-child(7){animation-delay:.28s}.tcard:nth-child(8){animation-delay:.32s}.tcard:nth-child(9){animation-delay:.36s}
+.tcard:nth-child(10){animation-delay:.40s}.tcard:nth-child(11){animation-delay:.44s}.tcard:nth-child(12){animation-delay:.48s}
 
-#loading{text-align:center;padding:80px 0}
-.load-t{font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
-footer{text-align:center;padding:60px 0 20px;opacity:0.3}
-footer p{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
+#loading{flex:1;display:flex;align-items:center;justify-content:center}
+.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--text-d)}
 @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:860px){.sb{display:none}.main{margin-left:0}.body{padding:24px}.topbar{padding:16px 24px}}
 </style>
 </head>
 <body>
-<div class="page">
-  <nav>
-    <a class="nav-logo" href="index.html">The Eternal Word</a>
-    <div class="nav-links">
-      <a href="index.html">Daily</a>
-      <a href="topics.html" class="active">Topics</a>
-      <a href="learn.html?topic=christian-identity">Identity</a>
-      <a href="learn.html?topic=the-cross">The Cross</a>
-      <a href="learn.html?topic=discipleship">Discipleship</a>
-      <a href="learn.html?topic=apologetics">Apologetics</a>
-      <a href="learn.html?topic=prayer">Prayer</a>
-      <a href="learn.html?topic=suffering">Suffering</a>
-      <a href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a href="learn.html?topic=sin-and-grace">Sin & Grace</a>
-      <a href="learn.html?topic=the-church">The Church</a>
-      <a href="learn.html?topic=eternity">Eternity</a>
-      <a href="learn.html?topic=the-sabbath">The Sabbath</a>
-      <a href="learn.html?topic=holiness-of-god">Holiness</a>
-    </div>
+<aside class="sb">
+  <div class="sb-logo"><a href="index.html"><div class="sb-logo-text">The Eternal Word</div><div class="sb-logo-sub">Daily Devotional</div></a></div>
+  <nav class="sb-nav">
+    <div class="sb-section">Main</div>
+    <a class="sb-link" href="index.html">Daily</a>
+    <a class="sb-link on" href="topics.html">Topics</a>
+    <div class="sb-section">Study</div>
+    <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
   </nav>
-
-  <header>
-    <div class="hd-line"><div class="hd-rule"></div><span class="hd-sym">· · ·</span><div class="hd-rule"></div></div>
-    <h1>Twelve Topics</h1>
-    <p class="h-sub">Deep Theological Study</p>
-    <p class="h-desc">As the Lord chose twelve, so twelve paths of study — each drawn from the great theologians, each designed to change not just the mind but the life.</p>
-  </header>
-
-  <div id="loading"><p class="load-t">Loading topics</p></div>
-  <div id="grid" class="grid" style="display:none"></div>
-
-  <footer><p>The fear of the LORD is the beginning of wisdom — Proverbs 9:10</p></footer>
-</div>
-
+  <div class="sb-foot"><div class="sb-foot-date" id="sb-date"></div></div>
+</aside>
+<main class="main">
+  <div class="topbar"><div class="tb-title">Twelve Topics</div><div class="tb-count">84 Lessons</div></div>
+  <div class="page-hero">
+    <div class="ph-eyebrow">Deep Theological Study</div>
+    <div class="ph-title">Twelve Topics</div>
+    <div class="ph-desc">As the Lord chose twelve, so twelve paths of study — each drawn from the great theologians, each designed to change not just the mind but the life.</div>
+  </div>
+  <div id="loading"><span class="load-t">Loading topics</span></div>
+  <div class="body" id="body" style="display:none"><div class="grid" id="grid"></div></div>
+</main>
 <script>
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
+const now=new Date();const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 async function load(){
   const r=await fetch(`${SB}/rest/v1/topics?select=*&order=sort_order.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
   const topics=await r.json();
-  document.getElementById('loading').style.display='none';
-  const g=document.getElementById('grid');
-  g.style.display='grid';
-  g.innerHTML=topics.map((t,i)=>`
-    <a class="topic-card" href="learn.html?topic=${t.slug}">
-      <div class="card-num">Topic ${String(i+1).padStart(2,'0')} of 12</div>
-      <div class="card-title">${t.title}</div>
-      <div class="card-sub">${t.subtitle}</div>
-      <div class="card-desc">${t.description}</div>
-      <div class="card-footer"><span class="card-lessons">7 Lessons</span><span class="card-arrow">→</span></div>
+  document.getElementById('loading').style.display='none';document.getElementById('body').style.display='block';
+  document.getElementById('grid').innerHTML=topics.map((t,i)=>`
+    <a class="tcard" href="learn.html?topic=${t.slug}">
+      <div class="tc-num">Topic ${String(i+1).padStart(2,'0')} of 12</div>
+      <div class="tc-title">${t.title}</div>
+      <div class="tc-sub">${t.subtitle}</div>
+      <div class="tc-desc">${t.description}</div>
+      <div class="tc-foot"><span class="tc-lessons">7 Lessons</span><span class="tc-arr">→</span></div>
     </a>`).join('');
 }
 load().catch(console.error);
