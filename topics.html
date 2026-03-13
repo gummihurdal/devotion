@@ -5,102 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Eternal Word — Topics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--bg:#141414;--sb:#1A1A1A;--card:#1E1E1E;--card2:#242424;--border:rgba(201,164,58,0.14);--border-h:rgba(201,164,58,0.35);--text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0}
+:root{--gold:#B8922A;--gold-l:#D4AA44;--gold-d:#8A6E20;--bg:#FAFAF8;--sb:#FFFFFF;--card:#FFFFFF;--card2:#F5F3EF;--border:#E8E0D0;--border-h:#C9A43A;--text:#3A3530;--text-d:#9A8F80;--text-b:#1A1510;--accent:#2C2420}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
-.sb{width:220px;min-width:220px;background:var(--sb);border-right:1px solid rgba(255,255,255,0.05);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
-.sb-top{padding:28px 20px 20px;border-bottom:1px solid rgba(255,255,255,0.05)}
-.sb-cross{font-size:18px;color:var(--gold);margin-bottom:8px;display:block}
-.sb-name{font-family:'Cinzel Decorative',serif;font-size:10px;color:var(--gold);letter-spacing:1px;line-height:1.5}
-.sb-sub{font-family:'Cinzel',serif;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:3px}
-.sb-nav{flex:1;padding:16px 0;overflow-y:auto}
-.sb-grp{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:14px 20px 6px;opacity:0.5}
-.sb-a{display:flex;align-items:center;gap:10px;padding:10px 20px;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s}
-.sb-a:hover{background:rgba(201,164,58,0.05);color:var(--text);border-left-color:var(--gold-d)}
-.sb-a.on{background:rgba(201,164,58,0.08);color:var(--gold);border-left-color:var(--gold)}
-.sb-ico{font-size:13px;width:16px;text-align:center}
-.sb-foot{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.05);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:var(--text-d);line-height:1.8}
+.sb{width:210px;min-width:210px;background:var(--sb);border-right:1px solid var(--border);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100}
+.sb-top{padding:32px 24px 24px;border-bottom:1px solid var(--border)}
+.sb-name{font-family:'Cormorant',serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);line-height:1.4}
+.sb-sub{font-size:12px;letter-spacing:1px;color:var(--text-d);margin-top:4px;font-style:italic}
+.sb-nav{flex:1;padding:20px 0;overflow-y:auto}
+.sb-grp{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:16px 24px 6px;opacity:0.6}
+.sb-a{display:block;padding:9px 24px;text-decoration:none;font-family:'Cormorant',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);border-left:2px solid transparent;transition:all 0.2s;font-weight:500}
+.sb-a:hover{color:var(--accent);border-left-color:var(--gold-d);background:rgba(184,146,42,0.04)}
+.sb-a.on{color:var(--accent);border-left-color:var(--gold);background:rgba(184,146,42,0.06);font-weight:600}
+.sb-foot{padding:20px 24px;border-top:1px solid var(--border);font-family:'Cormorant',serif;font-size:11px;color:var(--text-d);line-height:1.8;font-style:italic}
 
-.main{margin-left:220px;flex:1;display:flex;flex-direction:column}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(20,20,20,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
-.tb-title{font-family:'Cinzel',serif;font-size:13px;color:var(--text-b);letter-spacing:2px}
-.tb-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.main{margin-left:210px;flex:1;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(250,250,248,0.97);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tb-title{font-family:'Cormorant',serif;font-size:14px;color:var(--accent);letter-spacing:2px;font-weight:600}
+.tb-sub{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
 
-.page-hero{padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,rgba(201,164,58,0.03) 0%,transparent 100%)}
-.ph-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
-.ph-title{font-family:'Cinzel Decorative',serif;font-size:clamp(20px,3vw,28px);color:var(--gold);line-height:1.3;text-shadow:0 0 40px rgba(201,164,58,0.15);margin-bottom:12px}
-.ph-desc{font-size:17px;line-height:1.8;color:var(--text-d);max-width:600px;font-style:italic}
+.page-hero{padding:52px 48px 40px;border-bottom:1px solid var(--border);background:#FFFFFF}
+.ph-lbl{font-family:'Cormorant',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px;font-weight:500}
+.ph-title{font-family:'Cormorant',serif;font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:14px}
+.ph-desc{font-size:17px;line-height:1.85;color:var(--text-d);max-width:580px;font-style:italic}
 
 .body{padding:40px 48px 80px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--border)}
 
-.tcard{background:var(--card);border:1px solid var(--border);padding:32px 28px;text-decoration:none;display:block;position:relative;overflow:hidden;transition:all 0.3s}
-.tcard:hover{background:var(--card2);border-color:var(--border-h);transform:translateY(-2px)}
-.tcard::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(--gold),transparent);transition:height 0.4s}
-.tcard:hover::before{height:100%}
-.tc-num{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:16px;opacity:0.6}
-.tc-icon{font-size:22px;margin-bottom:12px;display:block;opacity:0.65}
-.tc-title{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--gold-l);line-height:1.3;margin-bottom:6px}
-.tc-sub{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px;opacity:0.8}
-.tc-desc{font-size:14px;line-height:1.65;color:var(--text-d)}
-.tc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.tc-count{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-.tc-arr{color:var(--text-d);font-size:16px;transition:all 0.3s}
+.tcard{background:var(--card);padding:32px 28px;text-decoration:none;display:block;position:relative;transition:all 0.25s}
+.tcard:hover{background:var(--card2)}
+.tcard::after{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.35s}
+.tcard:hover::after{width:100%}
+.tc-num{font-family:'Cormorant',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:18px;font-weight:500}
+.tc-title{font-family:'Cormorant',serif;font-size:18px;font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:6px}
+.tc-sub{font-family:'Cormorant',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px;font-weight:500}
+.tc-desc{font-size:14px;line-height:1.7;color:var(--text-d)}
+.tc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:16px;border-top:1px solid var(--border)}
+.tc-count{font-family:'Cormorant',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.tc-arr{color:var(--text-d);font-size:14px;transition:all 0.25s;font-family:'Cormorant',serif;letter-spacing:2px}
 .tcard:hover .tc-arr{color:var(--gold);transform:translateX(4px)}
 
-/* stagger */
-.tcard:nth-child(1){animation-delay:.05s}.tcard:nth-child(2){animation-delay:.1s}.tcard:nth-child(3){animation-delay:.15s}
-.tcard:nth-child(4){animation-delay:.2s}.tcard:nth-child(5){animation-delay:.25s}.tcard:nth-child(6){animation-delay:.3s}
-.tcard:nth-child(7){animation-delay:.35s}.tcard:nth-child(8){animation-delay:.4s}.tcard:nth-child(9){animation-delay:.45s}
-.tcard:nth-child(10){animation-delay:.5s}.tcard:nth-child(11){animation-delay:.55s}.tcard:nth-child(12){animation-delay:.6s}
-.tcard{opacity:0;animation:rise 0.6s ease both}
+.tcard{opacity:0;animation:rise 0.5s ease both}
+.tcard:nth-child(1){animation-delay:.04s}.tcard:nth-child(2){animation-delay:.08s}.tcard:nth-child(3){animation-delay:.12s}
+.tcard:nth-child(4){animation-delay:.16s}.tcard:nth-child(5){animation-delay:.20s}.tcard:nth-child(6){animation-delay:.24s}
+.tcard:nth-child(7){animation-delay:.28s}.tcard:nth-child(8){animation-delay:.32s}.tcard:nth-child(9){animation-delay:.36s}
+.tcard:nth-child(10){animation-delay:.40s}.tcard:nth-child(11){animation-delay:.44s}.tcard:nth-child(12){animation-delay:.48s}
 
-#loading{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:80px}
-.spin{font-size:36px;color:var(--gold);animation:breathe 2s ease-in-out infinite}
-.load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes breathe{0%,100%{opacity:0.3;transform:scale(0.95)}50%{opacity:0.8;transform:scale(1.05)}}
+#loading{flex:1;display:flex;align-items:center;justify-content:center;padding:80px}
+.load-t{font-family:'Cormorant',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:860px){.sb{display:none}.main{margin-left:0}.body,.topbar,.page-hero{padding-left:24px;padding-right:24px}}
 </style>
 </head>
 <body>
 
 <aside class="sb">
-  <div class="sb-top"><span class="sb-cross">✝</span><div class="sb-name">The Eternal Word</div><div class="sb-sub">Daily Devotional</div></div>
+  <div class="sb-top"><div class="sb-name">The Eternal Word</div><div class="sb-sub">Daily Devotional</div></div>
   <nav class="sb-nav">
     <div class="sb-grp">Main</div>
-    <a class="sb-a" href="index.html"><span class="sb-ico">☀</span>Daily</a>
-    <a class="sb-a on" href="topics.html"><span class="sb-ico">✦</span>Topics</a>
+    <a class="sb-a" href="index.html">Daily</a>
+    <a class="sb-a on" href="topics.html">Topics</a>
     <div class="sb-grp">Study</div>
-    <a class="sb-a" href="learn.html?topic=christian-identity"><span class="sb-ico">✝</span>Identity</a>
-    <a class="sb-a" href="learn.html?topic=the-cross"><span class="sb-ico">☩</span>The Cross</a>
-    <a class="sb-a" href="learn.html?topic=discipleship"><span class="sb-ico">⚔</span>Discipleship</a>
-    <a class="sb-a" href="learn.html?topic=apologetics"><span class="sb-ico">🗡</span>Apologetics</a>
-    <a class="sb-a" href="learn.html?topic=prayer"><span class="sb-ico">🕊</span>Prayer</a>
-    <a class="sb-a" href="learn.html?topic=suffering"><span class="sb-ico">🔥</span>Suffering</a>
-    <a class="sb-a" href="learn.html?topic=holy-spirit"><span class="sb-ico">🕊</span>Holy Spirit</a>
-    <a class="sb-a" href="learn.html?topic=sin-and-grace"><span class="sb-ico">⚖</span>Sin & Grace</a>
-    <a class="sb-a" href="learn.html?topic=the-church"><span class="sb-ico">🏛</span>The Church</a>
-    <a class="sb-a" href="learn.html?topic=eternity"><span class="sb-ico">✨</span>Eternity</a>
-    <a class="sb-a" href="learn.html?topic=the-sabbath"><span class="sb-ico">🕯</span>The Sabbath</a>
-    <a class="sb-a" href="learn.html?topic=holiness-of-god"><span class="sb-ico">🔥</span>Holiness of God</a>
+    <a class="sb-a" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-a" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-a" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-a" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-a" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-a" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-a" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-a" href="learn.html?topic=sin-and-grace">Sin & Grace</a>
+    <a class="sb-a" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-a" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-a" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-a" href="learn.html?topic=holiness-of-god">Holiness of God</a>
   </nav>
   <div class="sb-foot" id="sbDate"></div>
 </aside>
 
 <main class="main">
-  <div class="topbar">
-    <div class="tb-title">Twelve Topics</div>
-    <div class="tb-sub">Deep Theological Study</div>
-  </div>
+  <div class="topbar"><div class="tb-title">Twelve Topics</div><div class="tb-sub">84 Lessons</div></div>
   <div class="page-hero">
     <div class="ph-lbl">Study · 12 Topics · 84 Lessons</div>
     <div class="ph-title">Twelve Topics</div>
-    <div class="ph-desc">As the Lord chose twelve, so twelve paths of deep study — each drawn from Bonhoeffer, Watchman Nee, C.S. Lewis, Bunyan and the great theologians, each designed to change not just the mind but the life.</div>
+    <div class="ph-desc">As the Lord chose twelve, so twelve paths of deep study — each drawn from Bonhoeffer, Watchman Nee, C.S. Lewis, Bunyan and the great theologians.</div>
   </div>
-  <div id="loading"><div class="spin">✝</div><div class="load-t">Loading topics</div></div>
+  <div id="loading"><div class="load-t">Loading topics</div></div>
   <div class="body" id="body" style="display:none">
     <div class="grid" id="grid"></div>
   </div>
@@ -112,7 +103,6 @@ const now=new Date();
 const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 document.getElementById('sbDate').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
-
 async function load(){
   const r=await fetch(`${SB_URL}/rest/v1/topics?select=*&order=sort_order.asc`,{headers:{'apikey':SB_KEY,'Authorization':`Bearer ${SB_KEY}`}});
   const topics=await r.json();
@@ -120,8 +110,7 @@ async function load(){
   document.getElementById('body').style.display='block';
   document.getElementById('grid').innerHTML=topics.map((t,i)=>`
     <a class="tcard" href="learn.html?topic=${t.slug}">
-      <div class="tc-num">Topic ${String(i+1).padStart(2,'0')} of 12</div>
-      <span class="tc-icon">${t.icon}</span>
+      <div class="tc-num">Topic ${String(i+1).padStart(2,'0')}</div>
       <div class="tc-title">${t.title}</div>
       <div class="tc-sub">${t.subtitle}</div>
       <div class="tc-desc">${t.description}</div>
