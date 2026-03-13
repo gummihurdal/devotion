@@ -23,7 +23,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border2);background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
 .tb-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-b);letter-spacing:1px}
-.tb-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
+.tb-sub{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-b);opacity:0.9}
 
 /* Layout */
 .page-hero{
@@ -132,7 +132,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .si:focus{border-color:var(--gold-d)}
 textarea.si{display:block}
 
-.sb-collapsible{cursor:pointer;user-select:none;opacity:0.6;transition:opacity 0.2s}.sb-collapsible:hover{opacity:0.9}
+
 </style>
 </head>
 <body>
@@ -144,7 +144,7 @@ textarea.si{display:block}
     <a class="sb-link" href="archive.html">Archive</a>
     <a class="sb-link on" href="blog.html">Blog</a>
     <a class="sb-link" href="topics.html">Study Topics</a>
-    <div class="sb-section sb-collapsible" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="float:right;margin-right:8px;transition:transform 0.3s;display:inline-block;font-size:9px;color:var(--gold-d)">▶</span></div>
+    <div class="sb-study-toggle" onclick="toggleStudy()" id="study-header">Study <span id="study-arrow" style="transition:transform 0.3s;display:inline-block;font-size:8px">▶</span></div>
     <div id="study-links" style="overflow:hidden;max-height:0;transition:max-height 0.35s ease">
     <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
     <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
