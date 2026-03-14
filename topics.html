@@ -231,6 +231,10 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .sb.open{transform:translateX(0);z-index:350}
   .main{margin-left:0 !important;padding-top:52px}
 }
+.sb-section-lbl{padding:14px 24px 6px;font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);opacity:.8;border-top:1px solid var(--border2);margin-top:4px}
+.sb-sub-link{padding:8px 24px 8px 32px!important;font-size:10px!important;letter-spacing:2px!important;color:var(--text-d)!important}
+.sb-sub-link:hover{color:var(--gold)!important}
+.sb-sub-link.on{color:var(--gold)!important;border-left-color:var(--gold)!important}
 </style>
 </head>
 <body>
@@ -248,21 +252,19 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   </div>
   <nav class="sb-nav">
     <a class="sb-link" href="index.html">Daily Devotion</a>
-    <button class="sb-btn" id="study-btn" onclick="sbStudy()">Study Topics</button>
-    <div class="sb-sub" id="study-sub">
-      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
-      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
-      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
-      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
-      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
-      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
-      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
-      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
-      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
-    </div>
+    <div class="sb-section-lbl">Study Topics</div>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=christian-identity">Identity</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=the-cross">The Cross</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=discipleship">Discipleship</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=apologetics">Apologetics</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=prayer">Prayer</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=suffering">Suffering</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=the-church">The Church</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=eternity">Eternity</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+    <a class="sb-link sb-sub-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
     <a class="sb-link" href="calendar.html">Calendar</a>
     <a class="sb-link" href="archive.html">Archive</a>
     <a class="sb-link" href="blog.html">Blog</a>
@@ -314,7 +316,6 @@ load().catch(console.error);
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
   // auto-expand study if on learn page
-  if(window.location.pathname.indexOf('learn.html')!==-1) sbStudyExpand();
 })();
 
 
@@ -322,20 +323,7 @@ load().catch(console.error);
 
 
 /* ── Sidebar JS ── */
-var _so=false;
-function sbStudy(){
-  _so=!_so;
-  var s=document.getElementById('study-sub');
-  var b=document.getElementById('study-btn');
-  if(s) s.style.maxHeight=_so?'520px':'0';
-  if(b){b.style.color=_so?'var(--gold)':'';b.style.borderLeftColor=_so?'var(--gold-d)':'';}
 }
-function sbStudyExpand(){
-  _so=true;
-  var s=document.getElementById('study-sub');
-  var b=document.getElementById('study-btn');
-  if(s) s.style.maxHeight='520px';
-  if(b){b.style.color='var(--gold)';b.style.borderLeftColor='var(--gold-d)';}
 }
 function sbOpen(){
   document.getElementById('sidebar').classList.add('open');
@@ -351,7 +339,6 @@ function sbClose(){
   var now=new Date();
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
-  if(window.location.pathname.indexOf('learn.html')!==-1) sbStudyExpand();
 })();
 
 </script>
