@@ -359,7 +359,7 @@ async function init(){
   document.getElementById('tsb-title').textContent=topic.title;
   document.getElementById('tsb-sub').textContent=topic.subtitle;
   document.getElementById('tb-title').textContent=topic.title;
-  document.querySelectorAll(');
+  document.querySelectorAll('.sb-link').forEach(a=>a.classList.toggle('on',a.getAttribute('href')?.includes(slug)));
   buildSidebar();
   document.getElementById('loading').style.display='none';
   if(initLesson&&lessons.find(l=>l.lesson_number===initLesson))showLesson(initLesson);
