@@ -213,33 +213,6 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .sb-sub-link:hover{color:var(--gold)!important}
 .sb-sub-link.on{color:var(--gold)!important;border-left-color:var(--gold)!important}
 
-/* ── STUDY TOPICS DROPDOWN ── */
-.cta-dropdown-wrap{position:relative;display:inline-block}
-.cta-dropdown-btn{font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;
-  color:rgba(237,224,192,0.85);background:transparent;
-  border:1px solid rgba(237,224,192,0.3);padding:16px 32px;cursor:pointer;
-  transition:all .3s;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
-.cta-dropdown-btn:hover{border-color:var(--gold);color:var(--gold)}
-.cta-dropdown-btn.open{border-color:var(--gold);color:var(--gold);background:rgba(201,164,58,0.06)}
-.cta-arrow{font-size:12px;transition:transform .3s;display:inline-block}
-.cta-arrow.open{transform:rotate(180deg)}
-.cta-dropdown{
-  position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);
-  background:var(--navy);border:1px solid var(--border);
-  min-width:220px;z-index:200;
-  max-height:0;overflow:hidden;
-  transition:max-height .35s cubic-bezier(0.22,1,0.36,1), opacity .25s ease;
-  opacity:0;
-}
-.cta-dropdown.open{max-height:520px;opacity:1}
-.cta-dropdown a{
-  display:block;padding:11px 24px;
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--text-b);text-decoration:none;
-  border-left:2px solid transparent;
-  transition:all .2s;
-}
-.cta-dropdown a:hover{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.05)}
 @media(max-width:768px){
   .cta-dropdown{min-width:180px;left:0;transform:none}
   .cta-dropdown-btn{padding:12px 20px}
@@ -259,25 +232,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <p class="hero-sub">A place to pause with the Word. Daily devotions, deep study, and a community walking together in scripture.</p>
     <div class="hero-ctas">
       <a class="cta-primary" href="devotion.html">Daily Devotional</a>
-      <div class="cta-dropdown-wrap" id="study-wrap">
-        <button class="cta-secondary cta-dropdown-btn" onclick="toggleStudy(event)">
-          Study Topics <span class="cta-arrow" id="study-arrow">▾</span>
-        </button>
-        <div class="cta-dropdown" id="study-dropdown">
-          <a href="learn.html?topic=christian-identity">Identity</a>
-          <a href="learn.html?topic=the-cross">The Cross</a>
-          <a href="learn.html?topic=discipleship">Discipleship</a>
-          <a href="learn.html?topic=apologetics">Apologetics</a>
-          <a href="learn.html?topic=prayer">Prayer</a>
-          <a href="learn.html?topic=suffering">Suffering</a>
-          <a href="learn.html?topic=holy-spirit">Holy Spirit</a>
-          <a href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-          <a href="learn.html?topic=the-church">The Church</a>
-          <a href="learn.html?topic=eternity">Eternity</a>
-          <a href="learn.html?topic=the-sabbath">The Sabbath</a>
-          <a href="learn.html?topic=holiness-of-god">Holiness of God</a>
-        </div>
-      </div>
+      <a class="cta-secondary" href="topics.html">Study Topics</a>
       <a class="cta-secondary" href="blog.html">Blog</a>
     </div>
   </div>
@@ -446,24 +401,6 @@ cards.forEach((c,i)=>{
 });
 
 
-var _studyOpen = false;
-function toggleStudy(e){
-  e.stopPropagation();
-  _studyOpen = !_studyOpen;
-  document.getElementById('study-dropdown').classList.toggle('open', _studyOpen);
-  document.getElementById('study-arrow').classList.toggle('open', _studyOpen);
-  document.querySelector('.cta-dropdown-btn').classList.toggle('open', _studyOpen);
-}
-// Close dropdown when clicking outside
-document.addEventListener('click', function(){
-  if(_studyOpen){
-    _studyOpen = false;
-    document.getElementById('study-dropdown').classList.remove('open');
-    document.getElementById('study-arrow').classList.remove('open');
-    var btn = document.querySelector('.cta-dropdown-btn');
-    if(btn) btn.classList.remove('open');
-  }
-});
 
 loadTodayVerse();
 </script>
