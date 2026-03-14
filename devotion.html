@@ -371,6 +371,11 @@ function sbClose(){
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
   if(window.location.pathname.indexOf('learn.html')!==-1) sbStudyExpand();
+  // Auto-open from landing page
+  if(new URLSearchParams(window.location.search).get('study')==='open'){
+    sbOpen();
+    sbStudyExpand();
+  }
 })();
 
 </script>
