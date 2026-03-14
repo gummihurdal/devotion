@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Eternal Word — Blog</title>
+<title>The Eternal Word — Community</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
-<style>:root{
+<style>
+:root{
   --navy:#0E1628;--navy2:#131D35;--navy3:#1A2540;--navy4:#0A1020;
   --gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--amber:#D4862A;
   --border:rgba(201,164,58,0.15);--border2:rgba(201,164,58,0.08);
@@ -13,301 +15,104 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;
-  display:flex;min-height:100vh;overflow-x:hidden}
-
-/* ── SIDEBAR ── */
-.sb{
-  width:220px;min-width:220px;background:var(--navy);
-  border-right:1px solid var(--border2);
-  position:fixed;top:0;left:0;height:100vh;
-  display:flex;flex-direction:column;z-index:300;
-  transition:transform .3s ease;
-}
+body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh;overflow-x:hidden}
+.sb{width:220px;min-width:220px;background:var(--navy);border-right:1px solid var(--border2);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:300;transition:transform .3s ease}
 .sb-logo{padding:28px 24px 20px;border-bottom:1px solid var(--border2)}
 .sb-logo a{text-decoration:none;display:block}
 .sb-logo-text{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--gold)}
 .sb-logo-sub{font-size:11px;color:var(--text-d);margin-top:3px;font-style:italic}
 .sb-nav{flex:1;overflow-y:auto;padding:12px 0}
-.sb-link,.sb-btn{
-  display:block;width:100%;padding:11px 24px;
-  text-decoration:none;text-align:left;background:none;
-  border:none;border-left:2px solid transparent;
-  font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--text-b);
-  cursor:pointer;transition:all .2s;box-sizing:border-box;
-  line-height:1.4;
-}
+.sb-link,.sb-btn{display:block;width:100%;padding:11px 24px;text-decoration:none;text-align:left;background:none;border:none;border-left:2px solid transparent;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-b);cursor:pointer;transition:all .2s;box-sizing:border-box;line-height:1.4}
 .sb-link:hover,.sb-btn:hover{color:var(--gold);border-left-color:var(--gold-d);background:rgba(201,164,58,0.04)}
-.sb-link.on,.sb-btn.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
+.sb-link.on{color:var(--gold);border-left-color:var(--gold);background:rgba(201,164,58,0.07)}
 .sb-sub{overflow:hidden;max-height:0;transition:max-height .35s ease}
 .sb-foot{padding:20px 24px;border-top:1px solid var(--border2);margin-top:auto}
 .sb-foot-date{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.5px;color:var(--text-b);line-height:2.1;font-weight:500}
-
-/* ── MOBILE BAR ── */
-.mob-bar{
-  display:none;position:fixed;top:0;left:0;right:0;height:52px;
-  background:var(--navy);border-bottom:1px solid var(--border2);
-  z-index:400;align-items:center;justify-content:space-between;padding:0 20px;
-}
-.mob-logo{font-family:'Cinzel',serif;font-size:12px;font-weight:600;
-  letter-spacing:2px;color:var(--gold);text-decoration:none}
-.mob-ham{background:none;border:none;cursor:pointer;
-  padding:8px;display:flex;flex-direction:column;gap:5px}
+.mob-bar{display:none;position:fixed;top:0;left:0;right:0;height:52px;background:var(--navy);border-bottom:1px solid var(--border2);z-index:400;align-items:center;justify-content:space-between;padding:0 20px}
+.mob-logo{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.mob-ham{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px}
 .mob-ham span{display:block;width:22px;height:2px;background:var(--gold-d)}
-.mob-overlay{display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,0.7);z-index:290}
-
-/* ── MAIN ── */
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:290}
 .main{margin-left:220px;flex:1;display:flex;flex-direction:column;min-height:100vh}
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 32px;border-bottom:1px solid var(--border2);
-  background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;
-  backdrop-filter:blur(12px);
-}
-.tb-greeting{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text-b);letter-spacing:1px}
-.tb-date{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-b);opacity:.9}
-
-/* ── RESPONSIVE ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border2);background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.tb-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-b);letter-spacing:1px}
+.tb-count{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--text-d)}
+.page-hero{padding:48px 56px 40px;border-bottom:1px solid var(--border2);background:var(--navy)}
+.ph-eyebrow{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
+.ph-title{font-family:'Cinzel',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--text-b);margin-bottom:12px}
+.ph-sub{font-size:clamp(15px,1.8vw,18px);font-style:italic;color:var(--text-d);font-weight:300;line-height:1.6;max-width:560px}
+.body{padding:40px 56px 80px;flex:1}
+.two-col{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start}
+.form-block{background:var(--navy);border:1px solid var(--border2);padding:36px;margin-bottom:32px}
+.form-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.single{grid-template-columns:1fr}
+.field-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);margin-bottom:6px}
+.field-input,.field-textarea{width:100%;background:var(--navy2);border:1px solid var(--border);color:var(--text-b);font-family:'Cormorant Garamond',serif;font-size:15px;padding:10px 14px;outline:none;transition:border-color .2s;resize:none}
+.field-input:focus,.field-textarea:focus{border-color:var(--gold-d)}
+.field-input::placeholder,.field-textarea::placeholder{color:var(--text-d);font-style:italic}
+.field-textarea{height:130px;line-height:1.6}
+.char-count{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:var(--text-d);text-align:right;margin-top:4px}
+.submit-btn{display:block;width:100%;margin-top:20px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;padding:14px;cursor:pointer;transition:all .3s}
+.submit-btn:hover{background:var(--gold);color:var(--navy4)}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.form-err{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;color:#c0392b;margin-top:12px;display:none}
+.form-success{text-align:center;padding:32px;display:none}
+.form-success-icon{font-size:28px;margin-bottom:12px;color:var(--gold)}
+.form-success-t{font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px;color:var(--text-b);margin-bottom:8px}
+.form-success-s{font-size:15px;font-style:italic;color:var(--text-d);line-height:1.6}
+.form-success-back{display:inline-block;margin-top:20px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);cursor:pointer;border-bottom:1px solid var(--gold-d);padding-bottom:2px}
+.feed-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:20px}
+.comment-card{background:var(--navy);border:1px solid var(--border2);padding:24px 28px;margin-bottom:12px;transition:border-color .2s}
+.comment-card:hover{border-color:var(--border)}
+.cc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cc-author{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-b)}
+.cc-date{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d)}
+.cc-body{font-size:clamp(15px,1.6vw,17px);line-height:1.9;color:var(--text);font-weight:300}
+.cc-verse{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-top:14px;padding-top:12px;border-top:1px solid var(--border2)}
+.feed-loading{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);padding:40px 0;text-align:center}
+.feed-empty{text-align:center;padding:48px 0}
+.feed-empty-t{font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;color:var(--text-d);margin-bottom:8px}
+.feed-empty-s{font-size:14px;font-style:italic;color:var(--text-d);opacity:.7}
+.side-panel{position:sticky;top:80px}
+.sp{background:var(--navy);border:1px solid var(--border2);padding:24px;margin-bottom:16px}
+.sp-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
+.sp-verse{font-size:16px;font-style:italic;color:var(--text-b);line-height:1.75;margin-bottom:10px}
+.sp-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--gold-d);text-transform:uppercase}
+.sp-stat{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border2)}
+.sp-stat:last-child{border-bottom:none;padding-bottom:0}
+.sp-stat-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
+.sp-stat-val{font-family:'Cinzel',serif;font-size:12px;color:var(--text-b)}
+.sp-link{display:block;padding:10px 0;border-bottom:1px solid var(--border2);font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color .2s}
+.sp-link:last-child{border-bottom:none}
+.sp-link:hover{color:var(--gold)}
 @media(max-width:860px){
   .mob-bar{display:flex}
   .sb{transform:translateX(-100%)}
   .sb.open{transform:translateX(0)}
   .mob-overlay.open{display:block}
   .main{margin-left:0!important;padding-top:52px}
-  .topbar{padding:12px 16px}
-  .body,.hero{padding-left:16px!important;padding-right:16px!important}
-  .two-col{grid-template-columns:1fr!important}
-  .cards-row{grid-template-columns:1fr!important}
+  .topbar{padding:12px 16px;top:52px}
+  .two-col{grid-template-columns:1fr}
+  .side-panel{position:static}
+  .page-hero,.body{padding-left:16px!important;padding-right:16px!important}
 }
-
-:root{--navy:#0E1628;--navy2:#131D35;--navy4:#0A1020;--gold:#C9A43A;--gold-l:#E0BC5A;--gold-d:#8A6E20;--border:rgba(201,164,58,0.15);--border2:rgba(201,164,58,0.08);--text:#C8B898;--text-d:#6A6050;--text-b:#EDE0C0;--sb-w:220px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.main{margin-left:220px;flex:1;display:flex;flex-direction:column}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border2);background:rgba(14,22,40,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.tb-title{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--text-b);letter-spacing:1px}
-.tb-sub{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-b);opacity:0.9}
-
-/* Layout */
-.page-hero{
-  padding:56px 56px 44px;background:var(--navy);border-bottom:1px solid var(--border2);
-  position:relative;overflow:hidden;
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 100% 50%,rgba(201,164,58,0.04),transparent);pointer-events:none}
-.ph-eyebrow{font-family:'Cinzel',serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
-.ph-title{font-family:'Cinzel',serif;font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--text-b);margin-bottom:14px}
-.ph-desc{font-size:17px;font-style:italic;color:var(--text-d);max-width:540px;line-height:1.8}
-
-.body{padding:32px 56px 80px;flex:1}
-.layout{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start}
-
-/* Featured article */
-.featured{
-  background:var(--navy);border:1px solid var(--border2);overflow:hidden;
-  margin-bottom:20px;cursor:pointer;transition:border-color 0.3s;
-  animation:rise 0.5s ease both;
-.featured:hover{border-color:var(--gold-d)}
-.feat-img{
-  height:220px;background:linear-gradient(135deg,#0d1a30,#1a2a50,#0a1020);
-  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
-.feat-img-inner{
-  text-align:center;padding:24px;position:relative;z-index:1;
-.feat-img-ref{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
-.feat-img-quote{font-size:clamp(16px,2vw,20px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.65;max-width:480px}
-.feat-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,164,58,0.12),transparent 60%)}
-.feat-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,var(--navy),transparent)}
-.feat-tag{position:absolute;top:16px;left:16px;font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);background:rgba(14,22,40,0.9);border:1px solid var(--gold-d);padding:4px 12px;z-index:2}
-.feat-body{padding:28px 28px 22px}
-.feat-meta{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.feat-date{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d)}
-.feat-cat{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);padding:3px 10px;border:1px solid var(--border2)}
-.feat-title{font-family:'Cinzel',serif;font-size:clamp(16px,2vw,20px);font-weight:600;color:var(--text-b);line-height:1.35;margin-bottom:12px}
-.feat-excerpt{font-size:clamp(15px,1.6vw,17px);font-style:italic;color:var(--text-d);line-height:1.8}
-.feat-foot{padding:16px 28px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
-.feat-author{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-.feat-read{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);cursor:pointer;transition:color 0.2s}
-.feat-read:hover{color:var(--gold)}
-
-/* Article list */
-.article{
-  display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border2);
-  cursor:pointer;transition:all 0.2s;
-  animation:rise 0.4s ease both;
-.article:first-child{padding-top:0}
-.article:last-child{border-bottom:none;padding-bottom:0}
-.article:hover .art-title{color:var(--gold-d)}
-.art-num{font-family:'Cinzel',serif;font-size:11px;color:var(--text-d);min-width:24px;padding-top:3px;opacity:0.5}
-.art-body{flex:1}
-.art-meta{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);margin-bottom:7px}
-.art-title{font-family:'Cinzel',serif;font-size:clamp(13px,1.5vw,15px);font-weight:600;color:var(--text-b);line-height:1.4;margin-bottom:6px;transition:color 0.2s}
-.art-excerpt{font-size:clamp(14px,1.4vw,15px);font-style:italic;color:var(--text-d);line-height:1.65}
-
-/* Sidebar */
-.aside-block{background:var(--navy);border:1px solid var(--border2);padding:22px;margin-bottom:16px}
-.aside-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px}
-.quote-big{font-size:clamp(17px,2vw,21px);font-style:italic;font-weight:300;color:var(--text-b);line-height:1.75;margin-bottom:12px;border-left:2px solid var(--gold-d);padding-left:18px}
-.quote-by{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);padding-left:20px}
-.tag-cloud{display:flex;flex-wrap:wrap;gap:7px}
-.tag{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border2);color:var(--text-d);cursor:pointer;transition:all 0.2s}
-.tag:hover{border-color:var(--gold-d);color:var(--gold-d)}
-.rec-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border2);cursor:pointer;transition:all 0.2s}
-.rec-item:last-child{border-bottom:none;padding-bottom:0}
-.rec-item:first-child{padding-top:0}
-.rec-item:hover .rec-title{color:var(--gold-d)}
-.rec-n{font-family:'Cinzel',serif;font-size:9px;color:var(--text-d);min-width:16px}
-.rec-title{font-size:clamp(13px,1.4vw,14px);color:var(--text-b);line-height:1.45;transition:color 0.2s}
-.rec-date{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-d);margin-top:3px}
-
-/* Article reader overlay */
-.reader-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(6px)}
-.reader-overlay.open{opacity:1;pointer-events:all}
-.reader{position:fixed;top:0;right:0;width:min(720px,100vw);height:100vh;background:var(--navy);border-left:1px solid var(--border2);overflow-y:auto;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);z-index:400;display:flex;flex-direction:column}
-.reader.open{transform:translateX(0)}
-.reader-top{height:2px;background:linear-gradient(to right,transparent,var(--gold-d),var(--gold),var(--gold-d),transparent)}
-.reader-head{padding:24px 32px 20px;border-bottom:1px solid var(--border2);display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;background:var(--navy);z-index:10}
-.reader-close{background:none;border:none;color:var(--text-d);font-size:18px;cursor:pointer;transition:color 0.2s;padding:4px}
-.reader-close:hover{color:var(--text-b)}
-.reader-body{padding:36px 48px 64px;flex:1}
-.rb-cat{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
-.rb-title{font-family:'Cinzel',serif;font-size:clamp(20px,3vw,26px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:14px}
-.rb-meta{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border2)}
-.rb-img{height:160px;background:linear-gradient(135deg,#0d1a30,#1a2a50);display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative}
-.rb-img-q{font-size:18px;font-style:italic;color:var(--text-b);text-align:center;padding:20px;line-height:1.65;max-width:480px}
-.rb-body p{font-size:clamp(17px,1.8vw,19px);line-height:2.05;color:var(--text);margin-bottom:18px}
-.rb-body p:last-child{margin-bottom:0}
-.rb-pull{border-left:2px solid var(--gold-d);padding:18px 24px;background:rgba(201,164,58,0.04);margin:24px 0}
-.rb-pull-t{font-size:18px;font-style:italic;color:var(--text-b);line-height:1.7}
-.rb-foot{margin-top:32px;padding-top:20px;border-top:1px solid var(--border2);font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
-
-@media(max-width:640px){.topbar,.page-hero,.body{padding-left:20px;padding-right:20px}.reader-body{padding:24px 24px 48px}}
-
-.sf{margin-bottom:18px}
-.sl{display:block;font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:8px}
-.si{width:100%;background:var(--navy2);border:1px solid var(--border2);color:var(--text-b);font-family:'Cormorant Garamond',serif;font-size:16px;padding:11px 14px;outline:none;transition:border 0.2s}
-.si::placeholder{color:var(--text-d)}
-.si:focus{border-color:var(--gold-d)}
-textarea.si{display:block}
-
-
-
-
-
-
-
-
-
-
-
-/* All nav items — identical font/size/padding */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  .sb.open{transform:translateX(0)}
-  .main{margin-left:0 !important;padding-top:52px}
-}
-
-
-
-
-
-
-
-
-
-
-
-/* All nav items — same font / padding / left-border */
-
-
-
-
-
-
-
-
-
-
-
-
-  .main{margin-left:0 !important;padding-top:52px}
-  .topbar{top:52px}
-}
-
-
-/* ══ SIDEBAR ══════════════════════════════════════════════════════════════ */
-
-/* ══ MOBILE ════════════════════════════════════════════════════════════════ */
-@media(max-width:860px){
-  .sb.open{transform:translateX(0);z-index:350}
-  .main{margin-left:0 !important;padding-top:52px}
-}
-
-}
-}
+@media(max-width:640px){
+  .page-hero{padding-top:32px;padding-bottom:28px}
+  .body{padding-top:24px;padding-bottom:60px}
+  .form-row{grid-template-columns:1fr}
+  .form-block{padding:24px 20px}
 }
 </style>
 </head>
 <body>
+
 <div class="mob-bar">
   <a class="mob-logo" href="index.html">The Eternal Word</a>
   <button class="mob-ham" onclick="sbOpen()" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="sbClose()"></div>
+
 <aside class="sb" id="sidebar">
   <div class="sb-logo">
     <a href="index.html">
@@ -334,409 +139,224 @@ textarea.si{display:block}
     </div>
     <a class="sb-link" href="calendar.html">Calendar</a>
     <a class="sb-link" href="archive.html">Archive</a>
-    <a class="sb-link on" href="blog.html">Blog</a>
+    <a class="sb-link on" href="blog.html">Community</a>
     <a class="sb-link" href="settings.html">Settings</a>
   </nav>
   <div class="sb-foot"><div class="sb-foot-date" id="sb-date"></div></div>
 </aside>
+
 <main class="main">
   <div class="topbar">
-    <div class="tb-title">Blog</div>
-    <div style="display:flex;align-items:center;gap:14px"><div class="tb-sub">Theological Essays</div><button onclick="openSubmit()" style="background:none;border:1px solid var(--gold-d);color:var(--gold-d);font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;padding:7px 16px;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='rgba(201,164,58,0.1)'" onmouseout="this.style.background='none'">+ Submit Essay</button></div>
+    <div class="tb-title">Community</div>
+    <div class="tb-count" id="tb-count"></div>
   </div>
 
   <div class="page-hero">
-    <div class="ph-eyebrow">Reflections & Essays</div>
-    <div class="ph-title">The Blog</div>
-    <div class="ph-desc">Longer meditations on scripture, theology, and the Christian life — drawing from the great cloud of witnesses.</div>
+    <div class="ph-eyebrow">The Community</div>
+    <div class="ph-title">Share Your Reflection</div>
+    <div class="ph-sub">A space to share thoughts on today's devotion, personal insights, or what God has placed on your heart.</div>
   </div>
 
   <div class="body">
-    <div class="layout">
+    <div class="two-col">
+
       <div>
-        <!-- Featured -->
-        <div class="featured" onclick="openArticle(0)">
-          <div class="feat-img">
-            <div class="feat-tag">Featured</div>
-            <div class="feat-img-inner">
-              <div class="feat-img-ref">Matthew 28:20</div>
-              <div class="feat-img-quote">"For I am with you always, to the end of the age."</div>
+        <div class="form-block">
+          <div class="form-lbl">Leave a Reflection</div>
+          <div id="comment-form">
+            <div class="form-row">
+              <div>
+                <div class="field-lbl">Your Name</div>
+                <input class="field-input" id="cf-name" type="text" placeholder="How you'd like to be known" maxlength="60">
+              </div>
+              <div>
+                <div class="field-lbl">Scripture (optional)</div>
+                <input class="field-input" id="cf-verse" type="text" placeholder="e.g. John 3:16" maxlength="60">
+              </div>
             </div>
-          </div>
-          <div class="feat-body">
-            <div class="feat-meta">
-              <span class="feat-date">March 2026</span>
-              <span class="feat-cat">Presence</span>
+            <div class="form-row single">
+              <div>
+                <div class="field-lbl">Your Reflection</div>
+                <textarea class="field-textarea" id="cf-body" placeholder="Share what's on your heart…" maxlength="800" oninput="updateCount()"></textarea>
+                <div class="char-count"><span id="cf-count">0</span> / 800</div>
+              </div>
             </div>
-            <div class="feat-title">A Quiet Hour: Cultivating Nearness Through Daily Scripture</div>
-            <div class="feat-excerpt">In the noise of modern life, the discipline of stillness has become radical. Bonhoeffer called it "life together" — the practice of intentional encounter with the living Word. What does it mean to truly be with God, and not merely near him?</div>
+            <div class="form-err" id="cf-err"></div>
+            <button class="submit-btn" id="cf-submit" onclick="submitComment()">Post Reflection →</button>
           </div>
-          <div class="feat-foot">
-            <span class="feat-author">Editorial</span>
-            <span class="feat-read">Read Essay →</span>
+          <div class="form-success" id="comment-success">
+            <div class="form-success-icon">✦</div>
+            <div class="form-success-t">Reflection Posted</div>
+            <div class="form-success-s">Thank you for sharing. Your words are a gift to the community.</div>
+            <div class="form-success-back" onclick="resetForm()">Post another reflection</div>
           </div>
         </div>
 
-        <!-- Article list -->
-        <div id="article-list">
-          <!-- Populated by JS -->
+        <div class="feed-lbl">Community Reflections</div>
+        <div id="feed">
+          <div class="feed-loading">Loading reflections…</div>
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div>
-        <div class="aside-block">
-          <div class="aside-lbl">This Week's Thought</div>
-          <div class="quote-big" id="aside-quote">"The cross is the only ladder high enough to touch the threshold of heaven."</div>
-          <div class="quote-by" id="aside-by">— G.D. Watson</div>
+      <div class="side-panel">
+        <div class="sp">
+          <div class="sp-lbl">Today's Verse</div>
+          <div class="sp-verse" id="sp-verse">…</div>
+          <div class="sp-ref" id="sp-ref"></div>
         </div>
-        <div class="aside-block">
-          <div class="aside-lbl">Topics</div>
-          <div class="tag-cloud">
-            <div class="tag">Scripture</div>
-            <div class="tag">Prayer</div>
-            <div class="tag">Suffering</div>
-            <div class="tag">Grace</div>
-            <div class="tag">Discipleship</div>
-            <div class="tag">Presence</div>
-            <div class="tag">Holiness</div>
-            <div class="tag">The Cross</div>
-            <div class="tag">Identity</div>
-            <div class="tag">Eternity</div>
+        <div class="sp">
+          <div class="sp-lbl">Community</div>
+          <div class="sp-stat">
+            <span class="sp-stat-lbl">Total Reflections</span>
+            <span class="sp-stat-val" id="stat-count">—</span>
+          </div>
+          <div class="sp-stat">
+            <span class="sp-stat-lbl">Today</span>
+            <span class="sp-stat-val" id="stat-today">—</span>
           </div>
         </div>
-        <div class="aside-block">
-          <div class="aside-lbl">Recommended Reading</div>
-          <div id="rec-list"></div>
+        <div class="sp">
+          <div class="sp-lbl">Explore</div>
+          <a class="sp-link" href="index.html">Today's Devotion</a>
+          <a class="sp-link" href="archive.html">Archive</a>
+          <a class="sp-link" href="calendar.html">Calendar</a>
+          <a class="sp-link" href="learn.html?topic=christian-identity">Study Topics</a>
         </div>
       </div>
+
     </div>
   </div>
 </main>
 
-<!-- Reader overlay -->
-<div class="reader-overlay" id="ro" onclick="closeReader()"></div>
-<div class="reader" id="reader">
-  <div class="reader-top"></div>
-  <div class="reader-head">
-    <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d)">Essay</div>
-    <button class="reader-close" onclick="closeReader()">✕</button>
-  </div>
-  <div class="reader-body" id="reader-body"></div>
-</div>
-
 <script>
+const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-const now=new Date();
-document.getElementById('sb-date').innerHTML=`${MONTHS[now.getMonth()]}<br>${now.getDate()}<br>${now.getFullYear()}`;
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-const ARTICLES=[
-  {
-    cat:'Presence',date:'March 2026',
-    title:'A Quiet Hour: Cultivating Nearness Through Daily Scripture',
-    excerpt:'In the noise of modern life, the discipline of stillness has become radical. Bonhoeffer called it "life together" — the practice of intentional encounter with the living Word.',
-    quote:'"For I am with you always, to the end of the age." — Matthew 28:20',
-    body:`<p>There is a difference between knowing about God and knowing God. The ancient mystics understood this distinction with startling clarity. Thomas à Kempis wrote that he would rather feel contrition than be skilled at defining it. The spiritual life, he insisted, is not an academic exercise but a daily descent into the heart of Christ.</p>
-<p>Watchman Nee taught that the Christian life begins at the cross and is sustained there. Every morning we return not to accomplish something new, but to receive afresh what was already accomplished. This is the posture of the quiet hour — not striving, but receiving.</p>
-<p>Dietrich Bonhoeffer, writing from the radical context of the Nazi resistance, described the morning meditation as "the most important hour of the day." Not because of what we produce in it, but because of who meets us there. The Word does not wait for us to be ready. It meets us in our unreadiness.</p>`,
-    sources:['Watchman Nee','Dietrich Bonhoeffer','Thomas à Kempis'],
-    ref:'Matthew 28:20'
-  },
-  {
-    cat:'The Cross',date:'February 2026',
-    title:'Why Morning Prayer Matters: The Theology of First Hours',
-    excerpt:'The ancient church called it the "hora prima" — the first hour. Before bread, before work, before the world made its demands, the faithful turned eastward toward the light.',
-    quote:'"I will sing of your strength; I will sing aloud of your steadfast love in the morning." — Psalm 59:16',
-    body:`<p>The Psalms are saturated with morning. Again and again the poets of Israel cry out in the dawn — not because morning is sentimental, but because first light carries theological weight. It is the daily resurrection; the renewal of covenant mercy that Lamentations declares comes "new every morning."</p>
-<p>C.S. Lewis observed that the moment we wake, we are assaulted by demands. The day makes its claim before we have had time to gather ourselves. This is why the discipline of the morning hour is not a pious extra but a kind of spiritual combat. To pray before the world speaks is to declare who has first claim on the day.</p>
-<p>Tim Keller, drawing on the Reformed tradition, wrote that prayer is not overcoming God's reluctance but laying hold of his willingness. The morning is the natural time for this laying hold — when the hands are empty and the heart, if we let it, is soft.</p>`,
-    sources:['C.S. Lewis','Tim Keller','Lamentations 3'],
-    ref:'Psalm 59:16'
-  },
-  {
-    cat:'Suffering',date:'January 2026',
-    title:'Suffering Transfigured: What the Cross Does to Pain',
-    excerpt:'There is no theology of suffering worth its salt that does not begin at Golgotha. The Christian answer to pain is not an explanation — it is a person.',
-    quote:'"My God, my God, why have you forsaken me?" — Psalm 22:1',
-    body:`<p>C.S. Lewis called pain "God's megaphone to rouse a deaf world." But he wrote that before his wife died. After Joy's death, he wrote A Grief Observed — a brutal, honest account of faith under pressure. Pain did not lead him neatly to God; it led him through a dark passage where God seemed absent.</p>
-<p>This is the more honest testimony. The cross does not make suffering comfortable. It makes it meaningful — which is a different and harder thing. Jesus did not explain suffering from the cross; he entered it. He went down into the darkness so that darkness would never again be without him.</p>
-<p>Ravi Zacharias observed that the resurrection is not the denial of the crucifixion — it is its vindication. The wounds remain in the risen body. Easter does not erase Good Friday; it transforms it. This is the shape of Christian hope: not pain removed but pain redeemed.</p>`,
-    sources:['C.S. Lewis','Ravi Zacharias','Psalm 22'],
-    ref:'Psalm 22:1'
-  },
-  {
-    cat:'Apologetics',date:'December 2025',
-    title:'Napoleon and the Christ: The Most Remarkable Testimony in History',
-    excerpt:'"I know men and I tell you that Jesus Christ is no mere man. Between him and every other person in the world there is no possible term of comparison."',
-    quote:'"Everything in Christ astonishes me." — Napoleon Bonaparte',
-    body:`<p>Napoleon Bonaparte was not a religious man in the conventional sense. Yet in exile on St. Helena, stripped of empire and power, he spoke some of the most extraordinary words ever uttered about Jesus Christ. These were not the words of a convert, but of a conqueror who had studied history and could not explain what he found.</p>
-<p>"Alexander, Caesar, Charlemagne, and I have founded empires," he said. "But on what did we rest the creations of our genius? Upon force. Jesus Christ founded his empire upon love; and at this hour millions of men would die for him."</p>
-<p>Ravi Zacharias used this testimony often, not because Napoleon was a great Christian, but because he was a great student of power — and power, Napoleon concluded, could not account for Christ. The resurrection remains the hinge of history that no purely naturalistic explanation can adequately address.</p>`,
-    sources:['Napoleon Bonaparte','Ravi Zacharias','Wayne Grudem'],
-    ref:'John 1:1'
-  },
-  {
-    cat:'Grace',date:'November 2025',
-    title:'In the Beginning Was Grace: Bonhoeffer on Cheap and Costly Grace',
-    excerpt:'Cheap grace is the preaching of forgiveness without requiring repentance. Costly grace is the gospel which must be sought again and again, the gift which must be asked for.',
-    quote:'"Cheap grace is grace without discipleship." — Dietrich Bonhoeffer',
-    body:`<p>Dietrich Bonhoeffer's distinction between cheap and costly grace remains one of the most important contributions to twentieth-century Christianity. Writing in Germany as Hitler rose to power, he saw clearly what happened when grace was separated from the demands of discipleship: the church lost its prophetic nerve.</p>
-<p>Costly grace, he wrote, is costly because it calls us to follow, and it is grace because it calls us to follow Jesus Christ. The paradox is that what costs everything is also what sets us free. The grace that asks nothing of us gives nothing to us; the grace that asks everything is the only grace worth having.</p>
-<p>John Bunyan's Pilgrim's Progress understood this intuitively. Christian's burden does not fall off at the moment of decision — it falls at the cross. And the cross demands something of the one who kneels before it. Not merit, but surrender. Not achievement, but abandonment.</p>`,
-    sources:['Dietrich Bonhoeffer','John Bunyan','C.S. Lewis'],
-    ref:'Romans 6:1-2'
-  },
-  {
-    cat:'Identity',date:'October 2025',
-    title:'Who Am I? Identity, Baptism, and the New Creation',
-    excerpt:'The question "who am I?" is not first a psychological question. It is a theological one. And its answer is not found by looking inward but by looking to the one who made us.',
-    quote:'"You are a chosen people, a royal priesthood." — 1 Peter 2:9',
-    body:`<p>Modern culture offers identity through achievement, affiliation, and self-expression. The Christian gospel offers something more radical: identity through adoption. You are not who you make yourself to be. You are who God declares you to be in Christ.</p>
-<p>Tim Keller observed that the gospel is the only worldview that bases identity neither on self-assertion nor social approval, but on grace received. This is why Christian identity is uniquely stable — it does not fluctuate with performance or feeling. It rests on the immovable word of God.</p>
-<p>Wayne Grudem, in his Systematic Theology, grounds this identity in the doctrine of adoption — the teaching that those who believe in Christ are made children of God by a legal and relational act of divine grace. This sonship changes everything: our standing before God, our relationship to suffering, our attitude toward death.</p>`,
-    sources:['Tim Keller','Wayne Grudem','1 Peter 2'],
-    ref:'1 Peter 2:9'
-  }
-];
+(function(){
+  const now=new Date();
+  const el=document.getElementById('sb-date');
+  if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MONTHS[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
+})();
 
-const RECS=[
-  {n:'01',title:'The Cost of Discipleship — Bonhoeffer',date:'Classic'},
-  {n:'02',title:'Mere Christianity — C.S. Lewis',date:'Classic'},
-  {n:'03',title:'The Normal Christian Life — Watchman Nee',date:'Classic'},
-  {n:'04',title:"The Reason for God — Tim Keller",date:'Modern'},
-  {n:'05',title:"The Pilgrim's Progress — John Bunyan",date:'Classic'},
-];
-
-// Build article list
-document.getElementById('article-list').innerHTML=ARTICLES.slice(1).map((a,i)=>`
-  <div class="article" onclick="openArticle(${i+1})" style="animation-delay:${i*0.06}s">
-    <div class="art-num">0${i+1}</div>
-    <div class="art-body">
-      <div class="art-meta">${a.date} · ${a.cat}</div>
-      <div class="art-title">${a.title}</div>
-      <div class="art-excerpt">${a.excerpt}</div>
-    </div>
-  </div>`).join('');
-
-// Build recommendations
-document.getElementById('rec-list').innerHTML=RECS.map(r=>`
-  <div class="rec-item">
-    <div class="rec-n">${r.n}</div>
-    <div><div class="rec-title">${r.title}</div><div class="rec-date">${r.date}</div></div>
-  </div>`).join('');
-
-// Rotate aside quote from articles
-const rndArt=ARTICLES[Math.floor(Math.random()*ARTICLES.length)];
-document.getElementById('aside-quote').textContent=rndArt.quote.split('—')[0].trim();
-document.getElementById('aside-by').textContent='— '+(rndArt.quote.split('—')[1]||rndArt.sources[0]||'').trim();
-
-function openArticle(idx){
-  const a=ARTICLES[idx];
-  document.getElementById('reader-body').innerHTML=`
-    <div class="rb-cat">${a.cat}</div>
-    <div class="rb-title">${a.title}</div>
-    <div class="rb-meta">${a.date} · ${a.sources.join(' · ')}</div>
-    <div class="rb-img"><div class="rb-img-q">${a.quote}</div></div>
-    <div class="rb-body">${a.body}</div>
-    <div class="rb-pull"><div class="rb-pull-t">${a.quote}</div></div>
-    <div class="rb-foot">Sources: ${a.sources.join(' · ')}</div>`;
-  document.getElementById('reader').classList.add('open');
-  document.getElementById('ro').classList.add('open');
-}
-function closeReader(){
-  document.getElementById('reader').classList.remove('open');
-  document.getElementById('ro').classList.remove('open');
+function updateCount(){
+  document.getElementById('cf-count').textContent=document.getElementById('cf-body').value.length;
 }
 
-function openSubmit(){
-  document.getElementById('submit-panel').classList.add('open');
-  document.getElementById('so').classList.add('open');
+function resetForm(){
+  document.getElementById('comment-form').style.display='block';
+  document.getElementById('comment-success').style.display='none';
+  document.getElementById('cf-name').value='';
+  document.getElementById('cf-body').value='';
+  document.getElementById('cf-verse').value='';
+  document.getElementById('cf-count').textContent='0';
 }
-function closeSubmit(){
-  document.getElementById('submit-panel').classList.remove('open');
-  document.getElementById('so').classList.remove('open');
-  setTimeout(()=>{
-    document.getElementById('submit-form').style.display='block';
-    document.getElementById('submit-success').style.display='none';
-    document.getElementById('sf-error').style.display='none';
-  },400);
-}
-async function submitEssay(){
-  const name=document.getElementById('sf-name').value.trim();
-  const title=document.getElementById('sf-title').value.trim();
-  const body=document.getElementById('sf-body').value.trim();
-  const errEl=document.getElementById('sf-error');
-  if(!name||!title||!body){
-    errEl.textContent='Please fill in Name, Title, and Essay Body.';
-    errEl.style.display='block';return;
-  }
-  if(body.length<200){
-    errEl.textContent='Essay must be at least 200 characters.';
-    errEl.style.display='block';return;
-  }
+
+async function submitComment(){
+  const name=document.getElementById('cf-name').value.trim();
+  const body=document.getElementById('cf-body').value.trim();
+  const verse=document.getElementById('cf-verse').value.trim();
+  const errEl=document.getElementById('cf-err');
+  const btn=document.getElementById('cf-submit');
   errEl.style.display='none';
-  const payload={
-    author_name:name,
-    author_email:document.getElementById('sf-email').value.trim()||null,
-    title,
-    category:document.getElementById('sf-cat').value||null,
-    body,
-    scripture_reference:document.getElementById('sf-ref').value.trim()||null,
-    sources:document.getElementById('sf-sources').value.trim()||null,
-    status:'pending'
-  };
+  if(!name){errEl.textContent='Please enter your name.';errEl.style.display='block';return;}
+  if(!body||body.length<10){errEl.textContent='Please write a little more.';errEl.style.display='block';return;}
+  btn.disabled=true;btn.textContent='Posting…';
   try{
-    const r=await fetch('https://mjphpctvuxmbjhmcscoj.supabase.co/rest/v1/blog_submissions',{
+    const r=await fetch(`${SB}/rest/v1/blog_submissions`,{
       method:'POST',
-      headers:{
-        'apikey':'sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm',
-        'Authorization':'Bearer sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm',
-        'Content-Type':'application/json',
-        'Prefer':'return=minimal'
-      },
-      body:JSON.stringify(payload)
+      headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({author_name:name,body:body,scripture_reference:verse||null,title:'Community Reflection',category:'community'})
     });
     if(r.ok||r.status===201){
-      document.getElementById('submit-form').style.display='none';
-      document.getElementById('submit-success').style.display='block';
+      document.getElementById('comment-form').style.display='none';
+      document.getElementById('comment-success').style.display='block';
+      loadFeed();
     } else {
-      const err=await r.json();
-      errEl.textContent='Submission failed. Please try again.';
+      errEl.textContent='Could not post. Please try again.';
       errEl.style.display='block';
-      console.error(err);
     }
   }catch(e){
     errEl.textContent='Network error. Please check your connection.';
     errEl.style.display='block';
   }
+  btn.disabled=false;btn.textContent='Post Reflection →';
 }
 
+function relDate(str){
+  const d=new Date(str),now=new Date(),diff=Math.floor((now-d)/1000);
+  if(diff<60) return 'Just now';
+  if(diff<3600) return Math.floor(diff/60)+'m ago';
+  if(diff<86400) return Math.floor(diff/3600)+'h ago';
+  if(diff<604800) return Math.floor(diff/86400)+'d ago';
+  return MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+}
 
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
+async function loadFeed(){
+  const feedEl=document.getElementById('feed');
+  try{
+    const r=await fetch(`${SB}/rest/v1/blog_submissions?category=eq.community&select=author_name,body,scripture_reference,created_at&order=created_at.desc&limit=100`,{
+      headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}
+    });
+    const comments=await r.json();
+    if(!Array.isArray(comments)) throw new Error();
+    const total=comments.length;
+    const todayCount=comments.filter(c=>{
+      const d=new Date(c.created_at),n=new Date();
+      return d.getFullYear()===n.getFullYear()&&d.getMonth()===n.getMonth()&&d.getDate()===n.getDate();
+    }).length;
+    document.getElementById('stat-count').textContent=total;
+    document.getElementById('stat-today').textContent=todayCount;
+    document.getElementById('tb-count').textContent=total+' Reflection'+(total!==1?'s':'');
+    if(total===0){
+      feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-t">Be the first to share</div><div class="feed-empty-s">Your reflection could encourage someone today.</div></div>';
+      return;
+    }
+    feedEl.innerHTML=comments.map(c=>`
+      <div class="comment-card">
+        <div class="cc-header">
+          <div class="cc-author">${escHtml(c.author_name||'Anonymous')}</div>
+          <div class="cc-date">${relDate(c.created_at)}</div>
+        </div>
+        <div class="cc-body">${escHtml(c.body)}</div>
+        ${c.scripture_reference?`<div class="cc-verse">${escHtml(c.scripture_reference)}</div>`:''}
+      </div>`).join('');
+  }catch(e){
+    feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-s">Could not load reflections.</div></div>';
+  }
+}
 
+async function loadTodayVerse(){
+  const now=new Date();
+  const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
+  try{
+    const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=scripture_text,scripture_reference&limit=1`,{
+      headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}
+    });
+    const rows=await r.json();
+    if(rows?.length){
+      document.getElementById('sp-verse').textContent='\u201c'+rows[0].scripture_text+'\u201d';
+      document.getElementById('sp-ref').textContent='\u2014 '+rows[0].scripture_reference;
+    }
+  }catch(e){}
+}
 
-
-
-
-
-/* ── sidebar ── */
-(function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var now=new Date();
-  var el=document.getElementById('sb-date');
-  if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
-  // auto-expand study if on learn page
-  if(window.location.pathname.indexOf('learn.html')!==-1) studyOpen();
-})();
-
-
-/* ── Sidebar ── */
-
-
-/* ── Sidebar JS ── */
 var _so=false;
 function sbStudy(){
   _so=!_so;
-  var s=document.getElementById('study-sub');
-  var b=document.getElementById('study-btn');
+  var s=document.getElementById('study-sub'),b=document.getElementById('study-btn');
   if(s) s.style.maxHeight=_so?'520px':'0';
-  if(b){b.style.color=_so?'var(--gold)':'';b.style.borderLeftColor=_so?'var(--gold-d)':'';}
+  if(b){b.style.color=_so?'var(--gold)':'';b.style.borderLeftColor=_so?'var(--gold-d)':''}
 }
-function sbStudyExpand(){
-  _so=true;
-  var s=document.getElementById('study-sub');
-  var b=document.getElementById('study-btn');
-  if(s) s.style.maxHeight='520px';
-  if(b){b.style.color='var(--gold)';b.style.borderLeftColor='var(--gold-d)';}
-}
-function sbOpen(){
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('mob-overlay').classList.add('open');
-}
-function sbClose(){
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('mob-overlay').classList.remove('open');
-}
-(function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var now=new Date();
-  var el=document.getElementById('sb-date');
-  if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
-  if(window.location.pathname.indexOf('learn.html')!==-1) sbStudyExpand();
-})();
+function sbOpen(){document.getElementById('sidebar').classList.add('open');document.getElementById('mob-overlay').classList.add('open')}
+function sbClose(){document.getElementById('sidebar').classList.remove('open');document.getElementById('mob-overlay').classList.remove('open')}
 
+loadFeed();
+loadTodayVerse();
 </script>
-
-<!-- Submit overlay -->
-<div class="reader-overlay" id="so" onclick="closeSubmit()"></div>
-<div class="reader" id="submit-panel">
-  <div class="reader-top"></div>
-  <div class="reader-head">
-    <div>
-      <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:4px">Contribute</div>
-      <div style="font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--text-b)">Submit an Essay</div>
-    </div>
-    <button class="reader-close" onclick="closeSubmit()">✕</button>
-  </div>
-  <div class="reader-body">
-    <div style="font-size:16px;font-style:italic;color:var(--text-d);line-height:1.8;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border2)">
-      Share a theological reflection, scripture meditation, or essay with the community. Submissions are reviewed before publication.
-    </div>
-
-    <div id="submit-form">
-      <div class="sf">
-        <label class="sl">Your Name</label>
-        <input class="si" id="sf-name" placeholder="Full name or pen name" type="text">
-      </div>
-      <div class="sf">
-        <label class="sl">Email <span style="opacity:0.4">(optional, not published)</span></label>
-        <input class="si" id="sf-email" placeholder="your@email.com" type="email">
-      </div>
-      <div class="sf">
-        <label class="sl">Essay Title</label>
-        <input class="si" id="sf-title" placeholder="A title for your reflection…" type="text">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div class="sf">
-          <label class="sl">Category</label>
-          <select class="si" id="sf-cat">
-            <option value="">Select…</option>
-            <option>Scripture</option><option>Prayer</option><option>Suffering</option>
-            <option>Grace</option><option>Discipleship</option><option>Presence</option>
-            <option>Holiness</option><option>The Cross</option><option>Identity</option>
-            <option>Eternity</option><option>Apologetics</option><option>Other</option>
-          </select>
-        </div>
-        <div class="sf">
-          <label class="sl">Key Scripture</label>
-          <input class="si" id="sf-ref" placeholder="e.g. John 3:16" type="text">
-        </div>
-      </div>
-      <div class="sf">
-        <label class="sl">Essay Body</label>
-        <textarea class="si" id="sf-body" rows="10" placeholder="Write your reflection here… Aim for at least 3 paragraphs. Draw from scripture and the great theologians." style="resize:vertical;line-height:1.9"></textarea>
-      </div>
-      <div class="sf">
-        <label class="sl">Sources & Theologians Referenced</label>
-        <input class="si" id="sf-sources" placeholder="e.g. C.S. Lewis, Dietrich Bonhoeffer, Psalm 23" type="text">
-      </div>
-      <div id="sf-error" style="display:none;color:#c05050;font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;padding:10px 14px;border:1px solid rgba(180,50,50,0.3)"></div>
-      <button onclick="submitEssay()" style="width:100%;background:rgba(201,164,58,0.1);border:1px solid var(--gold-d);color:var(--gold);font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;padding:16px;cursor:pointer;transition:all 0.3s" onmouseover="this.style.background='rgba(201,164,58,0.2)'" onmouseout="this.style.background='rgba(201,164,58,0.1)'">
-        Submit for Review →
-      </button>
-      <div style="text-align:center;margin-top:14px;font-size:13px;font-style:italic;color:var(--text-d)">Essays are reviewed within 48 hours. Thank you for contributing.</div>
-    </div>
-
-    <div id="submit-success" style="display:none;text-align:center;padding:40px 0">
-      <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px">Received</div>
-      <div style="font-family:'Cinzel',serif;font-size:20px;font-weight:600;color:var(--text-b);margin-bottom:14px">Thank You</div>
-      <div style="font-size:17px;font-style:italic;color:var(--text-d);line-height:1.85;margin-bottom:28px">"Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom." — Colossians 3:16</div>
-      <button onclick="closeSubmit()" style="background:none;border:1px solid var(--border);color:var(--text-d);font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:12px 28px;cursor:pointer">Close</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
