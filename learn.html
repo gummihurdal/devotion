@@ -88,41 +88,12 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .main{margin-left:220px;flex:1;display:flex;flex-direction:column}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
 /* Nav sidebar */
 .nav-sb{width:var(--sb-w);min-width:var(--sb-w);background:var(--navy);border-right:1px solid var(--border2);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:200}
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Shell */
@@ -225,31 +196,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @media(max-width:1100px){.nav-sb{display:none}.shell{margin-left:0}.two-col{grid-template-columns:1fr}}
 
 
-
-
-
-
-
-
-
-
-
 /* All nav items — identical font/size/padding */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
@@ -257,26 +204,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .main{margin-left:0 !important;padding-top:52px}
 
 
-
-
-
-
-
-
-
-
-
 /* All nav items — same font / padding / left-border */
-
-
-
-
-
-
-
-
-
-
 
 
   .main{margin-left:0 !important;padding-top:52px}
@@ -451,12 +379,6 @@ function navigate(dir){showLesson(cur+dir)}
 init().catch(console.error);
 
 
-
-
-
-
-
-
 /* ── sidebar ── */
 (function(){
   var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -472,8 +394,6 @@ init().catch(console.error);
 
 
 /* ── Sidebar JS ── */
-}
-}
 function sbOpen(){
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('mob-overlay').classList.add('open');
