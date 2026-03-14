@@ -103,10 +103,6 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .form-row{grid-template-columns:1fr}
   .form-block{padding:24px 20px}
 }
-.sb-section-lbl{padding:14px 24px 6px;font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);opacity:.8;border-top:1px solid var(--border2);margin-top:4px}
-.sb-sub-link{padding:8px 24px 8px 32px!important;font-size:10px!important;letter-spacing:2px!important;color:var(--text-d)!important}
-.sb-sub-link:hover{color:var(--gold)!important}
-.sb-sub-link.on{color:var(--gold)!important;border-left-color:var(--gold)!important}
 </style>
 </head>
 <body>
@@ -126,19 +122,21 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   </div>
   <nav class="sb-nav">
     <a class="sb-link" href="devotion.html">Daily Devotion</a>
-    <div class="sb-section-lbl">Study Topics</div>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=christian-identity">Identity</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=the-cross">The Cross</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=discipleship">Discipleship</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=apologetics">Apologetics</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=prayer">Prayer</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=suffering">Suffering</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=the-church">The Church</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=eternity">Eternity</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
-    <a class="sb-link sb-sub-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    <button class="sb-btn" id="study-btn" onclick="sbStudy()">Study Topics</button>
+    <div class="sb-sub" id="study-sub">
+      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
+      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
+      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
+      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
+      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
+      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
+      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
+      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
+      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
+      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
+      <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
+      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+    </div>
     <a class="sb-link" href="calendar.html">Calendar</a>
     <a class="sb-link" href="archive.html">Archive</a>
     <a class="sb-link on" href="blog.html">Blog</a>
@@ -347,6 +345,21 @@ async function loadTodayVerse(){
   }catch(e){}
 }
 
+var _so=false;
+function sbStudy(){
+  _so=!_so;
+  var s=document.getElementById('study-sub');
+  var b=document.getElementById('study-btn');
+  if(s) s.style.maxHeight=_so?'520px':'0';
+  if(b){b.style.color=_so?'var(--gold)':'';b.style.borderLeftColor=_so?'var(--gold-d)':'';b.style.background=_so?'rgba(201,164,58,0.04)':'';}
+}
+function sbStudyExpand(){
+  _so=true;
+  var s=document.getElementById('study-sub');
+  var b=document.getElementById('study-btn');
+  if(s) s.style.maxHeight='520px';
+  if(b){b.style.color='var(--gold)';b.style.borderLeftColor='var(--gold-d)';b.style.background='rgba(201,164,58,0.04)';}
+}
 function sbOpen(){document.getElementById('sidebar').classList.add('open');document.getElementById('mob-overlay').classList.add('open')}
 function sbClose(){document.getElementById('sidebar').classList.remove('open');document.getElementById('mob-overlay').classList.remove('open')}
 
