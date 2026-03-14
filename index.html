@@ -371,20 +371,24 @@ async function loadTodayVerse(){
 // Intersection observer for card reveal
 const cards=document.querySelectorAll('.card,.topic-pill');
 const obs=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
+  entries.forEach((e)=>{
     if(e.isIntersecting){
-      e.target.style.opacity='0';
-      e.target.style.transform='translateY(20px)';
+      const delay=(e.target.dataset.i||0)*60;
       setTimeout(()=>{
         e.target.style.transition='opacity .5s ease, transform .5s ease';
         e.target.style.opacity='1';
         e.target.style.transform='translateY(0)';
-      }, (e.target.dataset.i||0)*60);
+      }, delay);
       obs.unobserve(e.target);
     }
   });
-},{threshold:0.1});
-cards.forEach((c,i)=>{c.dataset.i=i;c.style.opacity='0';obs.observe(c);});
+},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+cards.forEach((c,i)=>{
+  c.dataset.i=i;
+  c.style.opacity='0';
+  c.style.transform='translateY(20px)';
+  obs.observe(c);
+});
 
 loadTodayVerse();
 </script>
