@@ -88,41 +88,9 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .main{margin-left:220px;flex:1;display:flex;flex-direction:column}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',serif;display:flex;min-height:100vh}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column}
@@ -165,31 +133,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 
-
-
-
-
-
-
-
-
-
 /* All nav items — identical font/size/padding */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   
@@ -198,26 +142,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 }
 
 
-
-
-
-
-
-
-
-
-
 /* All nav items — same font / padding / left-border */
-
-
-
-
-
-
-
-
-
-
 
 
   .main{margin-left:0 !important;padding-top:52px}
@@ -251,7 +176,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     </a>
   </div>
   <nav class="sb-nav">
-    <a class="sb-link" href="index.html">Daily Devotion</a>
+    <a class="sb-link" href="devotion.html">Daily Devotion</a>
     <div class="sb-section-lbl">Study Topics</div>
     <a class="sb-link sb-sub-link" href="learn.html?topic=christian-identity">Identity</a>
     <a class="sb-link sb-sub-link" href="learn.html?topic=the-cross">The Cross</a>
@@ -302,12 +227,6 @@ async function load(){
 load().catch(console.error);
 
 
-
-
-
-
-
-
 /* ── sidebar ── */
 (function(){
   var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -323,8 +242,6 @@ load().catch(console.error);
 
 
 /* ── Sidebar JS ── */
-}
-}
 function sbOpen(){
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('mob-overlay').classList.add('open');
