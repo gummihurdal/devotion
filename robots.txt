@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://devotion.azurenexus.com/sitemap.xml
