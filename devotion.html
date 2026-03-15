@@ -377,6 +377,11 @@ function sbClose(){
   if(new URLSearchParams(window.location.search).get('study')==='open'){
     sbOpen();
     sbStudyExpand();
+    // Highlight Study Topics, remove highlight from Daily Devotion
+    var dailyLink = document.querySelector('.sb-link.on');
+    if(dailyLink) dailyLink.classList.remove('on');
+    var studyBtn = document.getElementById('study-btn');
+    if(studyBtn) studyBtn.classList.add('on');
   }
 })();
 
