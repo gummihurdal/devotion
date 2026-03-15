@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Journey with God — Visitor Location</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0E1628;color:#C8B898;font-family:'Cormorant Garamond',serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#131D35;border:1px solid rgba(201,164,58,0.2);max-width:560px;width:100%;padding:48px 40px;text-align:center}
+.eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,164,58,0.6);margin-bottom:16px}
+h1{font-family:'Cinzel',serif;font-size:22px;font-weight:400;color:#EDE0C0;letter-spacing:1px;margin-bottom:40px}
+.divider{width:40px;height:1px;background:rgba(201,164,58,0.3);margin:0 auto 40px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(201,164,58,0.08)}
+.row:last-of-type{border-bottom:none}
+.lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.5)}
+.val{font-size:16px;color:#EDE0C0;font-weight:300}
+.val.big{font-size:20px;color:#C9A43A;font-family:'Cinzel',serif;font-weight:400}
+.flag{font-size:28px;margin-bottom:4px}
+.loading{font-style:italic;color:rgba(201,164,58,0.4);font-size:15px;padding:40px 0}
+.map-link{display:inline-block;margin-top:36px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,164,58,0.5);text-decoration:none;border:1px solid rgba(201,164,58,0.2);padding:10px 24px;transition:all .2s}
+.map-link:hover{color:#C9A43A;border-color:#C9A43A}
+@media(max-width:500px){.card{padding:32px 20px}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="eyebrow">Visitor Info</div>
+  <h1>Your Location</h1>
+  <div class="divider"></div>
+  <div id="content"><div class="loading">Detecting your location…</div></div>
+  <a class="map-link" href="https://devotion.azurenexus.com">← Back to Site</a>
+</div>
+<script>
+async function load(){
+  try{
+    const r = await fetch('https://ipapi.co/json/');
+    const d = await r.json();
+    const flag = d.country_code ? String.fromCodePoint(...[...d.country_code].map(c=>0x1F1E0-65+c.charCodeAt(0))) : '';
+    document.getElementById('content').innerHTML = `
+      <div class="flag">${flag}</div>
+      <div class="row"><span class="lbl">IP Address</span><span class="val big">${d.ip||'—'}</span></div>
+      <div class="row"><span class="lbl">Country</span><span class="val">${d.country_name||'—'}</span></div>
+      <div class="row"><span class="lbl">Region</span><span class="val">${d.region||'—'}</span></div>
+      <div class="row"><span class="lbl">City</span><span class="val">${d.city||'—'}</span></div>
+      <div class="row"><span class="lbl">Postal Code</span><span class="val">${d.postal||'—'}</span></div>
+      <div class="row"><span class="lbl">Timezone</span><span class="val">${d.timezone||'—'}</span></div>
+      <div class="row"><span class="lbl">ISP</span><span class="val">${d.org||'—'}</span></div>
+      <div class="row"><span class="lbl">Coordinates</span><span class="val">${d.latitude||'—'}, ${d.longitude||'—'}</span></div>
+    `;
+  }catch(e){
+    document.getElementById('content').innerHTML='<div class="loading">Could not detect location.</div>';
+  }
+}
+load();
+</script>
+</body>
+</html>
