@@ -174,7 +174,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
       <!-- Contact form via Formspree -->
       <div id="contact-form-wrap">
-        <form class="contact-form" id="contact-form" id="contact-form-el">
+        <form class="contact-form" id="contact-form" id="contact-form">
           <div class="form-row">
             <div>
               <label class="field-lbl" for="cf-name">Your Name</label>
@@ -218,7 +218,7 @@ const MON=['January','February','March','April','May','June','July','August','Se
 
 // Form submit via Formspree AJAX
 document.addEventListener('DOMContentLoaded', function(){
-document.getElementById('contact-form-el').addEventListener('submit', async function(e){
+document.getElementById('contact-form').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('cf-submit');
   const errEl = document.getElementById('cf-err');
@@ -228,7 +228,7 @@ document.getElementById('contact-form-el').addEventListener('submit', async func
   try {
     emailjs.init('JJk-GutLSrE4mwSPp');
     await emailjs.sendForm('service_u23ke2e', 'template_jjvpjqq', this);
-    document.getElementById('contact-form-el').style.display = 'none';
+    document.getElementById('contact-form').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   } catch(e){
     errEl.textContent = 'Could not send. Please email us directly at journey@azurenexus.com';
