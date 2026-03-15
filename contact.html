@@ -217,6 +217,7 @@ const MON=['January','February','March','April','May','June','July','August','Se
 })();
 
 // Form submit via Formspree AJAX
+document.addEventListener('DOMContentLoaded', function(){
 document.getElementById('contact-form-el').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('cf-submit');
@@ -236,6 +237,7 @@ document.getElementById('contact-form-el').addEventListener('submit', async func
     btn.textContent = 'Send Message →';
   }
 });
+}); // DOMContentLoaded
 
 var _so=false;
 function sbStudy(){
