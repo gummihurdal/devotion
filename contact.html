@@ -174,7 +174,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
       <!-- Contact form via Formspree -->
       <div id="contact-form-wrap">
-        <form class="contact-form" id="contact-form" id="contact-form">
+        <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div>
               <label class="field-lbl" for="cf-name">Your Name</label>
@@ -217,7 +217,6 @@ const MON=['January','February','March','April','May','June','July','August','Se
 })();
 
 // Form submit via Formspree AJAX
-document.addEventListener('DOMContentLoaded', function(){
 document.getElementById('contact-form').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('cf-submit');
@@ -237,7 +236,6 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     btn.textContent = 'Send Message →';
   }
 });
-}); // DOMContentLoaded
 
 var _so=false;
 function sbStudy(){
