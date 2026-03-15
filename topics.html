@@ -106,32 +106,11 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .ph-desc{font-size:17px;font-style:italic;color:var(--text-d);max-width:560px;line-height:1.8}
 
 .body{padding:40px 48px 80px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border2)}
 
-.tcard{
-  background:var(--navy);padding:36px 32px;text-decoration:none;display:block;
-  position:relative;overflow:hidden;transition:background 0.3s;
-  animation:rise 0.5s ease both;
-.tcard::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s}
-.tcard:hover{background:var(--navy2)}
-.tcard:hover::after{width:100%}
-.tc-num{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--text-d);margin-bottom:20px;opacity:0.5}
-.tc-title{font-family:'Cinzel',serif;font-size:clamp(15px,2vw,18px);font-weight:600;color:var(--text-b);line-height:1.3;margin-bottom:8px}
-.tc-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
-.tc-desc{font-size:14px;line-height:1.7;color:var(--text-d)}
-.tc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:16px;border-top:1px solid var(--border2)}
-.tc-lessons{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d)}
-.tc-arr{color:var(--text-d);transition:all 0.25s;font-size:18px}
-.tcard:hover .tc-arr{color:var(--gold);transform:translateX(4px)}
 
-.tcard:nth-child(1){animation-delay:.04s}.tcard:nth-child(2){animation-delay:.08s}.tcard:nth-child(3){animation-delay:.12s}
-.tcard:nth-child(4){animation-delay:.16s}.tcard:nth-child(5){animation-delay:.20s}.tcard:nth-child(6){animation-delay:.24s}
-.tcard:nth-child(7){animation-delay:.28s}.tcard:nth-child(8){animation-delay:.32s}.tcard:nth-child(9){animation-delay:.36s}
-.tcard:nth-child(10){animation-delay:.40s}.tcard:nth-child(11){animation-delay:.44s}.tcard:nth-child(12){animation-delay:.48s}
 
 #loading{flex:1;display:flex;align-items:center;justify-content:center}
 .load-t{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--text-d)}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 
 /* All nav items — identical font/size/padding */
@@ -156,6 +135,26 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @media(max-width:860px){
   .sb.open{transform:translateX(0);z-index:350}
   .main{margin-left:0 !important;padding-top:52px}
+}
+.tlist{display:flex;flex-direction:column;gap:0;max-width:760px;margin:0 auto;padding:32px 0 80px}
+.tlist-item{
+  display:flex;align-items:center;gap:20px;
+  padding:18px 24px;text-decoration:none;
+  border-bottom:1px solid var(--border2);
+  transition:all .2s;border-left:3px solid transparent;
+}
+.tlist-item:first-child{border-top:1px solid var(--border2)}
+.tlist-item:hover{background:var(--navy2);border-left-color:var(--gold);padding-left:28px}
+.tlist-num{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--gold-d);min-width:28px}
+.tlist-name{font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:var(--text-b);flex:1;letter-spacing:1px}
+.tlist-sub{font-size:13px;font-style:italic;color:var(--text-d);min-width:180px;text-align:right}
+.tlist-arr{font-size:14px;color:var(--gold-d);margin-left:16px;transition:all .2s}
+.tlist-item:hover .tlist-arr{color:var(--gold);transform:translateX(4px)}
+@media(max-width:600px){
+  .tlist{padding:16px 0 60px}
+  .tlist-item{padding:16px 16px;gap:12px}
+  .tlist-sub{display:none}
+  .tlist-item:hover{padding-left:20px}
 }
 </style>
 </head>
@@ -198,14 +197,12 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="sb-foot"><div class="sb-foot-date" id="sb-date"></div></div>
 </aside>
 <main class="main">
-  <div class="topbar"><div class="tb-title">Twelve Topics</div><div class="tb-count">84 Lessons</div></div>
-  <div class="page-hero">
-    <div class="ph-eyebrow">Deep Theological Study</div>
+  <div class="topbar"><div class="tb-title">Study Topics</div><div class="tb-count">84 Lessons</div></div>
     <div class="ph-title">Twelve Topics</div>
     <div class="ph-desc">As the Lord chose twelve, so twelve paths of study — each drawn from the great theologians, each designed to change not just the mind but the life.</div>
   </div>
   <div id="loading"><span class="load-t">Loading topics</span></div>
-  <div class="body" id="body" style="display:none"><div class="grid" id="grid"></div></div>
+  <div class="body" id="body" style="display:none"><div class="tlist" id="grid"></div></div>
 </main>
 <script>
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
@@ -214,14 +211,12 @@ document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[
 async function load(){
   const r=await fetch(`${SB}/rest/v1/topics?select=*&order=sort_order.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
   const topics=await r.json();
-  document.getElementById('loading').style.display='none';document.getElementById('body').style.display='block';setTimeout(()=>{document.querySelectorAll('.tcard').forEach(c=>{c.style.opacity='1';});},50);
-  document.getElementById('grid').innerHTML=topics.map((t,i)=>`
-    <a class="tcard" href="learn.html?topic=${t.slug}">
-      <div class="tc-num">Topic ${String(i+1).padStart(2,'0')} of 12</div>
-      <div class="tc-title">${t.title}</div>
-      <div class="tc-sub">${t.subtitle}</div>
-      <div class="tc-desc">${t.description}</div>
-      <div class="tc-foot"><span class="tc-lessons">7 Lessons</span><span class="tc-arr">→</span></div>
+  document.getElementById('loading').style.display='none';document.getElementById('body').style.display='block';setTimeout(()=>{document.querySelectorAll('  document.getElementById('grid').innerHTML=topics.map((t,i)=>`
+    <a class="tlist-item" href="learn.html?topic=${t.slug}">
+      <span class="tlist-num">${String(i+1).padStart(2,'0')}</span>
+      <span class="tlist-name">${t.title}</span>
+      <span class="tlist-sub">${t.subtitle}</span>
+      <span class="tlist-arr">→</span>
     </a>`).join('');
 }
 load().catch(console.error);
