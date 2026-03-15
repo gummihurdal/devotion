@@ -69,7 +69,6 @@ tr:hover td{background:rgba(201,164,58,0.03)}
   <button class="btn" onclick="setFilter('blog.html',this)">Blog</button>
   <button class="btn" onclick="setFilter('topics.html',this)">Topics</button>
   <input class="search" id="search" type="text" placeholder="Search IP, city, country…" oninput="renderTable()">
-  <button class="btn danger" onclick="if(confirm('Delete all logs?'))clearLogs()">Clear Logs</button>
 </div>
 
 <div class="table-wrap">
@@ -157,10 +156,6 @@ async function load(){
   renderTable();
 }
 
-async function clearLogs(){
-  await fetch(SB+'/rest/v1/visitor_logs?id=gte.0',{
-    method:'DELETE',
-    headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}
   });
   allLogs=[];
   renderTable();
