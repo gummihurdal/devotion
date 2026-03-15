@@ -102,6 +102,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .contact-email-block{flex-direction:column;gap:8px;padding:16px 20px;text-align:center}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -173,7 +174,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
       <!-- Contact form via Formspree -->
       <div id="contact-form-wrap">
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/journey_placeholder" method="POST">
+        <form class="contact-form" id="contact-form" id="contact-form-el">
           <div class="form-row">
             <div>
               <label class="field-lbl" for="cf-name">Your Name</label>
@@ -186,7 +187,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
           </div>
           <div>
             <label class="field-lbl" for="cf-subject">Subject</label>
-            <input class="field-input" id="cf-subject" name="subject" type="text" placeholder="What is this about?">
+            <input class="field-input" id="cf-subject" name="title" type="text" placeholder="What is this about?">
           </div>
           <div>
             <label class="field-lbl" for="cf-message">Message</label>
@@ -216,7 +217,7 @@ const MON=['January','February','March','April','May','June','July','August','Se
 })();
 
 // Form submit via Formspree AJAX
-document.getElementById('contact-form').addEventListener('submit', async function(e){
+document.getElementById('contact-form-el').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('cf-submit');
   const errEl = document.getElementById('cf-err');
@@ -230,7 +231,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       headers: {'Accept': 'application/json'}
     });
     if(r.ok){
-      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('contact-form-el').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
     } else {
       throw new Error();
