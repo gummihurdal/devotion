@@ -96,7 +96,7 @@ let allLogs=[], filterPage='all';
 
 function flag(code){
   if(!code) return '🌐';
-  try{ return String.fromCodePoint(...[...code.toUpperCase()].map(c=>0x1F1E0-65+c.charCodeAt(0))); }catch(e){return '🌐';}
+  try{ return String.fromCodePoint(...[...code.toUpperCase()].map(c=>0x1F1E6+c.charCodeAt(0)-65)); }catch(e){return '🌐';}
 }
 
 function timeAgo(ts){
