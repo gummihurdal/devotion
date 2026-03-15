@@ -198,8 +198,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
         </form>
         <div class="form-success" id="form-success">
           <div class="form-success-icon">✦</div>
-          <div class="form-success-t">Message Sent</div>
-          <div class="form-success-s">Thank you for reaching out. We'll get back to you soon.</div>
+          <div class="form-success-t">Your Message Has Been Received</div>
+          <div class="form-success-s">Thank you for reaching out. Your words matter to us, and we will be in touch with you soon. May God bless your day.</div>
         </div>
       </div>
 
@@ -223,6 +223,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const errEl = document.getElementById('cf-err');
   btn.disabled = true;
   btn.textContent = 'Sending…';
+  btn.style.opacity = '0.6';
   errEl.style.display = 'none';
   try {
     emailjs.init('JJk-GutLSrE4mwSPp');
@@ -234,6 +235,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     errEl.style.display = 'block';
     btn.disabled = false;
     btn.textContent = 'Send Message →';
+  btn.style.opacity = '1';
   }
 });
 
