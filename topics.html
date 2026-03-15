@@ -211,7 +211,9 @@ document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[
 async function load(){
   const r=await fetch(`${SB}/rest/v1/topics?select=*&order=sort_order.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
   const topics=await r.json();
-  document.getElementById('loading').style.display='none';document.getElementById('body').style.display='block';setTimeout(()=>{document.querySelectorAll('  document.getElementById('grid').innerHTML=topics.map((t,i)=>`
+  document.getElementById('loading').style.display='none';
+  document.getElementById('body').style.display='block';
+  document.getElementById('grid').innerHTML=topics.map((t,i)=>`
     <a class="tlist-item" href="learn.html?topic=${t.slug}">
       <span class="tlist-num">${String(i+1).padStart(2,'0')}</span>
       <span class="tlist-name">${t.title}</span>
