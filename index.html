@@ -369,7 +369,7 @@ async function loadTodayVerse(){
       // Strip
       const stripEl=document.getElementById('ts-text');
       const refEl=document.getElementById('ts-ref');
-      if(stripEl) stripEl.textContent='\u201c'+d.scripture_text.substring(0,120)+(d.scripture_text.length>120?'\u2026':'')+'\u201d';
+      if(stripEl) stripEl.textContent='\u201c'+d.scripture_text+'\u201d';
       if(refEl) refEl.textContent=d.scripture_reference;
       // Big verse section
       const vtEl=document.getElementById('verse-text');
