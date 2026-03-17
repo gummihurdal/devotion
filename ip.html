@@ -22,6 +22,9 @@ h1{font-family:'Cinzel',serif;font-size:18px;font-weight:400;color:#EDE0C0;lette
 .btn:hover,.btn.active{border-color:#C9A43A;color:#C9A43A;background:rgba(201,164,58,0.06)}
 .btn.danger{border-color:rgba(180,60,60,0.3);color:rgba(180,60,60,0.6)}
 .btn.danger:hover{border-color:#b43c3c;color:#b43c3c;background:rgba(180,60,60,0.06)}
+.btn.bot-filter{border-color:rgba(100,180,100,0.3);color:rgba(100,180,100,0.7)}
+.btn.bot-filter:hover,.btn.bot-filter.active{border-color:#64b464;color:#64b464;background:rgba(100,180,100,0.06)}
+.bot-count{font-family:'Cormorant Garamond',serif;font-size:11px;color:rgba(180,60,60,0.5);margin-left:4px;font-style:italic;letter-spacing:0}
 .search{background:#131D35;border:1px solid rgba(201,164,58,0.15);color:#EDE0C0;font-family:'Cormorant Garamond',serif;font-size:15px;padding:7px 14px;outline:none;width:220px}
 .search:focus{border-color:rgba(201,164,58,0.4)}
 .table-wrap{max-width:1100px;margin:0 auto;overflow-x:auto}
@@ -29,8 +32,10 @@ table{width:100%;border-collapse:collapse;font-size:14px}
 th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,164,58,0.5);padding:10px 14px;border-bottom:1px solid rgba(201,164,58,0.15);text-align:left;white-space:nowrap}
 td{padding:10px 14px;border-bottom:1px solid rgba(201,164,58,0.06);color:#C8B898;vertical-align:middle}
 tr:hover td{background:rgba(201,164,58,0.03)}
+tr.is-bot td{opacity:0.35}
 .flag{font-size:18px;margin-right:6px}
 .page-tag{display:inline-block;background:rgba(201,164,58,0.08);border:1px solid rgba(201,164,58,0.15);color:rgba(201,164,58,0.7);font-size:11px;padding:2px 8px;font-family:'Cinzel',serif;letter-spacing:1px}
+.bot-tag{display:inline-block;background:rgba(180,60,60,0.1);border:1px solid rgba(180,60,60,0.2);color:rgba(180,60,60,0.6);font-size:9px;padding:1px 6px;font-family:'Cinzel',serif;letter-spacing:1px;margin-left:6px}
 .ip-val{font-family:monospace;font-size:13px;color:#8a9cc8}
 .time-val{font-size:12px;color:rgba(200,184,152,0.5);white-space:nowrap}
 .loading{text-align:center;padding:60px;color:rgba(201,164,58,0.3);font-style:italic}
@@ -68,6 +73,8 @@ tr:hover td{background:rgba(201,164,58,0.03)}
   <button class="btn" onclick="setFilter('devotion.html',this)">Devotion</button>
   <button class="btn" onclick="setFilter('blog.html',this)">Blog</button>
   <button class="btn" onclick="setFilter('topics.html',this)">Topics</button>
+  <span style="width:1px;height:24px;background:rgba(201,164,58,0.15);margin:0 4px"></span>
+  <button class="btn bot-filter active" id="bot-btn" onclick="toggleBots()">Hide Bots<span class="bot-count" id="bot-count"></span></button>
   <input class="search" id="search" type="text" placeholder="Search IP, city, country…" oninput="renderTable()">
 </div>
 
@@ -92,8 +99,51 @@ tr:hover td{background:rgba(201,164,58,0.03)}
 
 <script>
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
-let allLogs=[], filterPage='all';
+let allLogs=[], filterPage='all', hideBots=true;
 
+/* ── Bot / Crawler Detection ─────────────────────────────── */
+const BOT_ORGS = [
+  'amazon.com','amazon technologies','amazon data',
+  'google llc','googlebot',
+  'microsoft corporation','microsoft azure',
+  'digitalocean','linode','vultr','hetzner','ovh sas',
+  'scaleway','cloudflare','fastly','akamai',
+  'datacamp limited','whitelabelcolo','egihosting',
+  'level 3 parent','lumen technologies','centurylink',
+  'quadranet','psychz networks','cogent comm','hurricane electric',
+  'choopa','contabo','oracle','alibaba','tencent','bytedance',
+  'yandex','semrush','ahrefs','moz, inc',
+  'the proxy company','bright data','oxylabs','webmeup',
+  'dotcom-monitor','pingdom','uptimerobot',
+  'applebot','bingbot','pinterestbot',
+  'facebookexternalhit','twitterbot','petalbot',
+  'bytespider','gcore','kamatera','ionos','hostinger',
+  'mass response service',
+];
+
+const DC_CITIES = [
+  'ashburn','boardman','council bluffs','the dalles','dublin',
+  'singapore','mumbai','frankfurt','sao paulo','sydney',
+  'tokyo','seoul','montreal','amsterdam','london',
+  'san jose','santa clara','nanuet','provo','phoenix',
+  'chicago','dallas','atlanta','miami','warsaw','hong kong',
+  'bangalore','chennai','hyderabad','pune',
+];
+
+function isBot(row) {
+  const org = (row.org || '').toLowerCase();
+  const city = (row.city || '').toLowerCase();
+
+  // Match known bot / hosting / crawler orgs
+  if (BOT_ORGS.some(b => org.includes(b))) return true;
+
+  // Google from Mountain View = Googlebot
+  if (org.includes('google') && city === 'mountain view') return true;
+
+  return false;
+}
+
+/* ── Helpers ──────────────────────────────────────────────── */
 function flag(code){
   if(!code) return '🌐';
   try{ return String.fromCodePoint(...[...code.toUpperCase()].map(c=>0x1F1E6+c.charCodeAt(0)-65)); }catch(e){return '🌐';}
@@ -107,16 +157,49 @@ function timeAgo(ts){
   return Math.floor(diff/86400)+'d ago';
 }
 
+/* ── Filters & Rendering ─────────────────────────────────── */
 function setFilter(f, btn){
   filterPage=f;
-  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.controls > .btn:not(.bot-filter)').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderTable();
 }
 
+function toggleBots(){
+  hideBots = !hideBots;
+  const btn = document.getElementById('bot-btn');
+  const countEl = document.getElementById('bot-count');
+  btn.textContent = hideBots ? 'Hide Bots' : 'Show Bots';
+  btn.appendChild(countEl);
+  btn.classList.toggle('active', hideBots);
+  updateBotCount();
+  renderTable();
+  updateStats();
+}
+
+function updateBotCount(){
+  const botTotal = allLogs.filter(isBot).length;
+  const el = document.getElementById('bot-count');
+  if(el) el.textContent = botTotal > 0 ? ` (${botTotal} filtered)` : '';
+}
+
+function getVisibleLogs(){
+  return hideBots ? allLogs.filter(r => !isBot(r)) : allLogs;
+}
+
+function updateStats(){
+  const logs = getVisibleLogs();
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('s-total').textContent = logs.length;
+  document.getElementById('s-today').textContent = logs.filter(r=>r.visited_at.startsWith(today)).length;
+  document.getElementById('s-countries').textContent = new Set(logs.map(r=>r.country_code).filter(Boolean)).size;
+  document.getElementById('s-cities').textContent = new Set(logs.map(r=>r.city).filter(Boolean)).size;
+}
+
 function renderTable(){
   const q = document.getElementById('search').value.toLowerCase();
-  let rows = allLogs.filter(r=>{
+  const logs = getVisibleLogs();
+  let rows = logs.filter(r=>{
     const matchPage = filterPage==='all' || r.page===filterPage;
     const matchQ = !q || [r.ip,r.country,r.city,r.region,r.org].join(' ').toLowerCase().includes(q);
     return matchPage && matchQ;
@@ -125,34 +208,32 @@ function renderTable(){
   const tbody = document.getElementById('tbody');
   if(!rows.length){ tbody.innerHTML='<tr><td colspan="9" class="empty">No visitors found</td></tr>'; return; }
 
-  tbody.innerHTML = rows.map((r,i)=>`
-    <tr>
-      <td style="color:rgba(201,164,58,0.3);font-size:12px">${allLogs.length-allLogs.indexOf(r)}</td>
+  tbody.innerHTML = rows.map((r,i)=>{
+    const bot = isBot(r);
+    return `
+    <tr class="${bot ? 'is-bot' : ''}">
+      <td style="color:rgba(201,164,58,0.3);font-size:12px">${rows.length - i}</td>
       <td><span class="flag">${flag(r.country_code)}</span></td>
       <td><span class="ip-val">${r.ip||'—'}</span></td>
       <td>${r.country||'—'}</td>
       <td>${r.city||'—'}</td>
       <td>${r.region||'—'}</td>
-      <td style="font-size:12px;color:rgba(200,184,152,0.6);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.org||'—'}</td>
+      <td style="font-size:12px;color:rgba(200,184,152,0.6);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.org||'—'}${bot ? '<span class="bot-tag">BOT</span>':''}</td>
       <td><span class="page-tag">${r.page||'—'}</span></td>
       <td><span class="time-val" title="${r.visited_at}">${timeAgo(r.visited_at)}</span></td>
-    </tr>`).join('');
+    </tr>`}).join('');
 }
 
+/* ── Load Data ───────────────────────────────────────────── */
 async function load(){
   const r = await fetch(SB+'/rest/v1/visitor_logs?select=*&order=visited_at.desc&limit=500',{
     headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}
   });
   allLogs = await r.json();
-
-  // Stats
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('s-total').textContent = allLogs.length;
-  document.getElementById('s-today').textContent = allLogs.filter(r=>r.visited_at.startsWith(today)).length;
-  document.getElementById('s-countries').textContent = new Set(allLogs.map(r=>r.country_code).filter(Boolean)).size;
-  document.getElementById('s-cities').textContent = new Set(allLogs.map(r=>r.city).filter(Boolean)).size;
   document.getElementById('last-updated').textContent = 'Last updated: '+new Date().toLocaleTimeString();
 
+  updateBotCount();
+  updateStats();
   renderTable();
 }
 
