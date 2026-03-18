@@ -8,4 +8,9 @@
   <url><loc>https://graceforevery.day/calendar.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://graceforevery.day/archive.html</loc><priority>0.6</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://graceforevery.day/contact.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url>
+    <loc>https://graceforevery.day/sermons.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
