@@ -1,3 +1,20 @@
+/* ── FALLBACK :root (light values, before JS sets data-theme) ── */
+:root {
+  --navy:   #FDF8EF;
+  --navy2:  #FFFFFF;
+  --navy3:  #F5EDE0;
+  --navy4:  #F0E6D3;
+  --gold:   #A67C20;
+  --gold-l: #C9A43A;
+  --gold-d: #7A5C10;
+  --amber:  #C47820;
+  --border:  rgba(120,90,30,0.22);
+  --border2: rgba(120,90,30,0.11);
+  --text:   #5A4A30;
+  --text-d: #9A8A70;
+  --text-b: #2A200C;
+}
+
 /* ═══════════════════════════════════════════
    theme.css — graceforevery.day
    Light mode (default) + Dark mode toggle
