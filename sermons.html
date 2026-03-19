@@ -363,7 +363,7 @@ async function load() {
       return;
     }
     listEl.innerHTML = sermons.map((s, i) => renderSermon(s, i)).join('');
-    document.getElementById('tb-count').textContent = sermons.length + ' message' + (sermons.length !== 1 ? 's' : '');
+    document.getElementById('tb-count').textContent = sermons.length + ' sermon' + (sermons.length !== 1 ? 's' : '');
   } catch (e) {
     // If Supabase not configured yet, show placeholder sermon
     listEl.innerHTML = renderSermon({
