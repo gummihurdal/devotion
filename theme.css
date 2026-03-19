@@ -89,9 +89,9 @@ html[data-theme="dark"] {
   --amber:  #D4862A;
   --border:  rgba(201,164,58,0.15);
   --border2: rgba(201,164,58,0.08);
-  --text:   #C8B898;
-  --text-d: #6A6050;
-  --text-b: #EDE0C0;
+  --text:   #E8D8B8;
+  --text-d: #9A8A6A;
+  --text-b: #F5EDD8;
 }
 
 html[data-theme="dark"] body           { background: var(--navy4); }
