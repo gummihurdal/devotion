@@ -19,6 +19,14 @@
   <meta name="robots" content="index, follow">
   <meta name="msvalidate.01" content="42835C184A577B685625DC0A3F507F34">
   <meta name="msvalidate.01" content="42835C184A577B685625DC0A3F507F34" />
+  <!-- PWA — iOS Add to Home Screen + Android install prompt -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Grace">
+  <meta name="theme-color" content="#C9A43A">
+  <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
 <style>
