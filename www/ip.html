@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Journey with God — Visitor Log</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0E1628;color:#C8B898;font-family:'Cormorant Garamond',serif;min-height:100vh;padding:32px 20px}
+.header{max-width:1100px;margin:0 auto 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
+h1{font-family:'Cinzel',serif;font-size:18px;font-weight:400;color:#EDE0C0;letter-spacing:2px}
+.subtitle{font-size:13px;color:rgba(201,164,58,0.5);margin-top:4px;font-style:italic}
+.stats{display:flex;gap:16px;flex-wrap:wrap;max-width:1100px;margin:0 auto 28px}
+.stat{background:#131D35;border:1px solid rgba(201,164,58,0.15);padding:16px 24px;flex:1;min-width:140px;text-align:center}
+.stat-val{font-family:'Cinzel',serif;font-size:26px;color:#C9A43A;font-weight:400}
+.stat-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.4);margin-top:4px}
+.controls{max-width:1100px;margin:0 auto 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;background:transparent;border:1px solid rgba(201,164,58,0.3);color:rgba(201,164,58,0.7);padding:8px 18px;cursor:pointer;transition:all .2s}
+.btn:hover,.btn.active{border-color:#C9A43A;color:#C9A43A;background:rgba(201,164,58,0.06)}
+.btn.danger{border-color:rgba(180,60,60,0.3);color:rgba(180,60,60,0.6)}
+.btn.danger:hover{border-color:#b43c3c;color:#b43c3c;background:rgba(180,60,60,0.06)}
+.btn.bot-filter{border-color:rgba(100,180,100,0.3);color:rgba(100,180,100,0.7)}
+.btn.bot-filter:hover,.btn.bot-filter.active{border-color:#64b464;color:#64b464;background:rgba(100,180,100,0.06)}
+.bot-count{font-family:'Cormorant Garamond',serif;font-size:11px;color:rgba(180,60,60,0.5);margin-left:4px;font-style:italic;letter-spacing:0}
+.search{background:#131D35;border:1px solid rgba(201,164,58,0.15);color:#EDE0C0;font-family:'Cormorant Garamond',serif;font-size:15px;padding:7px 14px;outline:none;width:220px}
+.search:focus{border-color:rgba(201,164,58,0.4)}
+.table-wrap{max-width:1100px;margin:0 auto;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,164,58,0.5);padding:10px 14px;border-bottom:1px solid rgba(201,164,58,0.15);text-align:left;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid rgba(201,164,58,0.06);color:#C8B898;vertical-align:middle}
+tr:hover td{background:rgba(201,164,58,0.03)}
+tr.is-bot td{opacity:0.35}
+.flag{font-size:18px;margin-right:6px}
+.page-tag{display:inline-block;background:rgba(201,164,58,0.08);border:1px solid rgba(201,164,58,0.15);color:rgba(201,164,58,0.7);font-size:11px;padding:2px 8px;font-family:'Cinzel',serif;letter-spacing:1px}
+.bot-tag{display:inline-block;background:rgba(180,60,60,0.1);border:1px solid rgba(180,60,60,0.2);color:rgba(180,60,60,0.6);font-size:9px;padding:1px 6px;font-family:'Cinzel',serif;letter-spacing:1px;margin-left:6px}
+.ip-val{font-family:monospace;font-size:13px;color:#8a9cc8}
+.time-val{font-size:12px;color:rgba(200,184,152,0.5);white-space:nowrap}
+.loading{text-align:center;padding:60px;color:rgba(201,164,58,0.3);font-style:italic}
+.empty{text-align:center;padding:60px;color:rgba(201,164,58,0.3);font-style:italic}
+.my-ip-box{max-width:1100px;margin:0 auto 24px;background:#131D35;border:1px solid rgba(201,164,58,0.15);padding:16px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.my-ip-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.5)}
+.my-ip-val{font-family:monospace;font-size:16px;color:#C9A43A}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Visitor Log — Journey with God</h1>
+    <div class="subtitle" id="last-updated">Loading…</div>
+  </div>
+  <a href="https://graceforevery.day" style="font-family:Cinzel,serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.4);text-decoration:none">← Site</a>
+</div>
+
+<div class="my-ip-box">
+  <div><div class="my-ip-lbl">Your IP</div><div class="my-ip-val" id="my-ip">—</div></div>
+  <div><div class="my-ip-lbl">Your Location</div><div style="color:#EDE0C0;font-size:15px" id="my-loc">—</div></div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-val" id="s-total">—</div><div class="stat-lbl">Total Visits</div></div>
+  <div class="stat"><div class="stat-val" id="s-today">—</div><div class="stat-lbl">Today</div></div>
+  <div class="stat"><div class="stat-val" id="s-countries">—</div><div class="stat-lbl">Countries</div></div>
+  <div class="stat"><div class="stat-val" id="s-cities">—</div><div class="stat-lbl">Cities</div></div>
+</div>
+
+<div class="controls">
+  <button class="btn active" onclick="setFilter('all',this)">All Pages</button>
+  <button class="btn" onclick="setFilter('index.html',this)">Landing</button>
+  <button class="btn" onclick="setFilter('devotion.html',this)">Devotion</button>
+  <button class="btn" onclick="setFilter('blog.html',this)">Blog</button>
+  <button class="btn" onclick="setFilter('topics.html',this)">Topics</button>
+  <span style="width:1px;height:24px;background:rgba(201,164,58,0.15);margin:0 4px"></span>
+  <button class="btn bot-filter active" id="bot-btn" onclick="toggleBots()">Hide Bots<span class="bot-count" id="bot-count"></span></button>
+  <input class="search" id="search" type="text" placeholder="Search IP, city, country…" oninput="renderTable()">
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Flag</th>
+        <th>IP</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>ISP</th>
+        <th>Page</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"><tr><td colspan="9" class="loading">Loading visitor logs…</td></tr></tbody>
+  </table>
+</div>
+
+<script>
+const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
+let allLogs=[], filterPage='all', hideBots=true;
+
+/* ── Bot / Crawler Detection ─────────────────────────────── */
+const BOT_ORGS = [
+  'amazon.com','amazon technologies','amazon data',
+  'google llc','googlebot',
+  'microsoft corporation','microsoft azure',
+  'digitalocean','linode','vultr','hetzner','ovh sas',
+  'scaleway','cloudflare','fastly','akamai',
+  'datacamp limited','whitelabelcolo','egihosting',
+  'level 3 parent','lumen technologies','centurylink',
+  'quadranet','psychz networks','cogent comm','hurricane electric',
+  'choopa','contabo','oracle','alibaba','tencent','bytedance',
+  'yandex','semrush','ahrefs','moz, inc',
+  'the proxy company','bright data','oxylabs','webmeup',
+  'dotcom-monitor','pingdom','uptimerobot',
+  'applebot','bingbot','pinterestbot',
+  'facebookexternalhit','twitterbot','petalbot',
+  'bytespider','gcore','kamatera','ionos','hostinger',
+  'mass response service',
+];
+
+const DC_CITIES = [
+  'ashburn','boardman','council bluffs','the dalles','dublin',
+  'singapore','mumbai','frankfurt','sao paulo','sydney',
+  'tokyo','seoul','montreal','amsterdam','london',
+  'san jose','santa clara','nanuet','provo','phoenix',
+  'chicago','dallas','atlanta','miami','warsaw','hong kong',
+  'bangalore','chennai','hyderabad','pune',
+];
+
+function isBot(row) {
+  const org = (row.org || '').toLowerCase();
+  const city = (row.city || '').toLowerCase();
+
+  // Match known bot / hosting / crawler orgs
+  if (BOT_ORGS.some(b => org.includes(b))) return true;
+
+  // Google from Mountain View = Googlebot
+  if (org.includes('google') && city === 'mountain view') return true;
+
+  return false;
+}
+
+/* ── Helpers ──────────────────────────────────────────────── */
+function flag(code){
+  if(!code) return '🌐';
+  try{ return String.fromCodePoint(...[...code.toUpperCase()].map(c=>0x1F1E6+c.charCodeAt(0)-65)); }catch(e){return '🌐';}
+}
+
+function timeAgo(ts){
+  const diff = (Date.now()-new Date(ts))/1000;
+  if(diff<60) return Math.floor(diff)+'s ago';
+  if(diff<3600) return Math.floor(diff/60)+'m ago';
+  if(diff<86400) return Math.floor(diff/3600)+'h ago';
+  return Math.floor(diff/86400)+'d ago';
+}
+
+/* ── Filters & Rendering ─────────────────────────────────── */
+function setFilter(f, btn){
+  filterPage=f;
+  document.querySelectorAll('.controls > .btn:not(.bot-filter)').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+}
+
+function toggleBots(){
+  hideBots = !hideBots;
+  const btn = document.getElementById('bot-btn');
+  const countEl = document.getElementById('bot-count');
+  btn.textContent = hideBots ? 'Hide Bots' : 'Show Bots';
+  btn.appendChild(countEl);
+  btn.classList.toggle('active', hideBots);
+  updateBotCount();
+  renderTable();
+  updateStats();
+}
+
+function updateBotCount(){
+  const botTotal = allLogs.filter(isBot).length;
+  const el = document.getElementById('bot-count');
+  if(el) el.textContent = botTotal > 0 ? ` (${botTotal} filtered)` : '';
+}
+
+function getVisibleLogs(){
+  return hideBots ? allLogs.filter(r => !isBot(r)) : allLogs;
+}
+
+function updateStats(){
+  const logs = getVisibleLogs();
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('s-total').textContent = logs.length;
+  document.getElementById('s-today').textContent = logs.filter(r=>r.visited_at.startsWith(today)).length;
+  document.getElementById('s-countries').textContent = new Set(logs.map(r=>r.country_code).filter(Boolean)).size;
+  document.getElementById('s-cities').textContent = new Set(logs.map(r=>r.city).filter(Boolean)).size;
+}
+
+function renderTable(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const logs = getVisibleLogs();
+  let rows = logs.filter(r=>{
+    const matchPage = filterPage==='all' || r.page===filterPage;
+    const matchQ = !q || [r.ip,r.country,r.city,r.region,r.org].join(' ').toLowerCase().includes(q);
+    return matchPage && matchQ;
+  });
+
+  const tbody = document.getElementById('tbody');
+  if(!rows.length){ tbody.innerHTML='<tr><td colspan="9" class="empty">No visitors found</td></tr>'; return; }
+
+  tbody.innerHTML = rows.map((r,i)=>{
+    const bot = isBot(r);
+    return `
+    <tr class="${bot ? 'is-bot' : ''}">
+      <td style="color:rgba(201,164,58,0.3);font-size:12px">${rows.length - i}</td>
+      <td><span class="flag">${flag(r.country_code)}</span></td>
+      <td><span class="ip-val">${r.ip||'—'}</span></td>
+      <td>${r.country||'—'}</td>
+      <td>${r.city||'—'}</td>
+      <td>${r.region||'—'}</td>
+      <td style="font-size:12px;color:rgba(200,184,152,0.6);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.org||'—'}${bot ? '<span class="bot-tag">BOT</span>':''}</td>
+      <td><span class="page-tag">${r.page||'—'}</span></td>
+      <td><span class="time-val" title="${r.visited_at}">${timeAgo(r.visited_at)}</span></td>
+    </tr>`}).join('');
+}
+
+/* ── Load Data ───────────────────────────────────────────── */
+async function load(){
+  const r = await fetch(SB+'/rest/v1/visitor_logs?select=*&order=visited_at.desc&limit=500',{
+    headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}
+  });
+  allLogs = await r.json();
+  document.getElementById('last-updated').textContent = 'Last updated: '+new Date().toLocaleTimeString();
+
+  updateBotCount();
+  updateStats();
+  renderTable();
+}
+
+// My IP
+fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
+  document.getElementById('my-ip').textContent = d.ip||'—';
+  document.getElementById('my-loc').textContent = [d.city,d.country_name].filter(Boolean).join(', ')||'—';
+});
+
+// Auto-refresh every 30s
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

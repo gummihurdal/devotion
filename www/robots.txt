@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://graceforevery.day/sitemap.xml

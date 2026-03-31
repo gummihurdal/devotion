@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Grace</string>
+    <string name="title_activity_main">Grace</string>
+    <string name="package_name">day.graceforevery.app</string>
+    <string name="custom_url_scheme">day.graceforevery.app</string>
+</resources>

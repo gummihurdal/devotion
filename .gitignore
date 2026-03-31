@@ -1,0 +1,10 @@
+node_modules/
+android/.gradle/
+android/build/
+android/app/build/
+ios/App/Pods/
+*.keystore
+grace-mobile/
+download/
+builds/
+store-assets/
