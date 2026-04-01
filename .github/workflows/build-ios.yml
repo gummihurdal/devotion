@@ -23,16 +23,31 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync ios
       
+      - name: Install CocoaPods
+        working-directory: ios/App
+        run: |
+          pod install || true
+
       - name: Build iOS
         working-directory: ios/App
         run: |
-          xcodebuild -workspace App.xcworkspace \
-            -scheme App \
-            -configuration Release \
-            -archivePath $RUNNER_TEMP/Grace.xcarchive \
-            -sdk iphoneos \
-            CODE_SIGNING_ALLOWED=NO \
-            archive
+          if [ -f "App.xcworkspace/contents.xcworkspacedata" ]; then
+            xcodebuild -workspace App.xcworkspace \
+              -scheme App \
+              -configuration Release \
+              -archivePath $RUNNER_TEMP/Grace.xcarchive \
+              -sdk iphoneos \
+              CODE_SIGNING_ALLOWED=NO \
+              archive
+          else
+            xcodebuild -project App.xcodeproj \
+              -scheme App \
+              -configuration Release \
+              -archivePath $RUNNER_TEMP/Grace.xcarchive \
+              -sdk iphoneos \
+              CODE_SIGNING_ALLOWED=NO \
+              archive
+          fi
       
       - name: Create unsigned IPA
         run: |
