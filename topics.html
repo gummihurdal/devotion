@@ -179,7 +179,6 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
       <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
       <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
       <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link" href="learn.html?topic=the-sabbath">The Sabbath</a>
       <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
     </div>
     <div class="sb-divider"></div>
@@ -203,7 +202,7 @@ const now=new Date();const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursd
 document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 async function load(){
   const r=await fetch(`${SB}/rest/v1/topics?select=*&order=sort_order.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
-  const topics=await r.json();
+  const topics=(await r.json()).filter(t=>t.slug!=='the-sabbath');
   document.getElementById('loading').style.display='none';
   document.getElementById('body').style.display='block';
   document.getElementById('grid').innerHTML=topics.map((t,i)=>`
