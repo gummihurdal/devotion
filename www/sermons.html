@@ -349,8 +349,11 @@ async function load() {
 
   // Sermons
   const listEl = document.getElementById('sermon-list');
+  // UX-hidden sermon IDs (DB + storage retained)
+  const HIDDEN_SERMON_IDS = ['4c9ee28f-bc80-41ff-a793-54a82fdada9b'];
   try {
-    const sermons = await sbFetch('/rest/v1/sermons?select=*&order=preached_on.desc.nullslast');
+    const raw = await sbFetch('/rest/v1/sermons?select=*&order=preached_on.desc.nullslast');
+    const sermons = (raw || []).filter(s => !HIDDEN_SERMON_IDS.includes(s.id));
     if (!sermons || sermons.length === 0) {
       listEl.innerHTML = `
         <div class="feed-empty">
