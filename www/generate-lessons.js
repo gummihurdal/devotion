@@ -151,19 +151,6 @@ const TOPICS = [
     ]
   },
   {
-    slug: 'the-sabbath',
-    title: 'The Sabbath',
-    lessons: [
-      'In the Beginning God Rested — The Sabbath Before Sinai',
-      'The Sabbath as Sign — What God Wrote in Time',
-      'The SDA Conviction — Why the Seventh Day Still Matters',
-      'Sabbath as Liberation — Rest for the Slave and the Driven',
-      'Jesus and the Sabbath — Lord, Not Abolisher',
-      'The Sabbath as Protest Against a Restless World',
-      'Entering His Rest — The Eternal Sabbath of Hebrews 4',
-    ]
-  },
-  {
     slug: 'holiness-of-god',
     title: 'The Holiness of God',
     lessons: [
@@ -189,7 +176,6 @@ const SOURCE_MAP = {
   'sin-and-grace':      ['The Cost of Discipleship — Dietrich Bonhoeffer', 'Mere Christianity — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
   'the-church':         ['Life Together — Dietrich Bonhoeffer', 'The Normal Christian Life — Watchman Nee', 'Systematic Theology — Wayne Grudem'],
   'eternity':           ["Pilgrim's Progress — John Bunyan", 'The Weight of Glory — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
-  'the-sabbath':        ['The Desire of Ages — Ellen G. White', 'Systematic Theology — Wayne Grudem', 'The Cost of Discipleship — Dietrich Bonhoeffer'],
   'holiness-of-god':    ['The Holiness of God — R.C. Sproul', 'Mere Christianity — C.S. Lewis', 'Systematic Theology — Wayne Grudem'],
 };
 
