@@ -206,6 +206,16 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   margin-top:44px;
   animation:fadeUp 1.4s .7s cubic-bezier(0.22,1,0.36,1) both;
 }
+.hero-appstore{
+  margin-top:28px;
+  animation:fadeUp 1.4s .85s cubic-bezier(0.22,1,0.36,1) both;
+}
+.hero-appstore img{
+  height:56px;width:auto;display:inline-block;
+  transition:transform .25s ease, filter .25s ease;
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.4));
+}
+.hero-appstore a:hover img{transform:translateY(-2px);filter:drop-shadow(0 8px 22px rgba(0,0,0,.55))}
 .cta-primary{
   font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;
   color:var(--navy4);background:var(--gold);
@@ -319,6 +329,10 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .footer-links{display:flex;gap:28px;flex-wrap:wrap}
 .footer-link{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color .2s}
 .footer-link:hover{color:var(--gold)}
+.footer-appstore{padding:0!important;display:inline-flex;align-items:center}
+.footer-appstore img{height:36px;width:auto;transition:transform .2s ease, filter .2s ease;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
+.footer-appstore:hover img{transform:translateY(-1px);filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+
 
 /* ── MOBILE ── */
 @media(max-width:768px){
@@ -351,13 +365,18 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Pause · Reflect · Walk</div>
-    <h1 class="hero-title">Journey with God</h1>
+    <h1 class="hero-title">Grace for Every Day</h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">A place to pause with the Word. Daily devotions, deep study, and a community walking together in scripture.</p>
+    <p class="hero-sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
     <div class="hero-ctas">
       <a class="cta-primary" href="devotion.html">Daily Devotional</a>
       <a class="cta-secondary" href="devotion.html?study=open">Study Topics</a>
       <a class="cta-secondary" href="blog.html">Blog</a>
+    </div>
+    <div class="hero-appstore">
+      <a href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="Download on the App Store" />
+      </a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -462,7 +481,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <!-- FOOTER -->
 <footer class="footer">
   <div>
-    <div class="footer-brand">Journey with God</div>
+    <div class="footer-brand">Grace for Every Day</div>
     <div class="footer-sub">Daily Scripture &amp; Reflection</div>
   </div>
   <div class="footer-links">
@@ -473,6 +492,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <a class="footer-link" href="blog.html">Blog</a>
     <a class="footer-link" href="contact.html">Contact</a>
     <a class="footer-link" href="settings.html">Settings</a>
+    <a class="footer-link footer-appstore" href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="App Store" /></a>
   </div>
 </footer>
 
