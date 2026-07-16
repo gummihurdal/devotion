@@ -262,7 +262,7 @@ function renderPage(){
     const[mm,dd]=d.month_day.split('-');
     const mName=MONTHS[parseInt(mm)-1];
     const delay=(i%PAGE*0.03).toFixed(2);
-    return `<a class="card" href="index.html?date=${d.month_day}" style="animation-delay:${delay}s">
+    return `<a class="card" href="devotion.html?date=${d.month_day}" style="animation-delay:${delay}s">
       <div class="card-img">
         <div class="card-img-placeholder">
           <div class="card-img-grad"></div>
