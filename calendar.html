@@ -307,7 +307,7 @@ function openDrawer(day){
     <div class="dr-q">"${devo.quote_text||''}"</div>
     <div class="dr-q-by">— ${devo.quote_author||''}</div>
     <div class="dr-med">${paras}</div>
-    <a class="dr-open" href="index.html?date=${mm}-${dd}">Open Full Devotional →</a>`;
+    <a class="dr-open" href="devotion.html?date=${viewYear}-${mm}-${dd}">Open Full Devotional →</a>`;
   document.getElementById('drawer').classList.add('open');
   document.getElementById('overlay').classList.add('open');
 }
