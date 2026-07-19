@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journey with God — Journey with God</title>
+<title>Daily Devotion — Grace for Every Day</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -177,14 +177,14 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 </head>
 <body>
 <div class="mob-bar">
-  <a class="mob-logo" href="index.html">Journey with God</a>
+  <a class="mob-logo" href="index.html">Grace</a>
   <button class="mob-ham" onclick="sbOpen()" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="sbClose()"></div>
 <aside class="sb" id="sidebar">
   <div class="sb-logo">
     <a href="index.html">
-      <div class="sb-logo-text">Journey with God</div>
+      <div class="sb-logo-text">Grace</div>
       <div class="sb-logo-sub">Daily Scripture &amp; Reflection</div>
     </a>
   </div>
@@ -231,9 +231,22 @@ const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturda
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const GREET=['Midnight','Early Morning','Early Morning','Dawn','Dawn','Morning','Morning','Morning','Morning','Morning','Morning','Morning','Midday','Afternoon','Afternoon','Afternoon','Afternoon','Afternoon','Evening','Evening','Evening','Evening','Night','Night'];
 const now=new Date();
-const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
+// A date can be requested from the calendar or archive: ?date=MM-DD or ?date=YYYY-MM-DD
+let view=new Date(now), isPastView=false;
+(function(){
+  const qd=new URLSearchParams(location.search).get('date');
+  if(!qd)return;
+  const m=qd.match(/^(?:(\d{4})-)?(\d{1,2})-(\d{1,2})$/);
+  if(!m)return;
+  const y=m[1]?parseInt(m[1],10):now.getFullYear();
+  const cand=new Date(y,parseInt(m[2],10)-1,parseInt(m[3],10));
+  if(isNaN(cand))return;
+  view=cand;
+  isPastView=cand.toDateString()!==now.toDateString();
+})();
+const mm=String(view.getMonth()+1).padStart(2,'0'),dd=String(view.getDate()).padStart(2,'0');
 document.getElementById('greeting').textContent=`Good ${GREET[now.getHours()]}`;
-document.getElementById('topdate').textContent=`${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+document.getElementById('topdate').textContent=`${DAYS[view.getDay()]} · ${MONTHS[view.getMonth()]} ${view.getDate()}, ${view.getFullYear()}`;
 document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 
 async function init(){
@@ -251,7 +264,8 @@ async function init(){
   app.innerHTML=`
     <!-- Hero -->
     <div class="hero">
-      <div class="hero-eyebrow">${DAYS[now.getDay()]} · ${MONTHS[now.getMonth()]} ${now.getDate()}</div>
+      <div class="hero-eyebrow">${DAYS[view.getDay()]} · ${MONTHS[view.getMonth()]} ${view.getDate()}${view.getFullYear()!==now.getFullYear()?', '+view.getFullYear():''}</div>
+      ${isPastView?'<a class="hero-eyebrow" style="display:inline-block;margin-top:8px;color:var(--gold);text-decoration:none;border:1px solid var(--gold-d);padding:5px 14px;border-radius:20px" href="devotion.html">\u2190 Back to Today</a>':''}
       <div class="flame">
         <div class="flame-glow"></div>
         <div class="flame-flame"></div>
