@@ -1,21 +1,16 @@
-const CACHE_NAME = 'grace-v1';
-const ASSETS = ['/', '/index.html', '/devotion.html', '/topics.html', '/calendar.html'];
-
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
-  self.skipWaiting();
-});
-
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
-  );
-});
-
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-    ))
-  );
+// Kill-switch service worker: replaces the stale one, clears every cache,
+// unregisters itself, and reloads clients onto the live network.
+self.addEventListener('install', function(e){ self.skipWaiting(); });
+self.addEventListener('activate', function(e){
+  e.waitUntil((async function(){
+    try{
+      const keys = await caches.keys();
+      await Promise.all(keys.map(function(k){ return caches.delete(k); }));
+    }catch(err){}
+    try{ await self.registration.unregister(); }catch(err){}
+    try{
+      const cs = await self.clients.matchAll({ type: 'window' });
+      cs.forEach(function(c){ c.navigate(c.url); });
+    }catch(err){}
+  })());
 });
