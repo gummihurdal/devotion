@@ -30,13 +30,14 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Grace for Every Day — gold G with dove on deep navy">
+<!-- Square fallback (Instagram, some chat apps) -->
 <meta property="og:image" content="https://graceforevery.day/og-square.png">
 <meta property="og:image:width" content="1080">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:alt" content="Grace for Every Day square card">
 
 <!-- ========================================================================
-     TWITTER / X CARD
+     TWITTER / X CARD — large image variant
      ======================================================================== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://graceforevery.day/">
@@ -44,15 +45,21 @@
 <meta name="twitter:description" content="A daily companion for the Christian life. Scripture, devotion, theological study, and prayer.">
 <meta name="twitter:image" content="https://graceforevery.day/og-image.png">
 <meta name="twitter:image:alt" content="Grace for Every Day — gold G with dove on deep navy">
+<!-- TODO: replace with your X/Twitter handle once created, e.g. @graceforeveryday -->
+<!-- <meta name="twitter:site" content="@yourhandle"> -->
+<!-- <meta name="twitter:creator" content="@yourhandle"> -->
 
 <!-- ========================================================================
-     PINTEREST — Rich Pins (replace token after claiming domain)
+     PINTEREST — Rich Pins + verification
+     The verification meta is generated when you claim graceforevery.day at
+     https://www.pinterest.com/settings/claim/. Replace the content below.
      ======================================================================== -->
 <meta name="pinterest-rich-pin" content="true">
+<meta name="pinterest" content="nopin" data-disabled="false">
 <!-- <meta name="p:domain_verify" content="REPLACE_WITH_PINTEREST_TOKEN"> -->
 
 <!-- ========================================================================
-     APPLE / iOS
+     APPLE / iOS — Add to Home Screen + iMessage link preview
      ======================================================================== -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -72,14 +79,15 @@
 <meta name="application-name" content="Grace">
 
 <!-- ========================================================================
-     MICROSOFT
+     MICROSOFT / WINDOWS TILE
      ======================================================================== -->
 <meta name="msapplication-TileColor" content="#020A1E">
 <meta name="msapplication-TileImage" content="/icon-192.png">
 <meta name="msvalidate.01" content="42835C184A577B685625DC0A3F507F34">
 
 <!-- ========================================================================
-     STRUCTURED DATA
+     STRUCTURED DATA — Google rich results, also consumed by some social
+     platforms for richer cards
      ======================================================================== -->
 <script type="application/ld+json">
 {
@@ -117,6 +125,8 @@
   ]
 }
 </script>
+
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -151,10 +161,10 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   position:absolute;inset:0;
   background:linear-gradient(
     to bottom,
-    rgba(8,13,26,0.35) 0%,
-    rgba(8,13,26,0.2) 30%,
-    rgba(8,13,26,0.4) 60%,
-    rgba(8,13,26,0.85) 100%
+    rgba(2,10,30,0.72) 0%,
+    rgba(2,10,30,0.55) 30%,
+    rgba(2,10,30,0.65) 60%,
+    rgba(2,10,30,0.92) 100%
   );
 }
 .hero-content{
@@ -166,29 +176,30 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   to{opacity:1;transform:translateY(0)}
 }
 .hero-eyebrow{
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:8px;
-  text-transform:uppercase;color:rgba(255,255,255,0.92);
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:8px;
+  text-transform:uppercase;color:#fff;
   margin-bottom:24px;opacity:1;
-  text-shadow:0 2px 16px rgba(0,0,0,0.9),0 1px 4px rgba(0,0,0,0.8);
+  text-shadow:0 2px 24px rgba(0,0,0,0.95),0 1px 6px rgba(0,0,0,0.9);
   animation:fadeUp 1.4s .2s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-title{
   font-family:'Cinzel Decorative',serif;
-  font-size:clamp(36px,6vw,88px);
+  font-size:clamp(28px,7vw,72px);
   font-weight:400;color:#fff;
-  line-height:1.1;letter-spacing:2px;
-  text-shadow:0 4px 40px rgba(0,0,0,0.5);
-  margin-bottom:20px;
+  line-height:1.15;letter-spacing:1.5px;
+  text-shadow:0 4px 40px rgba(0,0,0,0.85),0 2px 12px rgba(0,0,0,0.8);
+  margin-bottom:20px;max-width:680px;
   animation:fadeUp 1.4s .35s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-rule{
   width:60px;height:1px;background:var(--gold);
-  margin:0 auto 20px;opacity:.7;
+  margin:0 auto 20px;opacity:.85;
   animation:fadeUp 1.4s .5s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-sub{
-  font-size:clamp(17px,2.2vw,23px);font-style:italic;font-weight:300;
-  color:rgba(237,224,192,0.85);line-height:1.65;max-width:560px;
+  font-size:clamp(17px,2.2vw,23px);font-style:italic;font-weight:400;
+  color:#f8f5ed;line-height:1.65;max-width:560px;
+  text-shadow:0 2px 16px rgba(0,0,0,0.9),0 1px 4px rgba(0,0,0,0.8);
   animation:fadeUp 1.4s .55s cubic-bezier(0.22,1,0.36,1) both;
 }
 .hero-ctas{
@@ -196,6 +207,16 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   margin-top:44px;
   animation:fadeUp 1.4s .7s cubic-bezier(0.22,1,0.36,1) both;
 }
+.hero-appstore{
+  margin-top:28px;
+  animation:fadeUp 1.4s .85s cubic-bezier(0.22,1,0.36,1) both;
+}
+.hero-appstore img{
+  height:56px;width:auto;display:inline-block;
+  transition:transform .25s ease, filter .25s ease;
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.4));
+}
+.hero-appstore a:hover img{transform:translateY(-2px);filter:drop-shadow(0 8px 22px rgba(0,0,0,.55))}
 .cta-primary{
   font-family:'Cinzel',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;
   color:var(--navy4);background:var(--gold);
@@ -309,10 +330,14 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .footer-links{display:flex;gap:28px;flex-wrap:wrap}
 .footer-link{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-d);text-decoration:none;transition:color .2s}
 .footer-link:hover{color:var(--gold)}
+.footer-appstore{padding:0!important;display:inline-flex;align-items:center}
+.footer-appstore img{height:36px;width:auto;transition:transform .2s ease, filter .2s ease;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
+.footer-appstore:hover img{transform:translateY(-1px);filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+
 
 /* ── MOBILE ── */
 @media(max-width:768px){
-  .hero-title{font-size:clamp(28px,10vw,52px)}
+  .hero-title{font-size:clamp(28px,9vw,48px)}
   .today-strip{flex-direction:column;text-align:center;padding:20px 24px}
   .features{padding:64px 20px}
   .verse-section{padding:72px 24px}
@@ -341,13 +366,18 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Pause · Reflect · Walk</div>
-    <h1 class="hero-title">Journey with God</h1>
+    <h1 class="hero-title">Grace for Every Day</h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">A place to pause with the Word. Daily devotions, deep study, and a community walking together in scripture.</p>
+    <p class="hero-sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
     <div class="hero-ctas">
       <a class="cta-primary" href="devotion.html">Daily Devotional</a>
       <a class="cta-secondary" href="devotion.html?study=open">Study Topics</a>
       <a class="cta-secondary" href="blog.html">Blog</a>
+    </div>
+    <div class="hero-appstore">
+      <a href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="Download on the App Store" />
+      </a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -452,7 +482,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <!-- FOOTER -->
 <footer class="footer">
   <div>
-    <div class="footer-brand">Journey with God</div>
+    <div class="footer-brand">Grace for Every Day</div>
     <div class="footer-sub">Daily Scripture &amp; Reflection</div>
   </div>
   <div class="footer-links">
@@ -463,6 +493,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <a class="footer-link" href="blog.html">Blog</a>
     <a class="footer-link" href="contact.html">Contact</a>
     <a class="footer-link" href="settings.html">Settings</a>
+    <a class="footer-link footer-appstore" href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="App Store" /></a>
   </div>
 </footer>
 
