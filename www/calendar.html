@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journey with God — Calendar</title>
+<title>Calendar — Grace for Every Day</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -108,6 +108,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .cal-cell{
   background:var(--navy);min-height:120px;padding:10px;
   position:relative;cursor:default;transition:background 0.2s;
+}
 .cal-cell.has-devo{cursor:pointer}
 .cal-cell.has-devo:hover{background:var(--navy2)}
 .cal-cell.today{background:var(--navy2)}
@@ -119,9 +120,27 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   background:rgba(201,164,58,0.08);border:1px solid var(--border2);border-left:2px solid var(--gold-d);
   padding:5px 8px;margin-bottom:5px;font-size:11px;line-height:1.35;color:var(--text-d);
   overflow:hidden;transition:all 0.2s;
+}
 .cal-cell.has-devo:hover .cal-pill{background:rgba(201,164,58,0.12);color:var(--text-b);border-left-color:var(--gold)}
 .cal-pill-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);margin-bottom:2px}
 .cal-pill-theme{font-size:11px;font-style:italic;color:var(--text-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Mobile: readable list instead of a cramped grid */
+@media(max-width:700px){
+  .body{padding:20px 16px 60px}
+  .cal-grid{display:block;background:none}
+  .cal-head{display:none}
+  .cal-cell{display:none}
+  .cal-cell.has-devo{
+    display:flex;align-items:center;gap:14px;
+    min-height:0;padding:12px 14px;margin-bottom:8px;
+    border:1px solid var(--border2);background:var(--navy);
+  }
+  .cal-cell.has-devo .cal-num{margin:0;font-size:15px;min-width:2ch;text-align:center}
+  .cal-cell.has-devo .cal-pill{margin:0;flex:1;border:none;border-left:2px solid var(--gold-d);background:none}
+  .cal-cell.today{border-color:var(--gold)}
+  .cal-cell.today::before{display:none}
+}
 
 /* Drawer */
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)}
@@ -148,18 +167,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @media(max-width:640px){.topbar{padding:16px 20px}.body{padding:20px 16px 60px}}
 
 
-/* All nav items — identical font/size/padding */
-
-
-  
+@media(max-width:860px){
   .sb.open{transform:translateX(0)}
-  .main{margin-left:0 !important;padding-top:52px}
-}
-
-
-/* All nav items — same font / padding / left-border */
-
-
   .main{margin-left:0 !important;padding-top:52px}
   .topbar{top:52px}
 }
@@ -176,14 +185,14 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 </head>
 <body>
 <div class="mob-bar">
-  <a class="mob-logo" href="index.html">Journey with God</a>
+  <a class="mob-logo" href="index.html">Grace</a>
   <button class="mob-ham" onclick="sbOpen()" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 <div class="mob-overlay" id="mob-overlay" onclick="sbClose()"></div>
 <aside class="sb" id="sidebar">
   <div class="sb-logo">
     <a href="index.html">
-      <div class="sb-logo-text">Journey with God</div>
+      <div class="sb-logo-text">Grace</div>
       <div class="sb-logo-sub">Daily Scripture &amp; Reflection</div>
     </a>
   </div>
@@ -287,13 +296,16 @@ async function render(){
     const devo=byDay[d];
     const cls=['cal-cell',isToday?'today':'',devo?'has-devo':''].filter(Boolean).join(' ');
     const pill=devo?`<div class="cal-pill"><div class="cal-pill-ref">${devo.scripture_reference?.split(' ').slice(0,3).join(' ')}</div><div class="cal-pill-theme">${devo.theme||''}</div></div>`:'';
-    html+=`<div class="${cls}"${devo?` onclick="openDrawer(${d})"`:''} data-day="${d}"><div class="cal-num">${d}</div>${pill}</div>`;
+    const mm2=String(viewMonth+1).padStart(2,'0'),dd2=String(d).padStart(2,'0');
+    html+=`<div class="${cls}"${devo?` onclick="openDay('${viewYear}-${mm2}-${dd2}')"`:''} data-day="${d}"><div class="cal-num">${d}</div>${pill}</div>`;
   }
   // Next month padding
   const cells=first+total;const rem=(7-cells%7)%7;
   for(let i=1;i<=rem;i++)html+=`<div class="cal-cell other-month"><div class="cal-num">${i}</div></div>`;
   document.getElementById('cal-grid').innerHTML=html;
 }
+
+function openDay(dateStr){ location.href = 'devotion.html?date=' + dateStr; }
 
 function openDrawer(day){
   const devo=cache[`${viewYear}-${viewMonth}`]?.find(r=>r.day===day);
@@ -307,7 +319,7 @@ function openDrawer(day){
     <div class="dr-q">"${devo.quote_text||''}"</div>
     <div class="dr-q-by">— ${devo.quote_author||''}</div>
     <div class="dr-med">${paras}</div>
-    <a class="dr-open" href="index.html?date=${mm}-${dd}">Open Full Devotional →</a>`;
+    <a class="dr-open" href="devotion.html?date=${viewYear}-${mm}-${dd}">Open Full Devotional →</a>`;
   document.getElementById('drawer').classList.add('open');
   document.getElementById('overlay').classList.add('open');
 }
