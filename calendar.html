@@ -108,6 +108,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .cal-cell{
   background:var(--navy);min-height:120px;padding:10px;
   position:relative;cursor:default;transition:background 0.2s;
+}
 .cal-cell.has-devo{cursor:pointer}
 .cal-cell.has-devo:hover{background:var(--navy2)}
 .cal-cell.today{background:var(--navy2)}
@@ -119,6 +120,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   background:rgba(201,164,58,0.08);border:1px solid var(--border2);border-left:2px solid var(--gold-d);
   padding:5px 8px;margin-bottom:5px;font-size:11px;line-height:1.35;color:var(--text-d);
   overflow:hidden;transition:all 0.2s;
+}
 .cal-cell.has-devo:hover .cal-pill{background:rgba(201,164,58,0.12);color:var(--text-b);border-left-color:var(--gold)}
 .cal-pill-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);margin-bottom:2px}
 .cal-pill-theme{font-size:11px;font-style:italic;color:var(--text-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -165,18 +167,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 @media(max-width:640px){.topbar{padding:16px 20px}.body{padding:20px 16px 60px}}
 
 
-/* All nav items — identical font/size/padding */
-
-
-  
+@media(max-width:860px){
   .sb.open{transform:translateX(0)}
-  .main{margin-left:0 !important;padding-top:52px}
-}
-
-
-/* All nav items — same font / padding / left-border */
-
-
   .main{margin-left:0 !important;padding-top:52px}
   .topbar{top:52px}
 }
