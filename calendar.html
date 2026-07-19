@@ -123,6 +123,23 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 .cal-pill-ref{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);margin-bottom:2px}
 .cal-pill-theme{font-size:11px;font-style:italic;color:var(--text-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+/* Mobile: readable list instead of a cramped grid */
+@media(max-width:700px){
+  .body{padding:20px 16px 60px}
+  .cal-grid{display:block;background:none}
+  .cal-head{display:none}
+  .cal-cell{display:none}
+  .cal-cell.has-devo{
+    display:flex;align-items:center;gap:14px;
+    min-height:0;padding:12px 14px;margin-bottom:8px;
+    border:1px solid var(--border2);background:var(--navy);
+  }
+  .cal-cell.has-devo .cal-num{margin:0;font-size:15px;min-width:2ch;text-align:center}
+  .cal-cell.has-devo .cal-pill{margin:0;flex:1;border:none;border-left:2px solid var(--gold-d);background:none}
+  .cal-cell.today{border-color:var(--gold)}
+  .cal-cell.today::before{display:none}
+}
+
 /* Drawer */
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)}
 .drawer-overlay.open{opacity:1;pointer-events:all}
@@ -287,13 +304,16 @@ async function render(){
     const devo=byDay[d];
     const cls=['cal-cell',isToday?'today':'',devo?'has-devo':''].filter(Boolean).join(' ');
     const pill=devo?`<div class="cal-pill"><div class="cal-pill-ref">${devo.scripture_reference?.split(' ').slice(0,3).join(' ')}</div><div class="cal-pill-theme">${devo.theme||''}</div></div>`:'';
-    html+=`<div class="${cls}"${devo?` onclick="openDrawer(${d})"`:''} data-day="${d}"><div class="cal-num">${d}</div>${pill}</div>`;
+    const mm2=String(viewMonth+1).padStart(2,'0'),dd2=String(d).padStart(2,'0');
+    html+=`<div class="${cls}"${devo?` onclick="openDay('${viewYear}-${mm2}-${dd2}')"`:''} data-day="${d}"><div class="cal-num">${d}</div>${pill}</div>`;
   }
   // Next month padding
   const cells=first+total;const rem=(7-cells%7)%7;
   for(let i=1;i<=rem;i++)html+=`<div class="cal-cell other-month"><div class="cal-num">${i}</div></div>`;
   document.getElementById('cal-grid').innerHTML=html;
 }
+
+function openDay(dateStr){ location.href = 'devotion.html?date=' + dateStr; }
 
 function openDrawer(day){
   const devo=cache[`${viewYear}-${viewMonth}`]?.find(r=>r.day===day);
