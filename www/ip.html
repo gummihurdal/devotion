@@ -226,7 +226,7 @@ function renderTable(){
 
 /* ── Load Data ───────────────────────────────────────────── */
 async function load(){
-  const r = await fetch(SB+'/rest/v1/visitor_logs?select=*&order=visited_at.desc&limit=500',{
+  const r = await fetch(SB+'/rest/v1/visitor_logs?select=*&page=not.like.*:*&order=visited_at.desc&limit=1000',{
     headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}
   });
   allLogs = await r.json();
