@@ -22,7 +22,7 @@ Anything missing stays English.
 Labels that scripts render (buttons, empty states, settings values) live in the dictionary in `i18n.js`.
 
 ## Spanish, 2026-11-09
-Content: 337 devotionals, 84 lessons, 12 topics ($10.50). Pages: 253 strings on all 15 pages ($0.21). Scripture in the
+Content: 365 devotionals (the 28 December ones were generated the same day, Opus 5.5), 84 lessons, 12 topics (~$13 in batches). Pages: 253 strings on all 15 pages ($0.21). Scripture in the
 Reina-Valera 1909 (public domain), formal "usted". Language row in Settings; EN/ES switch in every sidebar and on the
 landing, onboarding, privacy and visitor pages.
 
