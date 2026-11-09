@@ -357,6 +357,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .cta-dropdown-btn{padding:12px 20px}
 }
 </style>
+<script src="i18n.js?v=20261109"></script>
 </head>
 <body>
 
@@ -364,15 +365,16 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <div class="gi-lang top" id="gi-lang"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Pause · Reflect · Walk</div>
+    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Pause · Reflect · Walk</div>
     <h1 class="hero-title">Grace for Every Day</h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
+    <p class="hero-sub" data-i18n="hero_sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
     <div class="hero-ctas">
-      <a class="cta-primary" href="devotion.html">Daily Devotional</a>
-      <a class="cta-secondary" href="devotion.html?study=open">Study Topics</a>
-      <a class="cta-secondary" href="blog.html">Blog</a>
+      <a class="cta-primary" href="devotion.html" data-i18n="cta_devotional">Daily Devotional</a>
+      <a class="cta-secondary" href="devotion.html?study=open" data-i18n="cta_topics">Study Topics</a>
+      <a class="cta-secondary" href="blog.html" data-i18n="cta_blog">Blog</a>
     </div>
     <div class="hero-appstore">
       <a href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store">
@@ -381,63 +383,63 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Scroll Down</span>
+    <span data-i18n="scroll">Scroll Down</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 <!-- TODAY'S VERSE STRIP -->
 <div class="today-strip" id="today-strip">
-  <div class="ts-label">Today's Scripture</div>
+  <div class="ts-label" data-i18n="ts_label">Today's Scripture</div>
   <div class="ts-text" id="ts-text">…</div>
   <div class="ts-ref" id="ts-ref"></div>
 </div>
 
 <!-- FEATURE CARDS -->
 <section class="features" id="explore">
-  <div class="section-eyebrow">Everything in One Place</div>
-  <div class="section-title">Where would you like to begin?</div>
+  <div class="section-eyebrow" data-i18n="sec_eyebrow">Everything in One Place</div>
+  <div class="section-title" data-i18n="sec_title">Where would you like to begin?</div>
   <div class="cards">
     <a class="card" href="devotion.html">
       <div class="card-icon">🕯️</div>
-      <div class="card-label">Every Day</div>
-      <div class="card-title">Daily Devotion</div>
-      <div class="card-desc">A fresh meditation each morning — scripture, reflection, a closing prayer, and a call to walk differently today.</div>
+      <div class="card-label" data-i18n="lbl_everyday">Every Day</div>
+      <div class="card-title" data-i18n="card_devotion">Daily Devotion</div>
+      <div class="card-desc" data-i18n="desc_devotion">A fresh meditation each morning — scripture, reflection, a closing prayer, and a call to walk differently today.</div>
       <div class="card-arrow">Enter →</div>
     </a>
     <a class="card" href="topics.html">
       <div class="card-icon">📖</div>
-      <div class="card-label">12 Topics</div>
-      <div class="card-title">Study Topics</div>
-      <div class="card-desc">Deep-dive lessons on Identity, The Cross, Prayer, Suffering, Holiness and more. Structured to take you further.</div>
+      <div class="card-label" data-i18n="lbl_topics">12 Topics</div>
+      <div class="card-title" data-i18n="card_topics">Study Topics</div>
+      <div class="card-desc" data-i18n="desc_topics">Deep-dive lessons on Identity, The Cross, Prayer, Suffering, Holiness and more. Structured to take you further.</div>
       <div class="card-arrow">Study →</div>
     </a>
     <a class="card" href="calendar.html?v=2">
       <div class="card-icon">📅</div>
-      <div class="card-label">Year View</div>
-      <div class="card-title">Devotion Calendar</div>
-      <div class="card-desc">See every devotion across the year. Navigate by month, revisit past days, or plan ahead in your walk.</div>
+      <div class="card-label" data-i18n="lbl_year">Year View</div>
+      <div class="card-title" data-i18n="card_calendar">Devotion Calendar</div>
+      <div class="card-desc" data-i18n="desc_calendar">See every devotion across the year. Navigate by month, revisit past days, or plan ahead in your walk.</div>
       <div class="card-arrow">Open →</div>
     </a>
     <a class="card" href="archive.html">
       <div class="card-icon">🗂️</div>
-      <div class="card-label">Full Archive</div>
-      <div class="card-title">Archive</div>
-      <div class="card-desc">Browse every devotion ever written. Filter by theme, scripture, or season. Nothing lost, everything available.</div>
+      <div class="card-label" data-i18n="lbl_archive">Full Archive</div>
+      <div class="card-title" data-i18n="card_archive">Archive</div>
+      <div class="card-desc" data-i18n="desc_archive">Browse every devotion ever written. Filter by theme, scripture, or season. Nothing lost, everything available.</div>
       <div class="card-arrow">Browse →</div>
     </a>
     <a class="card" href="blog.html">
       <div class="card-icon">✦</div>
-      <div class="card-label">Community</div>
-      <div class="card-title">Blog</div>
-      <div class="card-desc">Share what God is speaking to you. Read what others are carrying. Walk together, even from a distance.</div>
+      <div class="card-label" data-i18n="lbl_community">Community</div>
+      <div class="card-title" data-i18n="card_blog">Blog</div>
+      <div class="card-desc" data-i18n="desc_blog">Share what God is speaking to you. Read what others are carrying. Walk together, even from a distance.</div>
       <div class="card-arrow">Join →</div>
     </a>
     <a class="card" href="settings.html">
       <div class="card-icon">⚙️</div>
-      <div class="card-label">Your Experience</div>
-      <div class="card-title">Settings</div>
-      <div class="card-desc">Personalise your name, reading preferences, and how the word is presented to you each day.</div>
+      <div class="card-label" data-i18n="lbl_experience">Your Experience</div>
+      <div class="card-title" data-i18n="card_settings">Settings</div>
+      <div class="card-desc" data-i18n="desc_settings">Personalise your name, reading preferences, and how the word is presented to you each day.</div>
       <div class="card-arrow">Configure →</div>
     </a>
   </div>
@@ -504,12 +506,12 @@ async function loadTodayVerse(){
   const now=new Date();
   const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
   try{
-    const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=scripture_text,scripture_reference,quote_text,quote_author&limit=1`,{
+    const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=id,scripture_text,scripture_reference,quote_text,quote_author&limit=1`,{
       headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}
     });
     const rows=await r.json();
     if(rows?.length){
-      const d=rows[0];
+      const d=(await GI.overlay(SB,KEY,'devotionals',rows))[0];
       // Strip
       const stripEl=document.getElementById('ts-text');
       const refEl=document.getElementById('ts-ref');
@@ -582,5 +584,6 @@ loadTodayVerse();
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.mount('gi-lang');</script>
 </body>
 </html>

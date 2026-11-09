@@ -161,6 +161,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .main{margin-left:0 !important;padding-top:52px}
 }
 </style>
+<script src="i18n.js?v=20261109"></script>
 </head>
 <body>
 <div class="mob-bar">
@@ -172,58 +173,59 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="sb-logo">
     <a href="index.html">
       <div class="sb-logo-text">Grace</div>
-      <div class="sb-logo-sub">Daily Scripture &amp; Reflection</div>
+      <div class="sb-logo-sub" data-i18n="logo_sub">Daily Scripture &amp; Reflection</div>
     </a>
   </div>
   <nav class="sb-nav">
-    <a class="sb-link" href="devotion.html">Daily Devotion</a>
-    <button class="sb-btn" id="study-btn" onclick="sbStudy()">Study Topics</button>
+    <a class="sb-link" href="devotion.html" data-i18n="nav_devotion">Daily Devotion</a>
+    <button class="sb-btn" id="study-btn" onclick="sbStudy()" data-i18n="nav_study">Study Topics</button>
     <div class="sb-sub" id="study-sub">
-      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
-      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
-      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
-      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
-      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
-      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
-      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
-      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+      <a class="sb-link" href="learn.html?topic=christian-identity" data-i18n="topic_christian-identity">Identity</a>
+      <a class="sb-link" href="learn.html?topic=the-cross" data-i18n="topic_the-cross">The Cross</a>
+      <a class="sb-link" href="learn.html?topic=discipleship" data-i18n="topic_discipleship">Discipleship</a>
+      <a class="sb-link" href="learn.html?topic=apologetics" data-i18n="topic_apologetics">Apologetics</a>
+      <a class="sb-link" href="learn.html?topic=prayer" data-i18n="topic_prayer">Prayer</a>
+      <a class="sb-link" href="learn.html?topic=suffering" data-i18n="topic_suffering">Suffering</a>
+      <a class="sb-link" href="learn.html?topic=holy-spirit" data-i18n="topic_holy-spirit">Holy Spirit</a>
+      <a class="sb-link" href="learn.html?topic=sin-and-grace" data-i18n="topic_sin-and-grace">Sin &amp; Grace</a>
+      <a class="sb-link" href="learn.html?topic=the-church" data-i18n="topic_the-church">The Church</a>
+      <a class="sb-link" href="learn.html?topic=eternity" data-i18n="topic_eternity">Eternity</a>
+      <a class="sb-link" href="learn.html?topic=holiness-of-god" data-i18n="topic_holiness-of-god">Holiness of God</a>
     </div>
     <div class="sb-divider"></div>
-    <a class="sb-link" href="calendar.html?v=2">Calendar</a>
-    <a class="sb-link on" href="archive.html">Archive</a>
-    <a class="sb-link" href="well.html">The Well</a>
-    <a class="sb-link" href="blog.html">Blog</a>
-    <a class="sb-link" href="contact.html">Contact</a>
-    <a class="sb-link" href="settings.html">Settings</a>
+    <a class="sb-link" href="calendar.html?v=2" data-i18n="nav_calendar">Calendar</a>
+    <a class="sb-link on" href="archive.html" data-i18n="nav_archive">Archive</a>
+    <a class="sb-link" href="well.html" data-i18n="nav_well">The Well</a>
+    <a class="sb-link" href="blog.html" data-i18n="nav_blog">Blog</a>
+    <a class="sb-link" href="contact.html" data-i18n="nav_contact">Contact</a>
+    <a class="sb-link" href="settings.html" data-i18n="nav_settings">Settings</a>
   </nav>
+  <div class="gi-lang" id="gi-lang"></div>
   <div class="sb-foot"><div class="sb-foot-date" id="sb-date"></div></div>
 </aside>
 <main class="main">
   <div class="topbar">
-    <div class="tb-title">Archive</div>
+    <div class="tb-title" data-i18n="archive_title">Archive</div>
     <div class="tb-right"><span class="tb-sub" id="tb-count"></span></div>
   </div>
   <div class="filter-bar">
-    <span class="filter-lbl">Filter</span>
-    <button class="fb on" onclick="setMonth('all',this)">All</button>
-    <button class="fb" onclick="setMonth('01',this)">Jan</button>
-    <button class="fb" onclick="setMonth('02',this)">Feb</button>
-    <button class="fb" onclick="setMonth('03',this)">Mar</button>
-    <button class="fb" onclick="setMonth('04',this)">Apr</button>
-    <button class="fb" onclick="setMonth('05',this)">May</button>
-    <button class="fb" onclick="setMonth('06',this)">Jun</button>
-    <button class="fb" onclick="setMonth('07',this)">Jul</button>
-    <button class="fb" onclick="setMonth('08',this)">Aug</button>
-    <button class="fb" onclick="setMonth('09',this)">Sep</button>
-    <button class="fb" onclick="setMonth('10',this)">Oct</button>
-    <button class="fb" onclick="setMonth('11',this)">Nov</button>
-    <button class="fb" onclick="setMonth('12',this)">Dec</button>
-    <div class="search-wrap"><input class="search-inp" placeholder="Search theme or scripture…" id="search" oninput="doSearch()"></div>
+    <span class="filter-lbl" data-i18n="filter">Filter</span>
+    <button class="fb on" onclick="setMonth('all',this)" data-i18n="all">All</button>
+    <button class="fb" onclick="setMonth(\'01\',this)" data-i18n="m01">Jan</button>
+    <button class="fb" onclick="setMonth(\'02\',this)" data-i18n="m02">Feb</button>
+    <button class="fb" onclick="setMonth(\'03\',this)" data-i18n="m03">Mar</button>
+    <button class="fb" onclick="setMonth(\'04\',this)" data-i18n="m04">Apr</button>
+    <button class="fb" onclick="setMonth(\'05\',this)" data-i18n="m05">May</button>
+    <button class="fb" onclick="setMonth(\'06\',this)" data-i18n="m06">Jun</button>
+    <button class="fb" onclick="setMonth(\'07\',this)" data-i18n="m07">Jul</button>
+    <button class="fb" onclick="setMonth(\'08\',this)" data-i18n="m08">Aug</button>
+    <button class="fb" onclick="setMonth(\'09\',this)" data-i18n="m09">Sep</button>
+    <button class="fb" onclick="setMonth(\'10\',this)" data-i18n="m10">Oct</button>
+    <button class="fb" onclick="setMonth(\'11\',this)" data-i18n="m11">Nov</button>
+    <button class="fb" onclick="setMonth(\'12\',this)" data-i18n="m12">Dec</button>
+    <div class="search-wrap"><input class="search-inp" placeholder="Search theme or scripture…" data-i18n-ph="search_ph" id="search" oninput="doSearch()"></div>
   </div>
-  <div id="loading"><span class="load-t">Loading devotionals…</span></div>
+  <div id="loading"><span class="load-t" data-i18n="loading_devotionals">Loading devotionals…</span></div>
   <div class="body" id="body" style="display:none">
     <div class="grid" id="grid"></div>
     <div class="pag" id="pag"></div>
@@ -231,15 +233,15 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 </main>
 <script>
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS=GI.MONTHS;
 const now=new Date();
 document.getElementById('sb-date').innerHTML=`${MONTHS[now.getMonth()]}<br>${now.getDate()}<br>${now.getFullYear()}`;
 const PAGE=18;
 let all=[],filtered=[],page=0,monthFilter='all',searchQ='';
 
 async function load(){
-  const r=await fetch(`${SB}/rest/v1/devotionals?select=month_day,theme,scripture_reference,quote_text,quote_author&order=month_day.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
-  all=await r.json();
+  const r=await fetch(`${SB}/rest/v1/devotionals?select=id,month_day,theme,scripture_reference,quote_text,quote_author&order=month_day.asc`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
+  all=await GI.overlay(SB,KEY,'devotionals',await r.json());
   document.getElementById('loading').style.display='none';
   document.getElementById('body').style.display='block';
   applyFilters();
@@ -257,7 +259,7 @@ function applyFilters(){
 
 function renderPage(){
   const start=page*PAGE,end=start+PAGE,slice=filtered.slice(start,end);
-  document.getElementById('tb-count').textContent=`${filtered.length} Devotionals`;
+  document.getElementById('tb-count').textContent=`${filtered.length} ${GI.t('devotionals')}`;
   document.getElementById('grid').innerHTML=slice.map((d,i)=>{
     const[mm,dd]=d.month_day.split('-');
     const mName=MONTHS[parseInt(mm)-1];
@@ -302,8 +304,8 @@ load();
 
 /* ── sidebar ── */
 (function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=GI.DAYS;
+  var MON=GI.MONTHS;
   var now=new Date();
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
@@ -339,8 +341,8 @@ function sbClose(){
   document.getElementById('mob-overlay').classList.remove('open');
 }
 (function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=GI.DAYS;
+  var MON=GI.MONTHS;
   var now=new Date();
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
@@ -380,5 +382,6 @@ function sbClose(){
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.mount('gi-lang');</script>
 </body>
 </html>

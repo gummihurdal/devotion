@@ -1,0 +1,11 @@
+{
+  "batches": [
+    {
+      "id": "msgbatch_015Cx2pjHaQmALdun9tPdiTy",
+      "created": "2026-11-09T18:41:17.880Z",
+      "n": 433,
+      "status": "in_progress",
+      "collected": false
+    }
+  ]
+}
