@@ -13,8 +13,10 @@
       "id": "msgbatch_011xF1ZnJQ7rMbNF44ZLZCA3",
       "created": "2026-11-09T18:49:12.560Z",
       "n": 1,
-      "status": "in_progress",
-      "collected": false
+      "status": "ended",
+      "collected": true,
+      "cost_usd": 0.02,
+      "failed": 0
     }
   ]
 }
