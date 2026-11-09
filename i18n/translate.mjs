@@ -30,7 +30,8 @@ const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'applic
 async function sb(q, opts = {}) {
   const r = await fetch(`${SB}/rest/v1/${q}`, { ...opts, headers: { ...H, ...(opts.headers || {}) } });
   if (!r.ok) throw new Error(`${q.slice(0, 60)}: ${r.status} ${(await r.text()).slice(0, 200)}`);
-  return r.status === 204 ? null : r.json();
+  const txt = await r.text();
+  return txt.trim() ? JSON.parse(txt) : null;                 // return=minimal upserts answer with an empty body
 }
 const FIELDS = {
   devotionals: ['scripture_reference', 'scripture_text', 'theme', 'meditation', 'quote_text', 'quote_author', 'reflection_questions', 'prayer', 'call_to_action'],
