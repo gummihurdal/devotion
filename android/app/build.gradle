@@ -54,17 +54,21 @@ try {
 }
 
 android {
+    // Release key: the server's keystore (or GRACE_KEYSTORE / GRACE_KEYSTORE_PASSWORD). Where it is absent (GitHub CI)
+    // the release build is debug-signed so the pipeline still proves the build; only the server/owner build is uploadable.
+    def graceKeystore = System.getenv('GRACE_KEYSTORE') ?: '/opt/grace-app/grace-release.keystore'
+    def graceKeyPassword = System.getenv('GRACE_KEYSTORE_PASSWORD') ?: 'GraceForEveryDay2026'
     signingConfigs {
         release {
-            storeFile file('/opt/grace-app/grace-release.keystore')
-            storePassword 'GraceForEveryDay2026'
+            storeFile file(graceKeystore)
+            storePassword graceKeyPassword
             keyAlias 'grace'
-            keyPassword 'GraceForEveryDay2026'
+            keyPassword graceKeyPassword
         }
     }
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig file(graceKeystore).exists() ? signingConfigs.release : signingConfigs.debug
         }
     }
 }
