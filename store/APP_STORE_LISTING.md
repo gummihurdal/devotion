@@ -1,9 +1,9 @@
-# Grace for Every Day — App Store listing (1.1)
+# Grace for Every Day — App Store listing (1.2)
 
 **Name:** Grace for Every Day · **Subtitle (EN):** Daily Scripture & Reflection · **Subtitle (ES):** Escritura y reflexión diarias
 **Category:** Lifestyle (secondary: Reference) · **Age rating:** 4+ · **Price:** Free
 **Support URL:** https://graceforevery.day/contact.html · **Privacy policy:** https://graceforevery.day/privacy.html
-**Bundle ID:** day.graceforevery.app · **Version:** 1.1 (build 3)
+**Bundle ID:** day.graceforevery.app · **Version:** 1.2 (build 5)
 
 ## What's New (EN)
 Spanish: choose your language once on the start page. Devotionals for every day of the year, including December.
