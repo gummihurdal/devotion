@@ -17,6 +17,20 @@
       "collected": true,
       "cost_usd": 0.02,
       "failed": 0
+    },
+    {
+      "id": "msgbatch_01UiPN3tDufU7BMnEPK4CF1L",
+      "created": "2026-11-09T19:35:26.639Z",
+      "n": 25,
+      "status": "in_progress",
+      "collected": false
+    },
+    {
+      "id": "msgbatch_01KvZtWQy4wqpsmhXTHxUZQe",
+      "created": "2026-11-09T19:37:58.234Z",
+      "n": 28,
+      "status": "in_progress",
+      "collected": false
     }
   ]
 }

@@ -112,7 +112,9 @@ Respond ONLY with valid JSON, no markdown, no backticks:
   if (response.stop_reason === 'refusal') throw new Error('refusal ' + (response.stop_details?.category || ''));
   const text = response.content.filter(b => b.type === 'text').map(b => b.text || '').join('');
   const clean = text.replace(/```json|```/g, '').trim();
-  return JSON.parse(clean);
+  const out = JSON.parse(clean);
+  out._defaultSources = [primarySource.name, secondarySource.name];
+  return out;
 }
 
 async function sleep(ms) {
@@ -154,7 +156,7 @@ async function main() {
         reflection_questions: devotion.reflection_questions,
         prayer:               devotion.prayer,
         call_to_action:       devotion.call_to_action,
-        sources:              devotion.sources,
+        sources:              (Array.isArray(devotion.sources) && devotion.sources.length) ? devotion.sources : devotion._defaultSources,   // the model sometimes omits it; the column is not null
       }, { onConflict: 'month_day' });
 
       if (error) throw error;
