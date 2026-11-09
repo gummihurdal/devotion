@@ -101,13 +101,16 @@ Respond ONLY with valid JSON, no markdown, no backticks:
   "sources": ["${primarySource.name}", "${secondarySource.name}"]
 }`;
 
-  const response = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 1500,
+  // 2026-11-09: Claude Opus 5.5 (thinking always on, so max_tokens must leave room for it); server-side refusal fallback
+  const response = await anthropic.beta.messages.create({
+    model: 'claude-opus-5-5',
+    max_tokens: 16000,
+    betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default',
+    output_config: { effort: 'medium' },
     messages: [{ role: 'user', content: prompt }]
   });
-
-  const text = response.content.map(b => b.text || '').join('');
+  if (response.stop_reason === 'refusal') throw new Error('refusal ' + (response.stop_details?.category || ''));
+  const text = response.content.filter(b => b.type === 'text').map(b => b.text || '').join('');
   const clean = text.replace(/```json|```/g, '').trim();
   return JSON.parse(clean);
 }
