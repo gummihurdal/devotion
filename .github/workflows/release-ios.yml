@@ -40,15 +40,12 @@ jobs:
           chmod 600 "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8"
           test -s "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8" || { echo "secret ASC_KEY_P8 is empty"; exit 1; }
 
-      - name: Archive (automatic, cloud-managed signing)
+      - name: Archive (unsigned; signing happens at export with the App Store profile)
         working-directory: ios/App
         run: |
           xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos \
             -archivePath "$RUNNER_TEMP/Grace.xcarchive" archive \
-            -allowProvisioningUpdates \
-            -authenticationKeyPath "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8" \
-            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM="$APPLE_TEAM_ID"
 
       - name: Export options
         run: |
