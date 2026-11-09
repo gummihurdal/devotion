@@ -174,6 +174,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .hero-cta{padding:12px 32px}
 }
 </style>
+<script src="i18n.js?v=20261109d"></script>
+<script src="i18n-pages.js?v=20261109d"></script>
 </head>
 <body>
 <div class="mob-bar">
@@ -185,32 +187,32 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="sb-logo">
     <a href="index.html">
       <div class="sb-logo-text">Grace</div>
-      <div class="sb-logo-sub">Daily Scripture &amp; Reflection</div>
+      <div class="sb-logo-sub" data-i18n="logo_sub">Daily Scripture &amp; Reflection</div>
     </a>
   </div>
   <nav class="sb-nav">
-    <a class="sb-link on" href="devotion.html">Daily Devotion</a>
-    <button class="sb-btn" id="study-btn" onclick="sbStudy()">Study Topics</button>
+    <a class="sb-link on" href="devotion.html" data-i18n="nav_devotion">Daily Devotion</a>
+    <button class="sb-btn" id="study-btn" onclick="sbStudy()" data-i18n="nav_study">Study Topics</button>
     <div class="sb-sub" id="study-sub">
-      <a class="sb-link" href="learn.html?topic=christian-identity">Identity</a>
-      <a class="sb-link" href="learn.html?topic=the-cross">The Cross</a>
-      <a class="sb-link" href="learn.html?topic=discipleship">Discipleship</a>
-      <a class="sb-link" href="learn.html?topic=apologetics">Apologetics</a>
-      <a class="sb-link" href="learn.html?topic=prayer">Prayer</a>
-      <a class="sb-link" href="learn.html?topic=suffering">Suffering</a>
-      <a class="sb-link" href="learn.html?topic=holy-spirit">Holy Spirit</a>
-      <a class="sb-link" href="learn.html?topic=sin-and-grace">Sin &amp; Grace</a>
-      <a class="sb-link" href="learn.html?topic=the-church">The Church</a>
-      <a class="sb-link" href="learn.html?topic=eternity">Eternity</a>
-      <a class="sb-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
+      <a class="sb-link" href="learn.html?topic=christian-identity" data-i18n="topic_christian-identity">Identity</a>
+      <a class="sb-link" href="learn.html?topic=the-cross" data-i18n="topic_the-cross">The Cross</a>
+      <a class="sb-link" href="learn.html?topic=discipleship" data-i18n="topic_discipleship">Discipleship</a>
+      <a class="sb-link" href="learn.html?topic=apologetics" data-i18n="topic_apologetics">Apologetics</a>
+      <a class="sb-link" href="learn.html?topic=prayer" data-i18n="topic_prayer">Prayer</a>
+      <a class="sb-link" href="learn.html?topic=suffering" data-i18n="topic_suffering">Suffering</a>
+      <a class="sb-link" href="learn.html?topic=holy-spirit" data-i18n="topic_holy-spirit">Holy Spirit</a>
+      <a class="sb-link" href="learn.html?topic=sin-and-grace" data-i18n="topic_sin-and-grace">Sin &amp; Grace</a>
+      <a class="sb-link" href="learn.html?topic=the-church" data-i18n="topic_the-church">The Church</a>
+      <a class="sb-link" href="learn.html?topic=eternity" data-i18n="topic_eternity">Eternity</a>
+      <a class="sb-link" href="learn.html?topic=holiness-of-god" data-i18n="topic_holiness-of-god">Holiness of God</a>
     </div>
     <div class="sb-divider"></div>
-    <a class="sb-link" href="calendar.html?v=2">Calendar</a>
-    <a class="sb-link" href="archive.html">Archive</a>
-    <a class="sb-link" href="well.html">The Well</a>
-    <a class="sb-link" href="blog.html">Blog</a>
-    <a class="sb-link" href="contact.html">Contact</a>
-    <a class="sb-link" href="settings.html">Settings</a>
+    <a class="sb-link" href="calendar.html?v=2" data-i18n="nav_calendar">Calendar</a>
+    <a class="sb-link" href="archive.html" data-i18n="nav_archive">Archive</a>
+    <a class="sb-link" href="well.html" data-i18n="nav_well">The Well</a>
+    <a class="sb-link" href="blog.html" data-i18n="nav_blog">Blog</a>
+    <a class="sb-link" href="contact.html" data-i18n="nav_contact">Contact</a>
+    <a class="sb-link" href="settings.html" data-i18n="nav_settings">Settings</a>
   </nav>
   <div class="sb-foot"><div class="sb-foot-date" id="sb-date"></div></div>
 </aside>
@@ -220,15 +222,15 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     <div class="tb-greeting" id="greeting"></div>
     <div class="tb-date" id="topdate"></div>
   </div>
-  <div id="loading"><span class="load-t">Preparing today's word</span></div>
+  <div id="loading"><span class="load-t" data-i18n="loading_word">Preparing today's word</span></div>
   <div id="app" style="display:none;flex:1;flex-direction:column"></div>
 </main>
 
 <script>
 if(!localStorage.getItem('tew_onboarded')){localStorage.setItem('tew_onboarded','1');}
 const SB='https://mjphpctvuxmbjhmcscoj.supabase.co',KEY='sb_publishable_MDPfXyMjG0eadmvp7uoqdg_EHwj4Alm';
-const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS=GI.DAYS;
+const MONTHS=GI.MONTHS;
 const GREET=['Midnight','Early Morning','Early Morning','Dawn','Dawn','Morning','Morning','Morning','Morning','Morning','Morning','Morning','Midday','Afternoon','Afternoon','Afternoon','Afternoon','Afternoon','Evening','Evening','Evening','Evening','Night','Night'];
 const now=new Date();
 // A date can be requested from the calendar or archive: ?date=MM-DD or ?date=YYYY-MM-DD
@@ -245,7 +247,7 @@ let view=new Date(now), isPastView=false;
   isPastView=cand.toDateString()!==now.toDateString();
 })();
 const mm=String(view.getMonth()+1).padStart(2,'0'),dd=String(view.getDate()).padStart(2,'0');
-document.getElementById('greeting').textContent=`Good ${GREET[now.getHours()]}`;
+document.getElementById('greeting').textContent=GI.greeting(now.getHours(),GREET);
 document.getElementById('topdate').textContent=`${DAYS[view.getDay()]} · ${MONTHS[view.getMonth()]} ${view.getDate()}, ${view.getFullYear()}`;
 document.getElementById('sb-date').innerHTML=`${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}<br>${now.getFullYear()}`;
 
@@ -253,7 +255,7 @@ async function init(){
   const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=*&limit=1`,{headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}});
   const rows=await r.json();
   if(!rows?.length) throw new Error();
-  const d=rows[0];
+  const d=(await GI.overlay(SB,KEY,'devotionals',rows))[0];
   const paras=d.meditation.split(/\n\n|\n/).filter(p=>p.trim()).map(p=>`<p>${p.trim()}</p>`).join('');
   const srcs=(d.sources||[]).map(s=>`<span class="src-tag">${s}</span>`).join('');
   const qs=(d.reflection_questions||[]).map(q=>`<div class="sp-q"><div class="sp-qt">${q.topic}</div><div class="sp-qtxt">${q.question}</div></div>`).join('');
@@ -276,21 +278,21 @@ async function init(){
         <div class="hero-quote-by">— ${d.quote_author}</div>
       </div>
       <div class="hero-theme">${d.theme}</div>
-      <a href="#reading" class="hero-cta">Begin Reading</a>
+      <a href="#reading" class="hero-cta">${GI.t('begin')}</a>
     </div>
 
     <!-- 3 Cards -->
     <div class="cards-row">
       <div class="card">
-        <div class="card-lbl">Today's Scripture</div>
+        <div class="card-lbl">${GI.t('scripture_today')}</div>
         <div class="card-body"><strong>${d.scripture_reference}</strong>${d.scripture_text}</div>
       </div>
       <div class="card">
-        <div class="card-lbl">Theme</div>
-        <div class="card-body"><strong>${d.theme}</strong>A meditation for today's journey.</div>
+        <div class="card-lbl">${GI.t('theme')}</div>
+        <div class="card-body"><strong>${d.theme}</strong>${GI.t('theme_note')}</div>
       </div>
       <div class="card">
-        <div class="card-lbl">Sources</div>
+        <div class="card-lbl">${GI.t('sources')}</div>
         <div class="card-body">${(d.sources||[]).join(' · ')}</div>
       </div>
     </div>
@@ -300,7 +302,7 @@ async function init(){
       <div class="two-col">
         <div>
           <div class="med-block">
-            <div class="block-lbl">Meditation</div>
+            <div class="block-lbl">${GI.t('meditation')}</div>
             <div class="med-title">${d.theme}</div>
             <div class="qbar">
               <div class="qbar-t">"${d.quote_text}"</div>
@@ -311,42 +313,42 @@ async function init(){
           </div>
           <div class="orn"><div class="orn-l"></div><span class="orn-s">· · ·</span><div class="orn-l"></div></div>
           <div class="call-block">
-            <div class="block-lbl">Today's Call</div>
+            <div class="block-lbl">${GI.t('call')}</div>
             <div class="call-text">${d.call_to_action}</div>
           </div>
           <div class="pray-block">
-            <div class="block-lbl">Closing Prayer</div>
+            <div class="block-lbl">${GI.t('prayer')}</div>
             <div class="pray-text">${d.prayer}</div>
           </div>
           <div class="scripture-close">
-            <div class="block-lbl">Today's Scripture</div>
+            <div class="block-lbl">${GI.t('scripture_today')}</div>
             <div class="sc-verse">"${d.scripture_text}"</div>
             <div class="sc-ref">${d.scripture_reference}</div>
           </div>
         </div>
         <div>
-          <div class="sp"><div class="sp-lbl">Reflection</div>${qs}</div>
+          <div class="sp"><div class="sp-lbl">${GI.t('reflection')}</div>${qs}</div>
           <div class="sp">
-            <div class="sp-lbl">Study Deeper</div>
-            <a class="sp-link" href="topics.html">All Twelve Topics</a>
-            <a class="sp-link" href="learn.html?topic=the-cross">The Cross</a>
-            <a class="sp-link" href="learn.html?topic=discipleship">Discipleship</a>
-            <a class="sp-link" href="learn.html?topic=holiness-of-god">Holiness of God</a>
-            <a class="sp-link" href="learn.html?topic=prayer">Prayer</a>
+            <div class="sp-lbl">${GI.t('deeper')}</div>
+            <a class="sp-link" href="topics.html">${GI.t('all_topics')}</a>
+            <a class="sp-link" href="learn.html?topic=the-cross">${GI.t('topic_the-cross')}</a>
+            <a class="sp-link" href="learn.html?topic=discipleship">${GI.t('topic_discipleship')}</a>
+            <a class="sp-link" href="learn.html?topic=holiness-of-god">${GI.t('topic_holiness-of-god')}</a>
+            <a class="sp-link" href="learn.html?topic=prayer">${GI.t('topic_prayer')}</a>
           </div>
         </div>
       </div>
     </div>`;
 }
 init().catch(()=>{
-  document.getElementById('loading').innerHTML='<span class="load-t">Rest in His presence today</span>';
+  document.getElementById('loading').innerHTML='<span class="load-t">'+GI.t('rest')+'</span>';
 });
 
 
 /* ── sidebar ── */
 (function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=GI.DAYS;
+  var MON=GI.MONTHS;
   var now=new Date();
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
@@ -382,8 +384,8 @@ function sbClose(){
   document.getElementById('mob-overlay').classList.remove('open');
 }
 (function(){
-  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=GI.DAYS;
+  var MON=GI.MONTHS;
   var now=new Date();
   var el=document.getElementById('sb-date');
   if(el) el.innerHTML=DAYS[now.getDay()]+'<br>'+MON[now.getMonth()]+' '+now.getDate()+'<br>'+now.getFullYear();
@@ -433,5 +435,6 @@ function sbClose(){
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.mount('gi-lang');</script>
 </body>
 </html>

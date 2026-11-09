@@ -207,6 +207,13 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   margin-top:44px;
   animation:fadeUp 1.4s .7s cubic-bezier(0.22,1,0.36,1) both;
 }
+.lang-choice{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:22px;
+  animation:fadeUp 1.4s .8s cubic-bezier(0.22,1,0.36,1) both}
+.lang-choice .lc-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(237,224,192,0.55);margin-right:6px}
+.lang-choice button{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;letter-spacing:.5px;color:rgba(237,224,192,0.85);background:rgba(8,13,26,0.35);
+  border:1px solid rgba(237,224,192,0.3);padding:9px 18px;cursor:pointer;border-radius:999px;backdrop-filter:blur(6px);transition:all .3s}
+.lang-choice button:hover{border-color:var(--gold);color:var(--gold)}
+.lang-choice button.on{background:var(--gold);border-color:var(--gold);color:var(--navy4);font-weight:600}
 .hero-appstore{
   margin-top:28px;
   animation:fadeUp 1.4s .85s cubic-bezier(0.22,1,0.36,1) both;
@@ -357,8 +364,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .cta-dropdown-btn{padding:12px 20px}
 }
 </style>
-<script src="i18n.js?v=20261109c"></script>
-<script src="i18n-pages.js?v=20261109c"></script>
+<script src="i18n.js?v=20261109d"></script>
+<script src="i18n-pages.js?v=20261109d"></script>
 </head>
 <body>
 
@@ -366,7 +373,6 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="gi-lang top" id="gi-lang"></div>
   <div class="hero-content">
     <div class="hero-eyebrow" data-i18n="hero_eyebrow">Pause · Reflect · Walk</div>
     <h1 class="hero-title">Grace for Every Day</h1>
@@ -377,6 +383,7 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
       <a class="cta-secondary" href="devotion.html?study=open" data-i18n="cta_topics">Study Topics</a>
       <a class="cta-secondary" href="blog.html" data-i18n="cta_blog">Blog</a>
     </div>
+    <div class="lang-choice" id="gi-choice" aria-label="Language / Idioma"></div>
     <div class="hero-appstore">
       <a href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="Download on the App Store" />
@@ -585,6 +592,6 @@ loadTodayVerse();
   }).catch(function(){});
 })();
 </script>
-<script>GI.apply();GI.mount('gi-lang');</script>
+<script>GI.apply();GI.choice('gi-choice');</script>
 </body>
 </html>

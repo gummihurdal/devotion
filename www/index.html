@@ -207,6 +207,13 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   margin-top:44px;
   animation:fadeUp 1.4s .7s cubic-bezier(0.22,1,0.36,1) both;
 }
+.lang-choice{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:22px;
+  animation:fadeUp 1.4s .8s cubic-bezier(0.22,1,0.36,1) both}
+.lang-choice .lc-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(237,224,192,0.55);margin-right:6px}
+.lang-choice button{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;letter-spacing:.5px;color:rgba(237,224,192,0.85);background:rgba(8,13,26,0.35);
+  border:1px solid rgba(237,224,192,0.3);padding:9px 18px;cursor:pointer;border-radius:999px;backdrop-filter:blur(6px);transition:all .3s}
+.lang-choice button:hover{border-color:var(--gold);color:var(--gold)}
+.lang-choice button.on{background:var(--gold);border-color:var(--gold);color:var(--navy4);font-weight:600}
 .hero-appstore{
   margin-top:28px;
   animation:fadeUp 1.4s .85s cubic-bezier(0.22,1,0.36,1) both;
@@ -357,6 +364,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .cta-dropdown-btn{padding:12px 20px}
 }
 </style>
+<script src="i18n.js?v=20261109d"></script>
+<script src="i18n-pages.js?v=20261109d"></script>
 </head>
 <body>
 
@@ -365,15 +374,16 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Pause · Reflect · Walk</div>
+    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Pause · Reflect · Walk</div>
     <h1 class="hero-title">Grace for Every Day</h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
+    <p class="hero-sub" data-i18n="hero_sub">A daily companion for the Christian life. Scripture, reflection, and prayer.</p>
     <div class="hero-ctas">
-      <a class="cta-primary" href="devotion.html">Daily Devotional</a>
-      <a class="cta-secondary" href="devotion.html?study=open">Study Topics</a>
-      <a class="cta-secondary" href="blog.html">Blog</a>
+      <a class="cta-primary" href="devotion.html" data-i18n="cta_devotional">Daily Devotional</a>
+      <a class="cta-secondary" href="devotion.html?study=open" data-i18n="cta_topics">Study Topics</a>
+      <a class="cta-secondary" href="blog.html" data-i18n="cta_blog">Blog</a>
     </div>
+    <div class="lang-choice" id="gi-choice" aria-label="Language / Idioma"></div>
     <div class="hero-appstore">
       <a href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store">
         <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="Download on the App Store" />
@@ -381,64 +391,64 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Scroll Down</span>
+    <span data-i18n="scroll">Scroll Down</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 <!-- TODAY'S VERSE STRIP -->
 <div class="today-strip" id="today-strip">
-  <div class="ts-label">Today's Scripture</div>
+  <div class="ts-label" data-i18n="ts_label">Today's Scripture</div>
   <div class="ts-text" id="ts-text">…</div>
   <div class="ts-ref" id="ts-ref"></div>
 </div>
 
 <!-- FEATURE CARDS -->
 <section class="features" id="explore">
-  <div class="section-eyebrow">Everything in One Place</div>
-  <div class="section-title">Where would you like to begin?</div>
+  <div class="section-eyebrow" data-i18n="sec_eyebrow">Everything in One Place</div>
+  <div class="section-title" data-i18n="sec_title">Where would you like to begin?</div>
   <div class="cards">
     <a class="card" href="devotion.html">
       <div class="card-icon">🕯️</div>
-      <div class="card-label">Every Day</div>
-      <div class="card-title">Daily Devotion</div>
-      <div class="card-desc">A fresh meditation each morning — scripture, reflection, a closing prayer, and a call to walk differently today.</div>
-      <div class="card-arrow">Enter →</div>
+      <div class="card-label" data-i18n="lbl_everyday">Every Day</div>
+      <div class="card-title" data-i18n="card_devotion">Daily Devotion</div>
+      <div class="card-desc" data-i18n="desc_devotion">A fresh meditation each morning — scripture, reflection, a closing prayer, and a call to walk differently today.</div>
+      <div data-i18n="enter_2" class="card-arrow">Enter →</div>
     </a>
     <a class="card" href="topics.html">
       <div class="card-icon">📖</div>
-      <div class="card-label">12 Topics</div>
-      <div class="card-title">Study Topics</div>
-      <div class="card-desc">Deep-dive lessons on Identity, The Cross, Prayer, Suffering, Holiness and more. Structured to take you further.</div>
-      <div class="card-arrow">Study →</div>
+      <div class="card-label" data-i18n="lbl_topics">12 Topics</div>
+      <div class="card-title" data-i18n="card_topics">Study Topics</div>
+      <div class="card-desc" data-i18n="desc_topics">Deep-dive lessons on Identity, The Cross, Prayer, Suffering, Holiness and more. Structured to take you further.</div>
+      <div data-i18n="study_3" class="card-arrow">Study →</div>
     </a>
     <a class="card" href="calendar.html?v=2">
       <div class="card-icon">📅</div>
-      <div class="card-label">Year View</div>
-      <div class="card-title">Devotion Calendar</div>
-      <div class="card-desc">See every devotion across the year. Navigate by month, revisit past days, or plan ahead in your walk.</div>
-      <div class="card-arrow">Open →</div>
+      <div class="card-label" data-i18n="lbl_year">Year View</div>
+      <div class="card-title" data-i18n="card_calendar">Devotion Calendar</div>
+      <div class="card-desc" data-i18n="desc_calendar">See every devotion across the year. Navigate by month, revisit past days, or plan ahead in your walk.</div>
+      <div data-i18n="open_4" class="card-arrow">Open →</div>
     </a>
     <a class="card" href="archive.html">
       <div class="card-icon">🗂️</div>
-      <div class="card-label">Full Archive</div>
-      <div class="card-title">Archive</div>
-      <div class="card-desc">Browse every devotion ever written. Filter by theme, scripture, or season. Nothing lost, everything available.</div>
-      <div class="card-arrow">Browse →</div>
+      <div class="card-label" data-i18n="lbl_archive">Full Archive</div>
+      <div class="card-title" data-i18n="card_archive">Archive</div>
+      <div class="card-desc" data-i18n="desc_archive">Browse every devotion ever written. Filter by theme, scripture, or season. Nothing lost, everything available.</div>
+      <div data-i18n="browse_5" class="card-arrow">Browse →</div>
     </a>
     <a class="card" href="blog.html">
       <div class="card-icon">✦</div>
-      <div class="card-label">Community</div>
-      <div class="card-title">Blog</div>
-      <div class="card-desc">Share what God is speaking to you. Read what others are carrying. Walk together, even from a distance.</div>
-      <div class="card-arrow">Join →</div>
+      <div class="card-label" data-i18n="lbl_community">Community</div>
+      <div class="card-title" data-i18n="card_blog">Blog</div>
+      <div class="card-desc" data-i18n="desc_blog">Share what God is speaking to you. Read what others are carrying. Walk together, even from a distance.</div>
+      <div data-i18n="join_6" class="card-arrow">Join →</div>
     </a>
     <a class="card" href="settings.html">
       <div class="card-icon">⚙️</div>
-      <div class="card-label">Your Experience</div>
-      <div class="card-title">Settings</div>
-      <div class="card-desc">Personalise your name, reading preferences, and how the word is presented to you each day.</div>
-      <div class="card-arrow">Configure →</div>
+      <div class="card-label" data-i18n="lbl_experience">Your Experience</div>
+      <div class="card-title" data-i18n="card_settings">Settings</div>
+      <div class="card-desc" data-i18n="desc_settings">Personalise your name, reading preferences, and how the word is presented to you each day.</div>
+      <div data-i18n="configure_7" class="card-arrow">Configure →</div>
     </a>
   </div>
 </section>
@@ -447,9 +457,9 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <section class="verse-section">
   <div class="verse-inner">
     <div class="verse-orn">· · ·</div>
-    <div class="verse-text" id="verse-text">Loading…</div>
+    <div data-i18n="loading_8" class="verse-text" id="verse-text">Loading…</div>
     <div class="verse-ref" id="verse-ref"></div>
-    <a class="verse-cta" href="devotion.html">Read today's full devotion →</a>
+    <a data-i18n="read_today_s_full_9" class="verse-cta" href="devotion.html">Read today's full devotion →</a>
   </div>
 </section>
 
@@ -458,23 +468,23 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   <div class="studies-inner">
     <div class="studies-head">
       <div class="studies-head-left">
-        <div class="section-eyebrow" style="text-align:left;margin-bottom:6px">Structured Study</div>
-        <div class="section-title" style="text-align:left;margin-bottom:0;font-size:clamp(16px,2vw,22px)">Twelve Topics to Go Deeper</div>
+        <div data-i18n="structured_study_10" class="section-eyebrow" style="text-align:left;margin-bottom:6px">Structured Study</div>
+        <div data-i18n="twelve_topics_to_go_11" class="section-title" style="text-align:left;margin-bottom:0;font-size:clamp(16px,2vw,22px)">Twelve Topics to Go Deeper</div>
       </div>
-      <a class="studies-all" href="topics.html">All Topics →</a>
+      <a data-i18n="all_topics_12" class="studies-all" href="topics.html">All Topics →</a>
     </div>
     <div class="topics-grid">
-      <a class="topic-pill" href="learn.html?topic=christian-identity"><span class="tp-num">01</span><span class="tp-name">Christian Identity</span></a>
-      <a class="topic-pill" href="learn.html?topic=the-cross"><span class="tp-num">02</span><span class="tp-name">The Cross</span></a>
-      <a class="topic-pill" href="learn.html?topic=discipleship"><span class="tp-num">03</span><span class="tp-name">Discipleship</span></a>
-      <a class="topic-pill" href="learn.html?topic=apologetics"><span class="tp-num">04</span><span class="tp-name">Apologetics</span></a>
-      <a class="topic-pill" href="learn.html?topic=prayer"><span class="tp-num">05</span><span class="tp-name">Prayer</span></a>
-      <a class="topic-pill" href="learn.html?topic=suffering"><span class="tp-num">06</span><span class="tp-name">Suffering</span></a>
-      <a class="topic-pill" href="learn.html?topic=holy-spirit"><span class="tp-num">07</span><span class="tp-name">Holy Spirit</span></a>
-      <a class="topic-pill" href="learn.html?topic=sin-and-grace"><span class="tp-num">08</span><span class="tp-name">Sin &amp; Grace</span></a>
-      <a class="topic-pill" href="learn.html?topic=the-church"><span class="tp-num">09</span><span class="tp-name">The Church</span></a>
-      <a class="topic-pill" href="learn.html?topic=eternity"><span class="tp-num">10</span><span class="tp-name">Eternity</span></a>
-      <a class="topic-pill" href="learn.html?topic=holiness-of-god"><span class="tp-num">11</span><span class="tp-name">Holiness of God</span></a>
+      <a class="topic-pill" href="learn.html?topic=christian-identity"><span class="tp-num">01</span><span data-i18n="christian_identity_13" class="tp-name">Christian Identity</span></a>
+      <a class="topic-pill" href="learn.html?topic=the-cross"><span class="tp-num">02</span><span data-i18n="the_cross_14" class="tp-name">The Cross</span></a>
+      <a class="topic-pill" href="learn.html?topic=discipleship"><span class="tp-num">03</span><span data-i18n="discipleship_15" class="tp-name">Discipleship</span></a>
+      <a class="topic-pill" href="learn.html?topic=apologetics"><span class="tp-num">04</span><span data-i18n="apologetics_16" class="tp-name">Apologetics</span></a>
+      <a class="topic-pill" href="learn.html?topic=prayer"><span class="tp-num">05</span><span data-i18n="prayer_17" class="tp-name">Prayer</span></a>
+      <a class="topic-pill" href="learn.html?topic=suffering"><span class="tp-num">06</span><span data-i18n="suffering_18" class="tp-name">Suffering</span></a>
+      <a class="topic-pill" href="learn.html?topic=holy-spirit"><span class="tp-num">07</span><span data-i18n="holy_spirit_19" class="tp-name">Holy Spirit</span></a>
+      <a class="topic-pill" href="learn.html?topic=sin-and-grace"><span class="tp-num">08</span><span data-i18n="sin_grace_20" class="tp-name">Sin &amp; Grace</span></a>
+      <a class="topic-pill" href="learn.html?topic=the-church"><span class="tp-num">09</span><span data-i18n="the_church_21" class="tp-name">The Church</span></a>
+      <a class="topic-pill" href="learn.html?topic=eternity"><span class="tp-num">10</span><span data-i18n="eternity_22" class="tp-name">Eternity</span></a>
+      <a class="topic-pill" href="learn.html?topic=holiness-of-god"><span class="tp-num">11</span><span data-i18n="holiness_of_god_23" class="tp-name">Holiness of God</span></a>
     </div>
   </div>
 </section>
@@ -483,16 +493,16 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 <footer class="footer">
   <div>
     <div class="footer-brand">Grace for Every Day</div>
-    <div class="footer-sub">Daily Scripture &amp; Reflection</div>
+    <div data-i18n="daily_scripture_reflection_24" class="footer-sub">Daily Scripture &amp; Reflection</div>
   </div>
   <div class="footer-links">
-    <a class="footer-link" href="devotion.html">Devotion</a>
-    <a class="footer-link" href="calendar.html?v=2">Calendar</a>
-    <a class="footer-link" href="archive.html">Archive</a>
-    <a class="footer-link" href="well.html">The Well</a>
+    <a data-i18n="devotion_25" class="footer-link" href="devotion.html">Devotion</a>
+    <a data-i18n="calendar_26" class="footer-link" href="calendar.html?v=2">Calendar</a>
+    <a data-i18n="archive_27" class="footer-link" href="archive.html">Archive</a>
+    <a data-i18n="the_well_28" class="footer-link" href="well.html">The Well</a>
     <a class="footer-link" href="blog.html">Blog</a>
-    <a class="footer-link" href="contact.html">Contact</a>
-    <a class="footer-link" href="settings.html">Settings</a>
+    <a data-i18n="contact_29" class="footer-link" href="contact.html">Contact</a>
+    <a data-i18n="settings_30" class="footer-link" href="settings.html">Settings</a>
     <a class="footer-link footer-appstore" href="https://apps.apple.com/app/id6761418732" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?releaseDate=1746576000" alt="App Store" /></a>
   </div>
 </footer>
@@ -504,12 +514,12 @@ async function loadTodayVerse(){
   const now=new Date();
   const mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
   try{
-    const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=scripture_text,scripture_reference,quote_text,quote_author&limit=1`,{
+    const r=await fetch(`${SB}/rest/v1/devotionals?month_day=eq.${mm}-${dd}&select=id,scripture_text,scripture_reference,quote_text,quote_author&limit=1`,{
       headers:{'apikey':KEY,'Authorization':`Bearer ${KEY}`}
     });
     const rows=await r.json();
     if(rows?.length){
-      const d=rows[0];
+      const d=(await GI.overlay(SB,KEY,'devotionals',rows))[0];
       // Strip
       const stripEl=document.getElementById('ts-text');
       const refEl=document.getElementById('ts-ref');
@@ -582,5 +592,6 @@ loadTodayVerse();
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.choice('gi-choice');</script>
 </body>
 </html>

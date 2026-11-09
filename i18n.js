@@ -139,6 +139,12 @@ window.GI = (function () {
     el.innerHTML = Object.keys(LANGS).map((l) =>
       `<button type="button" class="gi-btn${l === L ? ' on' : ''}" onclick="GI.set('${l}')" title="${LANGS[l]}">${l.toUpperCase()}</button>`).join('');
   }
+  function choice(id) {                                   // landing page: pick the language once; it is remembered on the device
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = '<span class="lc-lbl">Language · Idioma</span>' + Object.keys(LANGS).map((l) =>
+      `<button type="button" class="${l === L ? 'on' : ''}" onclick="GI.set('${l}')">${LANGS[l]}</button>`).join('');
+  }
   const css = document.createElement('style');
   css.textContent = '.gi-lang{display:flex;gap:6px;padding:10px 22px 4px}' +
     '.gi-btn{background:transparent;border:1px solid rgba(201,164,58,.35);color:rgba(237,224,192,.8);font-size:10px;letter-spacing:2px;padding:5px 9px;cursor:pointer;border-radius:3px;font-family:inherit}' +
@@ -146,5 +152,5 @@ window.GI = (function () {
     '.gi-lang.top{position:absolute;top:18px;right:22px;z-index:6;padding:0}@media(max-width:768px){.gi-lang.top{top:12px;right:12px}}';
   document.head.appendChild(css);
 
-  return { lang: L, LANGS, t, apply, extend, overlay, set, mount, greeting, PAGE, DAYS: DAYS[L] || DAYS.en, MONTHS: MONTHS[L] || MONTHS.en };
+  return { lang: L, LANGS, t, apply, extend, overlay, set, mount, choice, greeting, PAGE, DAYS: DAYS[L] || DAYS.en, MONTHS: MONTHS[L] || MONTHS.en };
 })();
