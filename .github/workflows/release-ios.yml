@@ -1,0 +1,82 @@
+name: Release iOS to App Store Connect
+
+# Signs with Apple's cloud-managed distribution certificate and uploads the build to App Store Connect (TestFlight),
+# no Mac and no certificate files needed. Requires four repository secrets:
+#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8 (the AuthKey_XXXX.p8 contents), APPLE_TEAM_ID
+# The API key needs the Admin (or App Manager) role in App Store Connect. Run it by hand from the Actions tab.
+on:
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: "Upload to App Store Connect (off = only build and keep the signed .ipa as an artifact)"
+        type: boolean
+        default: true
+
+jobs:
+  release-ios:
+    runs-on: macos-latest
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Sync Capacitor
+        run: npx cap sync ios
+
+      - name: App Store Connect API key
+        run: |
+          test -n "$ASC_KEY_ID" && test -n "$ASC_ISSUER_ID" && test -n "$APPLE_TEAM_ID" || { echo "secrets ASC_KEY_ID / ASC_ISSUER_ID / APPLE_TEAM_ID missing"; exit 1; }
+          mkdir -p "$HOME/private_keys"
+          printf '%s\n' "${{ secrets.ASC_KEY_P8 }}" > "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          chmod 600 "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          test -s "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8" || { echo "secret ASC_KEY_P8 is empty"; exit 1; }
+
+      - name: Archive (automatic, cloud-managed signing)
+        working-directory: ios/App
+        run: |
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos \
+            -archivePath "$RUNNER_TEMP/Grace.xcarchive" archive \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic
+
+      - name: Export options
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>${{ inputs.upload && 'upload' || 'export' }}</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>teamID</key><string>$APPLE_TEAM_ID</string>
+            <key>uploadSymbols</key><true/>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict></plist>
+          EOF
+
+      - name: Export and upload
+        run: |
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/Grace.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$HOME/private_keys/AuthKey_${ASC_KEY_ID}.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          ls -la "$RUNNER_TEMP/export" || true
+
+      - name: Keep the signed .ipa (build-only runs)
+        if: ${{ !inputs.upload }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Grace-iOS-signed
+          path: ${{ runner.temp }}/export
