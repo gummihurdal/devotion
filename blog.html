@@ -183,7 +183,8 @@ body{background:#1e2a4a !important}
 .field-input:focus,.field-textarea:focus{border-color:#C9A43A !important;background:#fffdf7 !important}
 
 </style>
-<script src="i18n.js?v=20261109b"></script>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
 
@@ -235,9 +236,9 @@ body{background:#1e2a4a !important}
   </div>
 
   <div class="page-hero">
-    <div class="ph-eyebrow">The Community</div>
-    <div class="ph-title">Share Your Reflection</div>
-    <div class="ph-sub">A space to share thoughts on today's devotion, personal insights, or what God has placed on your heart.</div>
+    <div data-i18n="the_community_2" class="ph-eyebrow">The Community</div>
+    <div data-i18n="share_your_reflection_3" class="ph-title">Share Your Reflection</div>
+    <div data-i18n="a_space_to_share_4" class="ph-sub">A space to share thoughts on today's devotion, personal insights, or what God has placed on your heart.</div>
   </div>
 
   <div class="body">
@@ -245,65 +246,65 @@ body{background:#1e2a4a !important}
 
       <div>
         <div class="form-block">
-          <div class="form-lbl">Leave a Reflection</div>
+          <div data-i18n="leave_a_reflection_5" class="form-lbl">Leave a Reflection</div>
           <div id="comment-form">
             <div class="form-row">
               <div>
-                <div class="field-lbl">Your Name</div>
-                <input class="field-input" id="cf-name" type="text" placeholder="How you'd like to be known" maxlength="60">
+                <div data-i18n="your_name_6" class="field-lbl">Your Name</div>
+                <input data-i18n-ph="how_you_d_like_7" class="field-input" id="cf-name" type="text" placeholder="How you'd like to be known" maxlength="60">
               </div>
               <div>
-                <div class="field-lbl">Scripture (optional)</div>
-                <input class="field-input" id="cf-verse" type="text" placeholder="e.g. John 3:16" maxlength="60">
+                <div data-i18n="scripture_optional_8" class="field-lbl">Scripture (optional)</div>
+                <input data-i18n-ph="e_g_john_9" class="field-input" id="cf-verse" type="text" placeholder="e.g. John 3:16" maxlength="60">
               </div>
             </div>
             <div class="form-row single">
               <div>
-                <div class="field-lbl">Your Reflection</div>
-                <textarea class="field-textarea" id="cf-body" placeholder="Share what's on your heart…" maxlength="800" oninput="updateCount()"></textarea>
-                <div class="char-count"><span id="cf-count">0</span> / 800</div>
+                <div data-i18n="your_reflection_10" class="field-lbl">Your Reflection</div>
+                <textarea data-i18n-ph="share_what_s_on_11" class="field-textarea" id="cf-body" placeholder="Share what's on your heart…" maxlength="800" oninput="updateCount()"></textarea>
+                <div data-i18n-html="s_12" class="char-count"><span id="cf-count">0</span> / 800</div>
               </div>
             </div>
             <div class="form-err" id="cf-err"></div>
-            <button class="submit-btn" id="cf-submit" onclick="submitComment()">Post Reflection →</button>
+            <button data-i18n="post_reflection_13" class="submit-btn" id="cf-submit" onclick="submitComment()">Post Reflection →</button>
           </div>
           <div class="form-success" id="comment-success">
             <div class="form-success-icon">✦</div>
-            <div class="form-success-t">Reflection Posted</div>
-            <div class="form-success-s">Thank you for sharing. Your words are a gift to the community.</div>
-            <div class="form-success-back" onclick="resetForm()">Post another reflection</div>
+            <div data-i18n="reflection_posted_14" class="form-success-t">Reflection Posted</div>
+            <div data-i18n="thank_you_for_sharing_15" class="form-success-s">Thank you for sharing. Your words are a gift to the community.</div>
+            <div data-i18n="post_another_reflection_16" class="form-success-back" onclick="resetForm()">Post another reflection</div>
           </div>
         </div>
 
-        <div class="feed-lbl">Community Reflections</div>
+        <div data-i18n="community_reflections_17" class="feed-lbl">Community Reflections</div>
         <div id="feed">
-          <div class="feed-loading">Loading reflections…</div>
+          <div data-i18n="loading_reflections_18" class="feed-loading">Loading reflections…</div>
         </div>
       </div>
 
       <div class="side-panel">
         <div class="sp">
-          <div class="sp-lbl">Today's Verse</div>
+          <div data-i18n="today_s_verse_19" class="sp-lbl">Today's Verse</div>
           <div class="sp-verse" id="sp-verse">…</div>
           <div class="sp-ref" id="sp-ref"></div>
         </div>
         <div class="sp">
           <div class="sp-lbl">Blog</div>
           <div class="sp-stat">
-            <span class="sp-stat-lbl">Total Reflections</span>
+            <span data-i18n="total_reflections_20" class="sp-stat-lbl">Total Reflections</span>
             <span class="sp-stat-val" id="stat-count">—</span>
           </div>
           <div class="sp-stat">
-            <span class="sp-stat-lbl">Today</span>
+            <span data-i18n="today_21" class="sp-stat-lbl">Today</span>
             <span class="sp-stat-val" id="stat-today">—</span>
           </div>
         </div>
         <div class="sp">
-          <div class="sp-lbl">Explore</div>
-          <a class="sp-link" href="index.html">Today's Devotion</a>
-          <a class="sp-link" href="archive.html">Archive</a>
-          <a class="sp-link" href="calendar.html?v=2">Calendar</a>
-          <a class="sp-link" href="learn.html?topic=christian-identity">Study Topics</a>
+          <div data-i18n="explore_22" class="sp-lbl">Explore</div>
+          <a data-i18n="today_s_devotion_23" class="sp-link" href="index.html">Today's Devotion</a>
+          <a data-i18n="archive_24" class="sp-link" href="archive.html">Archive</a>
+          <a data-i18n="calendar_25" class="sp-link" href="calendar.html?v=2">Calendar</a>
+          <a data-i18n="study_topics_26" class="sp-link" href="learn.html?topic=christian-identity">Study Topics</a>
         </div>
       </div>
 
@@ -342,9 +343,9 @@ async function submitComment(){
   const errEl=document.getElementById('cf-err');
   const btn=document.getElementById('cf-submit');
   errEl.style.display='none';
-  if(!name){errEl.textContent='Please enter your name.';errEl.style.display='block';return;}
-  if(!body||body.length<10){errEl.textContent='Please write a little more.';errEl.style.display='block';return;}
-  btn.disabled=true;btn.textContent='Posting…';
+  if(!name){errEl.textContent=GI.t('blog_name');errEl.style.display='block';return;}
+  if(!body||body.length<10){errEl.textContent=GI.t('blog_more');errEl.style.display='block';return;}
+  btn.disabled=true;btn.textContent=GI.t('blog_posting');
   try{
     const r=await fetch(`${SB}/rest/v1/blog_submissions`,{
       method:'POST',
@@ -356,14 +357,14 @@ async function submitComment(){
       document.getElementById('comment-success').style.display='block';
       loadFeed();
     } else {
-      errEl.textContent='Could not post. Please try again.';
+      errEl.textContent=GI.t('blog_fail');
       errEl.style.display='block';
     }
   }catch(e){
-    errEl.textContent='Network error. Please check your connection.';
+    errEl.textContent=GI.t('blog_net');
     errEl.style.display='block';
   }
-  btn.disabled=false;btn.textContent='Post Reflection →';
+  btn.disabled=false;btn.textContent=GI.t('blog_post');
 }
 
 function relDate(str){
@@ -396,7 +397,7 @@ async function loadFeed(){
     document.getElementById('stat-today').textContent=todayCount;
     document.getElementById('tb-count').textContent=total+' Reflection'+(total!==1?'s':'');
     if(total===0){
-      feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-t">Be the first to share</div><div class="feed-empty-s">Your reflection could encourage someone today.</div></div>';
+      feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-t">'+GI.t('blog_first')+'</div><div class="feed-empty-s">'+GI.t('blog_encourage')+'</div></div>';
       return;
     }
     feedEl.innerHTML=comments.map(c=>`
@@ -409,7 +410,7 @@ async function loadFeed(){
         ${c.scripture_reference?`<div class="cc-verse">${escHtml(c.scripture_reference)}</div>`:''}
       </div>`).join('');
   }catch(e){
-    feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-s">Could not load reflections.</div></div>';
+    feedEl.innerHTML='<div class="feed-empty"><div class="feed-empty-s">'+GI.t('blog_load_fail')+'</div></div>';
   }
 }
 

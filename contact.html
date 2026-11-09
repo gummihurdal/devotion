@@ -103,7 +103,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="i18n.js?v=20261109b"></script>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
 
@@ -150,27 +151,27 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
 <main class="main">
   <div class="topbar">
-    <div class="tb-title">Contact</div>
+    <div data-i18n="contact_2" class="tb-title">Contact</div>
   </div>
 
   <div class="body">
     <div class="contact-wrap">
 
       <div class="contact-header">
-        <div class="contact-eyebrow">Get in Touch</div>
-        <div class="contact-title">We'd Love to Hear From You</div>
-        <div class="contact-sub">Questions, reflections, or just a word of encouragement — reach out any time.</div>
+        <div data-i18n="get_in_touch_3" class="contact-eyebrow">Get in Touch</div>
+        <div data-i18n="we_d_love_to_4" class="contact-title">We'd Love to Hear From You</div>
+        <div data-i18n="questions_reflections_or_just_5" class="contact-sub">Questions, reflections, or just a word of encouragement — reach out any time.</div>
       </div>
 
       <!-- Email address -->
       <div class="contact-email-block">
-        <span class="contact-email-label">Email</span>
-        <a class="contact-email-addr" href="mailto:journey@azurenexus.com">journey@azurenexus.com</a>
+        <span data-i18n="email_6" class="contact-email-label">Email</span>
+        <a data-i18n="journey_azurenexus_com_7" class="contact-email-addr" href="mailto:journey@azurenexus.com">journey@azurenexus.com</a>
       </div>
 
       <div class="contact-or">
         <div class="contact-or-line"></div>
-        <span class="contact-or-text">Or send a message</span>
+        <span data-i18n="or_send_a_message_8" class="contact-or-text">Or send a message</span>
         <div class="contact-or-line"></div>
       </div>
 
@@ -179,29 +180,29 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div>
-              <label class="field-lbl" for="cf-name">Your Name</label>
-              <input class="field-input" id="cf-name" name="name" type="text" placeholder="Your name" required>
+              <label data-i18n="your_name_9" class="field-lbl" for="cf-name">Your Name</label>
+              <input data-i18n-ph="your_name_10" class="field-input" id="cf-name" name="name" type="text" placeholder="Your name" required>
             </div>
             <div>
-              <label class="field-lbl" for="cf-email">Your Email</label>
-              <input class="field-input" id="cf-email" name="email" type="email" placeholder="your@email.com" required>
+              <label data-i18n="your_email_11" class="field-lbl" for="cf-email">Your Email</label>
+              <input data-i18n-ph="your_email_com_12" class="field-input" id="cf-email" name="email" type="email" placeholder="your@email.com" required>
             </div>
           </div>
           <div>
-            <label class="field-lbl" for="cf-subject">Subject</label>
-            <input class="field-input" id="cf-subject" name="title" type="text" placeholder="What is this about?">
+            <label data-i18n="subject_13" class="field-lbl" for="cf-subject">Subject</label>
+            <input data-i18n-ph="what_is_this_about_14" class="field-input" id="cf-subject" name="title" type="text" placeholder="What is this about?">
           </div>
           <div>
-            <label class="field-lbl" for="cf-message">Message</label>
-            <textarea class="field-textarea" id="cf-message" name="message" placeholder="Write your message here…" required></textarea>
+            <label data-i18n="message_15" class="field-lbl" for="cf-message">Message</label>
+            <textarea data-i18n-ph="write_your_message_here_16" class="field-textarea" id="cf-message" name="message" placeholder="Write your message here…" required></textarea>
           </div>
           <div class="form-err" id="cf-err"></div>
-          <button class="submit-btn" type="submit" id="cf-submit">Send Message →</button>
+          <button data-i18n="send_message_17" class="submit-btn" type="submit" id="cf-submit">Send Message →</button>
         </form>
         <div class="form-success" id="form-success">
           <div class="form-success-icon">✦</div>
-          <div class="form-success-t">Your Message Has Been Received</div>
-          <div class="form-success-s">Thank you for reaching out. Your words matter to us, and we will be in touch with you soon. May God bless your day.</div>
+          <div data-i18n="your_message_has_been_18" class="form-success-t">Your Message Has Been Received</div>
+          <div data-i18n="thank_you_for_reaching_19" class="form-success-s">Thank you for reaching out. Your words matter to us, and we will be in touch with you soon. May God bless your day.</div>
         </div>
       </div>
 

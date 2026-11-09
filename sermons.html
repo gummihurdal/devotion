@@ -134,7 +134,8 @@ audio::-webkit-media-controls-panel{background:var(--navy3)}
   .body{padding-top:24px;padding-bottom:60px}
 }
 </style>
-<script src="i18n.js?v=20261109b"></script>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
 
@@ -186,14 +187,14 @@ audio::-webkit-media-controls-panel{background:var(--navy3)}
 <!-- Main content -->
 <main class="main">
   <div class="topbar">
-    <div class="tb-title">Sermons</div>
+    <div data-i18n="sermons_2" class="tb-title">Sermons</div>
     <div class="tb-count" id="tb-count"></div>
   </div>
 
   <div class="page-hero">
-    <div class="ph-eyebrow">The Proclaimed Word</div>
-    <div class="ph-title">Sermons &amp; Messages</div>
-    <div class="ph-sub">Audio recordings of preached messages — to listen again, share with others, or encounter the Word for the first time.</div>
+    <div data-i18n="the_proclaimed_word_3" class="ph-eyebrow">The Proclaimed Word</div>
+    <div data-i18n="sermons_messages_4" class="ph-title">Sermons &amp; Messages</div>
+    <div data-i18n="audio_recordings_of_preached_5" class="ph-sub">Audio recordings of preached messages — to listen again, share with others, or encounter the Word for the first time.</div>
     <div class="ph-rule"></div>
   </div>
 
@@ -202,9 +203,9 @@ audio::-webkit-media-controls-panel{background:var(--navy3)}
 
       <!-- LEFT: Sermon list -->
       <div>
-        <div class="section-lbl">Recordings</div>
+        <div data-i18n="recordings_6" class="section-lbl">Recordings</div>
         <div id="sermon-list">
-          <div class="feed-loading">Loading sermons…</div>
+          <div data-i18n="loading_sermons_7" class="feed-loading">Loading sermons…</div>
         </div>
       </div>
 
@@ -212,16 +213,16 @@ audio::-webkit-media-controls-panel{background:var(--navy3)}
       <div class="side-panel">
 
         <div class="sp">
-          <div class="sp-lbl">Resources &amp; Links</div>
+          <div data-i18n="resources_links_8" class="sp-lbl">Resources &amp; Links</div>
           <div id="links-list">
             <!-- Populated from Supabase OR static fallback below -->
           </div>
         </div>
 
         <div class="sp-upload">
-          <div class="sp-upload-lbl">Audio Prep (FFmpeg)</div>
-          <code class="sp-upload-cmd">ffmpeg -i sermon.mp3 -ac 1 -b:a 64k sermon_out.mp3</code>
-          <div class="sp-upload-note">Converts to mono 64 kbps — reduces a 60 MB file to ~7–8 MB with clear speech quality.</div>
+          <div data-i18n="audio_prep_ffmpeg_9" class="sp-upload-lbl">Audio Prep (FFmpeg)</div>
+          <code data-i18n="ffmpeg_i_sermon_mp_10" class="sp-upload-cmd">ffmpeg -i sermon.mp3 -ac 1 -b:a 64k sermon_out.mp3</code>
+          <div data-i18n="converts_to_mono_kbps_11" class="sp-upload-note">Converts to mono 64 kbps — reduces a 60 MB file to ~7–8 MB with clear speech quality.</div>
         </div>
 
       </div>
@@ -290,10 +291,10 @@ function renderSermon(s, idx) {
 
   const player = s.audio_url
     ? `<div class="audio-wrap">
-        <div class="audio-label">Listen</div>
+        <div class="audio-label">${GI.t('listen')}</div>
         <audio controls preload="none" src="${s.audio_url}"></audio>
        </div>`
-    : `<div class="audio-wrap"><div class="audio-label" style="opacity:.4">Audio not yet available</div></div>`;
+    : `<div class="audio-wrap"><div class="audio-label" style="opacity:.4">${GI.t('no_audio')}</div></div>`;
 
   return `
   <div class="sermon-card" id="sc-${idx}" style="animation-delay:${idx * 0.07}s">
@@ -325,7 +326,7 @@ function toggleCard(idx) {
 function renderLinks(links) {
   const el = document.getElementById('links-list');
   if (!links || !links.length) {
-    el.innerHTML = '<div style="font-size:13px;font-style:italic;color:var(--text-d)">No links yet.</div>';
+    el.innerHTML = '<div style="font-size:13px;font-style:italic;color:var(--text-d)">'+GI.t('no_links')+'</div>';
     return;
   }
   el.innerHTML = links.map(l => `
@@ -360,7 +361,7 @@ async function load() {
       listEl.innerHTML = `
         <div class="feed-empty">
           <div class="feed-empty-icon">🎙</div>
-          <div class="feed-empty-t">No sermons yet</div>
+          <div class="feed-empty-t">${GI.t('no_sermons')}</div>
           <div class="feed-empty-s">Upload an audio file to Supabase Storage and add the first entry.</div>
         </div>`;
       document.getElementById('tb-count').textContent = '';

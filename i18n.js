@@ -42,7 +42,14 @@ window.GI = (function () {
       lbl_year: 'Year View', card_calendar: 'Devotion Calendar', desc_calendar: 'See every devotion across the year. Navigate by month, revisit past days, or plan ahead in your walk.',
       lbl_archive: 'Full Archive', card_archive: 'Archive', desc_archive: 'Browse every devotion ever written. Filter by theme, scripture, or season. Nothing lost, everything available.',
       lbl_community: 'Community', card_blog: 'Blog', desc_blog: 'Share what God is speaking to you. Read what others are carrying. Walk together, even from a distance.',
-      lbl_experience: 'Your Experience', card_settings: 'Settings', desc_settings: 'Personalise your name, reading preferences, and how the word is presented to you each day.'
+      lbl_experience: 'Your Experience', card_settings: 'Settings', desc_settings: 'Personalise your name, reading preferences, and how the word is presented to you each day.',
+      open_full: 'Open Full Devotional →', prev_p: '← Prev', next_p: 'Next →',
+      blog_name: 'Please enter your name.', blog_more: 'Please write a little more.', blog_posting: 'Posting…', blog_fail: 'Could not post. Please try again.',
+      blog_net: 'Network error. Please check your connection.', blog_post: 'Post Reflection →', blog_first: 'Be the first to share',
+      blog_encourage: 'Your reflection could encourage someone today.', blog_load_fail: 'Could not load reflections.',
+      listen: 'Listen', no_audio: 'Audio not yet available', no_links: 'No links yet.', no_sermons: 'No sermons yet', no_music: 'No music yet.', music_fail: 'Could not load music.',
+      saved: 'Saved ✓', unsaved: 'You have unsaved changes', fs_small: 'Small', fs_medium: 'Medium', fs_large: 'Large', devotee: 'Morning Devotee',
+      rt_morning: 'Morning · 5–7am', rt_midday: 'Midday · 12–1pm', rt_evening: 'Evening · 8–10pm', language: 'Language', change_lang: 'Change'
     },
     es: {
       logo_sub: 'Escritura y reflexión diarias', nav_devotion: 'Devoción diaria', nav_study: 'Temas de estudio',
@@ -66,7 +73,14 @@ window.GI = (function () {
       lbl_year: 'Vista anual', card_calendar: 'Calendario de devociones', desc_calendar: 'Vea cada devoción a lo largo del año. Navegue por mes, vuelva a días pasados o planifique su camino.',
       lbl_archive: 'Archivo completo', card_archive: 'Archivo', desc_archive: 'Explore cada devoción escrita. Filtre por tema, pasaje o temporada. Nada se pierde, todo está disponible.',
       lbl_community: 'Comunidad', card_blog: 'Blog', desc_blog: 'Comparta lo que Dios le está diciendo. Lea lo que otros llevan. Caminen juntos, aun a la distancia.',
-      lbl_experience: 'Su experiencia', card_settings: 'Ajustes', desc_settings: 'Personalice su nombre, sus preferencias de lectura y cómo se le presenta la palabra cada día.'
+      lbl_experience: 'Su experiencia', card_settings: 'Ajustes', desc_settings: 'Personalice su nombre, sus preferencias de lectura y cómo se le presenta la palabra cada día.',
+      open_full: 'Abrir la devoción completa →', prev_p: '← Ant.', next_p: 'Sig. →',
+      blog_name: 'Escriba su nombre, por favor.', blog_more: 'Escriba un poco más, por favor.', blog_posting: 'Publicando…', blog_fail: 'No se pudo publicar. Inténtelo de nuevo.',
+      blog_net: 'Error de red. Revise su conexión.', blog_post: 'Publicar reflexión →', blog_first: 'Sea el primero en compartir',
+      blog_encourage: 'Su reflexión podría animar a alguien hoy.', blog_load_fail: 'No se pudieron cargar las reflexiones.',
+      listen: 'Escuchar', no_audio: 'Audio aún no disponible', no_links: 'Todavía no hay enlaces.', no_sermons: 'Todavía no hay sermones', no_music: 'Todavía no hay música.', music_fail: 'No se pudo cargar la música.',
+      saved: 'Guardado ✓', unsaved: 'Tiene cambios sin guardar', fs_small: 'Pequeña', fs_medium: 'Mediana', fs_large: 'Grande', devotee: 'Lector matutino',
+      rt_morning: 'Mañana · 5–7 h', rt_midday: 'Mediodía · 12–13 h', rt_evening: 'Noche · 20–22 h', language: 'Idioma', change_lang: 'Cambiar'
     }
   };
   const DAYS = { en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -74,6 +88,8 @@ window.GI = (function () {
   const MONTHS = { en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                    es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'] };
   const T = Object.assign({}, UI.en, UI[L] || {});
+  const PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') || 'index';
+  function extend(dict) { const d = dict && dict[PAGE]; if (d) Object.assign(T, d.en || {}, d[L] || {}); }   // i18n-pages.js
   const t = (k) => (T[k] != null ? T[k] : k);
 
   function greeting(hour, en) {
@@ -84,6 +100,8 @@ window.GI = (function () {
     const r = root || document;
     r.querySelectorAll('[data-i18n]').forEach((el) => { const v = T[el.dataset.i18n]; if (v != null) el.textContent = v; });
     r.querySelectorAll('[data-i18n-ph]').forEach((el) => { const v = T[el.dataset.i18nPh]; if (v != null) el.placeholder = v; });
+    r.querySelectorAll('[data-i18n-html]').forEach((el) => { const v = T[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v; });
+    if (L !== 'en' && T.title) document.title = T.title;
     document.documentElement.lang = L;
   }
 
@@ -128,5 +146,5 @@ window.GI = (function () {
     '.gi-lang.top{position:absolute;top:18px;right:22px;z-index:6;padding:0}@media(max-width:768px){.gi-lang.top{top:12px;right:12px}}';
   document.head.appendChild(css);
 
-  return { lang: L, LANGS, t, apply, overlay, set, mount, greeting, DAYS: DAYS[L] || DAYS.en, MONTHS: MONTHS[L] || MONTHS.en };
+  return { lang: L, LANGS, t, apply, extend, overlay, set, mount, greeting, PAGE, DAYS: DAYS[L] || DAYS.en, MONTHS: MONTHS[L] || MONTHS.en };
 })();

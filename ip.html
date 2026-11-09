@@ -44,38 +44,41 @@ tr.is-bot td{opacity:0.35}
 .my-ip-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.5)}
 .my-ip-val{font-family:monospace;font-size:16px;color:#C9A43A}
 </style>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
+<div class="gi-lang top" id="gi-lang"></div>
 
 <div class="header">
   <div>
-    <h1>Visitor Log — Journey with God</h1>
-    <div class="subtitle" id="last-updated">Loading…</div>
+    <h1 data-i18n="visitor_log_journey_with_2">Visitor Log — Journey with God</h1>
+    <div data-i18n="loading_3" class="subtitle" id="last-updated">Loading…</div>
   </div>
-  <a href="https://graceforevery.day" style="font-family:Cinzel,serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.4);text-decoration:none">← Site</a>
+  <a data-i18n="site_4" href="https://graceforevery.day" style="font-family:Cinzel,serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,164,58,0.4);text-decoration:none">← Site</a>
 </div>
 
 <div class="my-ip-box">
-  <div><div class="my-ip-lbl">Your IP</div><div class="my-ip-val" id="my-ip">—</div></div>
-  <div><div class="my-ip-lbl">Your Location</div><div style="color:#EDE0C0;font-size:15px" id="my-loc">—</div></div>
+  <div><div data-i18n="your_ip_5" class="my-ip-lbl">Your IP</div><div class="my-ip-val" id="my-ip">—</div></div>
+  <div><div data-i18n="your_location_6" class="my-ip-lbl">Your Location</div><div style="color:#EDE0C0;font-size:15px" id="my-loc">—</div></div>
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="stat-val" id="s-total">—</div><div class="stat-lbl">Total Visits</div></div>
-  <div class="stat"><div class="stat-val" id="s-today">—</div><div class="stat-lbl">Today</div></div>
-  <div class="stat"><div class="stat-val" id="s-countries">—</div><div class="stat-lbl">Countries</div></div>
-  <div class="stat"><div class="stat-val" id="s-cities">—</div><div class="stat-lbl">Cities</div></div>
+  <div class="stat"><div class="stat-val" id="s-total">—</div><div data-i18n="total_visits_7" class="stat-lbl">Total Visits</div></div>
+  <div class="stat"><div class="stat-val" id="s-today">—</div><div data-i18n="today_8" class="stat-lbl">Today</div></div>
+  <div class="stat"><div class="stat-val" id="s-countries">—</div><div data-i18n="countries_9" class="stat-lbl">Countries</div></div>
+  <div class="stat"><div class="stat-val" id="s-cities">—</div><div data-i18n="cities_10" class="stat-lbl">Cities</div></div>
 </div>
 
 <div class="controls">
-  <button class="btn active" onclick="setFilter('all',this)">All Pages</button>
-  <button class="btn" onclick="setFilter('index.html',this)">Landing</button>
-  <button class="btn" onclick="setFilter('devotion.html',this)">Devotion</button>
+  <button data-i18n="all_pages_11" class="btn active" onclick="setFilter('all',this)">All Pages</button>
+  <button data-i18n="landing_12" class="btn" onclick="setFilter('index.html',this)">Landing</button>
+  <button data-i18n="devotion_13" class="btn" onclick="setFilter('devotion.html',this)">Devotion</button>
   <button class="btn" onclick="setFilter('blog.html',this)">Blog</button>
-  <button class="btn" onclick="setFilter('topics.html',this)">Topics</button>
+  <button data-i18n="topics_14" class="btn" onclick="setFilter('topics.html',this)">Topics</button>
   <span style="width:1px;height:24px;background:rgba(201,164,58,0.15);margin:0 4px"></span>
-  <button class="btn bot-filter active" id="bot-btn" onclick="toggleBots()">Hide Bots<span class="bot-count" id="bot-count"></span></button>
-  <input class="search" id="search" type="text" placeholder="Search IP, city, country…" oninput="renderTable()">
+  <button data-i18n-html="hide_bots_15" class="btn bot-filter active" id="bot-btn" onclick="toggleBots()">Hide Bots<span class="bot-count" id="bot-count"></span></button>
+  <input data-i18n-ph="search_ip_city_country_16" class="search" id="search" type="text" placeholder="Search IP, city, country…" oninput="renderTable()">
 </div>
 
 <div class="table-wrap">
@@ -83,17 +86,17 @@ tr.is-bot td{opacity:0.35}
     <thead>
       <tr>
         <th>#</th>
-        <th>Flag</th>
-        <th>IP</th>
-        <th>Country</th>
-        <th>City</th>
-        <th>Region</th>
-        <th>ISP</th>
-        <th>Page</th>
-        <th>Time</th>
+        <th data-i18n="flag_17">Flag</th>
+        <th data-i18n="ip_18">IP</th>
+        <th data-i18n="country_19">Country</th>
+        <th data-i18n="city_20">City</th>
+        <th data-i18n="region_21">Region</th>
+        <th data-i18n="isp_22">ISP</th>
+        <th data-i18n="page_23">Page</th>
+        <th data-i18n="time_24">Time</th>
       </tr>
     </thead>
-    <tbody id="tbody"><tr><td colspan="9" class="loading">Loading visitor logs…</td></tr></tbody>
+    <tbody id="tbody"><tr><td data-i18n="loading_visitor_logs_25" colspan="9" class="loading">Loading visitor logs…</td></tr></tbody>
   </table>
 </div>
 
@@ -279,5 +282,6 @@ setInterval(load, 30000);
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.mount('gi-lang');</script>
 </body>
 </html>

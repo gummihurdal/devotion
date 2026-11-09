@@ -100,8 +100,11 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
 
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 </style>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
+<div class="gi-lang top" id="gi-lang"></div>
 <!-- Botanical bg -->
 <div class="bg-pattern"></div>
 <div class="corner corner-tl">
@@ -156,60 +159,60 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
           <div class="flame-flame"></div>
           <div class="flame-body"></div>
         </div>
-        <div class="logo-name">The Eternal Word</div>
-        <div class="logo-sub">Daily Devotional</div>
+        <div data-i18n="the_eternal_word_2" class="logo-name">The Eternal Word</div>
+        <div data-i18n="daily_devotional_3" class="logo-sub">Daily Devotional</div>
       </div>
-      <div class="step-title">Welcome</div>
-      <div class="step-sub">Daily scripture, reflection, and quiet reading to anchor your day — drawn from the great theologians.</div>
-      <div class="field"><label>Your Name</label><input type="text" id="name" placeholder="Enter your name"></div>
+      <div data-i18n="welcome_4" class="step-title">Welcome</div>
+      <div data-i18n="daily_scripture_reflection_and_5" class="step-sub">Daily scripture, reflection, and quiet reading to anchor your day — drawn from the great theologians.</div>
+      <div class="field"><label data-i18n="your_name_6">Your Name</label><input data-i18n-ph="enter_your_name_7" type="text" id="name" placeholder="Enter your name"></div>
       <div class="field">
-        <label>Preferred Reading Time</label>
+        <label data-i18n="preferred_reading_time_8">Preferred Reading Time</label>
         <div class="rt-grid">
-          <div class="rt-opt on" onclick="pick(this,'rt')"><div class="rt-t">Morning</div><div class="rt-sub">5–7am</div></div>
-          <div class="rt-opt" onclick="pick(this,'rt')"><div class="rt-t">Midday</div><div class="rt-sub">12–1pm</div></div>
-          <div class="rt-opt" onclick="pick(this,'rt')"><div class="rt-t">Evening</div><div class="rt-sub">8–10pm</div></div>
+          <div class="rt-opt on" onclick="pick(this,'rt')"><div data-i18n="morning_9" class="rt-t">Morning</div><div data-i18n="am_10" class="rt-sub">5–7am</div></div>
+          <div class="rt-opt" onclick="pick(this,'rt')"><div data-i18n="midday_11" class="rt-t">Midday</div><div data-i18n="pm_12" class="rt-sub">12–1pm</div></div>
+          <div class="rt-opt" onclick="pick(this,'rt')"><div data-i18n="evening_13" class="rt-t">Evening</div><div data-i18n="pm_14" class="rt-sub">8–10pm</div></div>
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-next" onclick="go(1)">Continue →</button>
+        <button data-i18n="continue_15" class="btn-next" onclick="go(1)">Continue →</button>
       </div>
-      <a class="btn-skip" href="index.html">Skip for now</a>
+      <a data-i18n="skip_for_now_16" class="btn-skip" href="index.html">Skip for now</a>
     </div>
 
     <!-- Step 1: Focus -->
     <div class="step" id="s1">
-      <div class="step-title">Choose Your Focus</div>
-      <div class="step-sub">Which areas of study will anchor your first season? You can change this at any time.</div>
+      <div data-i18n="choose_your_focus_17" class="step-title">Choose Your Focus</div>
+      <div data-i18n="which_areas_of_study_18" class="step-sub">Which areas of study will anchor your first season? You can change this at any time.</div>
       <div class="focus-grid">
-        <div class="focus-opt on" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">The Cross</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Discipleship</span></div>
-        <div class="focus-opt on" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Prayer</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Suffering</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Holy Spirit</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Apologetics</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Holiness</span></div>
-        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span class="focus-lbl">Eternity</span></div>
+        <div class="focus-opt on" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="the_cross_19" class="focus-lbl">The Cross</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="discipleship_20" class="focus-lbl">Discipleship</span></div>
+        <div class="focus-opt on" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="prayer_21" class="focus-lbl">Prayer</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="suffering_22" class="focus-lbl">Suffering</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="holy_spirit_23" class="focus-lbl">Holy Spirit</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="apologetics_24" class="focus-lbl">Apologetics</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="holiness_25" class="focus-lbl">Holiness</span></div>
+        <div class="focus-opt" onclick="toggle(this)"><div class="focus-dot"></div><span data-i18n="eternity_26" class="focus-lbl">Eternity</span></div>
       </div>
       <div class="btn-row">
-        <button class="btn-back" onclick="go(0)">← Back</button>
-        <button class="btn-next" onclick="go(2)">Continue →</button>
+        <button data-i18n="back_27" class="btn-back" onclick="go(0)">← Back</button>
+        <button data-i18n="continue_28" class="btn-next" onclick="go(2)">Continue →</button>
       </div>
-      <a class="btn-skip" href="index.html">Skip for now</a>
+      <a data-i18n="skip_for_now_29" class="btn-skip" href="index.html">Skip for now</a>
     </div>
 
     <!-- Step 2: Begin -->
     <div class="step" id="s2">
-      <div class="step-title">You Are Ready</div>
-      <div class="step-sub">"I have hidden your word in my heart that I might not sin against you." — Psalm 119:11</div>
+      <div data-i18n="you_are_ready_30" class="step-title">You Are Ready</div>
+      <div data-i18n="i_have_hidden_your_31" class="step-sub">"I have hidden your word in my heart that I might not sin against you." — Psalm 119:11</div>
       <div style="text-align:center;padding:20px 0">
-        <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:12px">Today's Reading</div>
+        <div data-i18n="today_s_reading_32" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--text-d);margin-bottom:12px">Today's Reading</div>
         <div style="font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--gold-d)" id="s2-date"></div>
         <div style="margin:20px 0;height:1px;background:var(--border2)"></div>
-        <div style="font-size:16px;font-style:italic;color:var(--text-d)">Begin in stillness. Find a quiet place. Open your heart.</div>
+        <div data-i18n="begin_in_stillness_find_33" style="font-size:16px;font-style:italic;color:var(--text-d)">Begin in stillness. Find a quiet place. Open your heart.</div>
       </div>
       <div class="btn-row">
-        <button class="btn-back" onclick="go(1)">← Back</button>
-        <button class="btn-next" onclick="finish()">Begin →</button>
+        <button data-i18n="back_34" class="btn-back" onclick="go(1)">← Back</button>
+        <button data-i18n="begin_35" class="btn-next" onclick="finish()">Begin →</button>
       </div>
     </div>
   </div>
@@ -271,5 +274,6 @@ if(localStorage.getItem('tew_onboarded')==='1')window.location.href='index.html'
   }).catch(function(){});
 })();
 </script>
+<script>GI.apply();GI.mount('gi-lang');</script>
 </body>
 </html>

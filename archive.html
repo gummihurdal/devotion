@@ -161,7 +161,8 @@ body{background:var(--navy4);color:var(--text);font-family:'Cormorant Garamond',
   .main{margin-left:0 !important;padding-top:52px}
 }
 </style>
-<script src="i18n.js?v=20261109b"></script>
+<script src="i18n.js?v=20261109c"></script>
+<script src="i18n-pages.js?v=20261109c"></script>
 </head>
 <body>
 <div class="mob-bar">
@@ -287,10 +288,10 @@ function renderPage(){
   const pages=Math.ceil(filtered.length/PAGE);
   let ph='';
   if(pages>1){
-    ph+=`<button class="pag-btn" onclick="gp(page-1)" ${page===0?'disabled':''}>← Prev</button>`;
+    ph+=`<button class="pag-btn" onclick="gp(page-1)" ${page===0?'disabled':''}>${GI.t('prev_p')}</button>`;
     for(let p=Math.max(0,page-2);p<=Math.min(pages-1,page+2);p++)
       ph+=`<button class="pag-btn ${p===page?'on':''}" onclick="gp(${p})">${p+1}</button>`;
-    ph+=`<button class="pag-btn" onclick="gp(page+1)" ${page>=pages-1?'disabled':''}>Next →</button>`;
+    ph+=`<button class="pag-btn" onclick="gp(page+1)" ${page>=pages-1?'disabled':''}>${GI.t('next_p')}</button>`;
   }
   document.getElementById('pag').innerHTML=ph;
   window.scrollTo({top:0,behavior:'smooth'});
